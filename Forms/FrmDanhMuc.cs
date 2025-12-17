@@ -21,6 +21,7 @@ namespace QLNCKH.Forms {
             cboDanhMuc.ValueMember = "Key";
             cboDanhMuc.SelectedIndexChanged += (s, e) => LoadData();
 
+            DataGridViewStyle.Apply(dgvDanhMuc);
             dgvDanhMuc.CellClick += DgvDanhMuc_CellClick;
 
             btnSua.Click += btnSua_Click;
