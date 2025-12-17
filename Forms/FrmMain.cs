@@ -13,13 +13,13 @@ namespace QLNCKH
         private void InitSidebar() {
             int top = 100;
 
-            Dictionary<string, Form> forms = new Dictionary<string, Form> {
-                { "Trang chủ", new FrmHome() },
-                { "Danh Mục", new FrmDanhMuc() }
+            Dictionary<string, Func<Form>> forms = new Dictionary<string, Func<Form>> {
+                { "Trang chủ", () => new FrmHome() },
+                { "Danh Mục", () => new FrmDanhMuc() }
             };
 
             foreach (var item in forms) {
-                pnlSidebar.Controls.Add(CreateMenuButton(item.Key, top, () => LoadForm(item.Value)));
+                pnlSidebar.Controls.Add(CreateMenuButton(item.Key, top, () => LoadForm(item.Value())));
                 top += 42;
 
             }
