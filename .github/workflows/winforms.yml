@@ -1,0 +1,31 @@
+name: WinForms CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v2
+
+    - name: Restore NuGet packages
+      run: nuget restore QLNCKH.sln
+
+    - name: Build solution
+      run: msbuild QLNCKH.sln /p:Configuration=Release
+
+    - name: Upload build artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: WinForms-App
+        path: |
+          **/bin/Release/**
