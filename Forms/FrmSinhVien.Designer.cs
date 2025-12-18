@@ -33,10 +33,11 @@
             // dgvSinhVien
             // 
             dgvSinhVien.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSinhVien.Location = new Point(-1, 3);
+            dgvSinhVien.Dock = DockStyle.Top;
+            dgvSinhVien.Location = new Point(0, 0);
             dgvSinhVien.Name = "dgvSinhVien";
             dgvSinhVien.RowHeadersWidth = 51;
-            dgvSinhVien.Size = new Size(801, 340);
+            dgvSinhVien.Size = new Size(800, 340);
             dgvSinhVien.TabIndex = 0;
             // 
             // btnThem

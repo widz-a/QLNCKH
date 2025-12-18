@@ -1,57 +1,6 @@
 ﻿using ReaLTaiizor.Controls;
-using System.Drawing;
-using System.Windows.Forms;
 
 public static class DataGridViewStyle {
-    
-    public static void _Apply(PoisonDataGridView dgv) {
-        // ====== GENERAL ======
-        dgv.EnableHeadersVisualStyles = false;
-        dgv.BorderStyle = BorderStyle.None;
-        dgv.BackgroundColor = Color.White;
-
-        dgv.RowHeadersVisible = false;
-        dgv.AllowUserToAddRows = false;
-        dgv.AllowUserToResizeRows = false;
-        dgv.MultiSelect = false;
-        dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
-        dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-        // ====== HEADER ======
-        dgv.ColumnHeadersHeight = 44;
-        dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-        dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(33, 42, 57);
-        dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-        dgv.ColumnHeadersDefaultCellStyle.Font =
-            new Font("Segoe UI", 10.5f, FontStyle.Bold);
-        dgv.ColumnHeadersDefaultCellStyle.Alignment =
-            DataGridViewContentAlignment.MiddleLeft;
-
-        // ====== ROW ======
-        dgv.DefaultCellStyle.BackColor = Color.White;
-        dgv.DefaultCellStyle.ForeColor = Color.FromArgb(31, 41, 55);
-        dgv.DefaultCellStyle.Font =
-            new Font("Segoe UI", 10f, FontStyle.Regular);
-        dgv.DefaultCellStyle.SelectionBackColor =
-            Color.FromArgb(59, 130, 246);
-        dgv.DefaultCellStyle.SelectionForeColor = Color.White;
-
-        dgv.RowTemplate.Height = 38;
-
-        // ====== ALTERNATING ======
-        dgv.AlternatingRowsDefaultCellStyle.BackColor =
-            Color.FromArgb(245, 247, 250);
-
-        // ====== GRID ======
-        dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-        dgv.GridColor = Color.FromArgb(229, 231, 235);
-
-        // ====== SORT FIX ======
-        foreach (DataGridViewColumn col in dgv.Columns) {
-            col.SortMode = DataGridViewColumnSortMode.NotSortable;
-        }
-    }
     public static void Apply(DataGridView dgv) {
         dgv.EnableHeadersVisualStyles = false;
         dgv.BorderStyle = BorderStyle.None;
@@ -67,15 +16,42 @@ public static class DataGridViewStyle {
         dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
         // Header
-        dgv.ColumnHeadersHeight = 42;
+        dgv.ColumnHeadersHeightSizeMode =
+            DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+        dgv.ColumnHeadersHeight = 48;
         dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
         dgv.ColumnHeadersDefaultCellStyle.BackColor =
-            Color.FromArgb(33, 42, 57);
-        dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            Color.FromArgb(227, 236, 248);
+        dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
         dgv.ColumnHeadersDefaultCellStyle.Font =
             new Font("Segoe UI", 10F, FontStyle.Bold);
         dgv.ColumnHeadersDefaultCellStyle.Alignment =
             DataGridViewContentAlignment.MiddleCenter;
+
+        dgv.ColumnHeadersDefaultCellStyle.SelectionBackColor =
+            dgv.ColumnHeadersDefaultCellStyle.BackColor;
+        dgv.ColumnHeadersDefaultCellStyle.SelectionForeColor =
+            dgv.ColumnHeadersDefaultCellStyle.ForeColor;
+
+        dgv.CellPainting += (s, e) =>
+        {
+            if (e.RowIndex == -1 && e.ColumnIndex >= 0) {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                // Vẽ separator bên phải (trừ cột cuối)
+                if (e.ColumnIndex < dgv.Columns.Count - 1) {
+                    using var pen = new Pen(Color.Black, 1);
+                    int x = e.CellBounds.Right - 1;
+                    int y1 = e.CellBounds.Top + 14;
+                    int y2 = e.CellBounds.Bottom - 14;
+                    e.Graphics.DrawLine(pen, x, y1, x, y2);
+                }
+
+                e.Handled = true;
+            }
+        };
+
+
 
         // Rows
         dgv.DefaultCellStyle.BackColor = Color.White;
