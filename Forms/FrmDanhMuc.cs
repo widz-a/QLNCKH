@@ -20,7 +20,7 @@ namespace QLNCKH.Forms {
             cboDanhMuc.DisplayMember = "Key";
             cboDanhMuc.ValueMember = "Key";
             cboDanhMuc.SelectedIndexChanged += (s, e) => LoadData();
-
+            
             DataGridViewStyle.Apply(dgvDanhMuc);
             dgvDanhMuc.CellClick += DgvDanhMuc_CellClick;
 
@@ -38,7 +38,7 @@ namespace QLNCKH.Forms {
             dgvDanhMuc.DataSource = DanhMucBUS.GetAll(key);
 
             selectedId = -1;
-            txtTen.Clear();
+            txtTen.Text = "";
         }
 
         private void DgvDanhMuc_CellClick(object sender, DataGridViewCellEventArgs e) {
@@ -74,6 +74,10 @@ namespace QLNCKH.Forms {
                 DanhMucBUS.Delete(cboDanhMuc.SelectedValue.ToString(), selectedId);
                 LoadData();
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e) {
+
         }
     }
 }
