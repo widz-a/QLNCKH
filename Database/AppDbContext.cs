@@ -46,6 +46,19 @@ public class AppDbContext : DbContext {
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
         => options.UseSqlServer(ConnectionString);
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder) {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<DeTai_SinhVien>()
+            .HasKey(x => new { x.MaDT, x.MaSV });
+
+        modelBuilder.Entity<HoiDong_DeTai>()
+            .HasKey(x => new { x.MaHD, x.MaDT });
+
+        modelBuilder.Entity<HoiDong_ThanhVien>()
+            .HasKey(x => new { x.MaHD, x.MaCB });
+    }
 }
 
 public static class DbContextExtensions {
