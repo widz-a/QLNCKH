@@ -13,15 +13,31 @@ namespace QLNCKH.Forms {
 
         private int selectedId = -1;
 
+        public static Dictionary<string, (string Table, string Id, string Name)> Map =
+            new Dictionary<string, (string, string, string)> {
+                ["Dân tộc"] = ("DanToc", "DanTocId", "TenDanToc"),
+                ["Tôn giáo"] = ("TonGiao", "TonGiaoId", "TenTonGiao"),
+                ["Cấp bậc"] = ("CapBac", "CapBacId", "TenCapBac"),
+                ["Chức vụ"] = ("ChucVu", "ChucVuId", "TenChucVu"),
+                ["Học hàm"] = ("HocHam", "HocHamId", "TenHocHam"),
+                ["Học vị"] = ("HocVi", "HocViId", "TenHocVi"),
+                ["Trình độ CM"] = ("TrinhDoChuyenMon", "TrinhDoCMId", "TenTrinhDo"),
+                ["Trình độ LLCT"] = ("TrinhDoLLCT", "TrinhDoLLCTId", "TenTrinhDo"),
+                ["Lĩnh vực"] = ("LinhVuc", "LinhVucId", "TenLinhVuc"),
+                ["Vai trò đề tài"] = ("VaiTroDeTai", "VaiTroId", "TenVaiTro"),
+                ["Trạng thái đề tài"] = ("TrangThaiDeTai", "TrangThaiId", "TenTrangThai"),
+                ["Giải thưởng"] = ("GiaiThuong", "GiaiId", "TenGiai")
+            };
+
         public FrmDanhMuc() {
             InitializeComponent();
 
-            cboDanhMuc.DataSource = new BindingSource(DanhMucBUS.Map, null);
+            cboDanhMuc.DataSource = new BindingSource(Map, null);
             cboDanhMuc.DisplayMember = "Key";
             cboDanhMuc.ValueMember = "Key";
             cboDanhMuc.SelectedIndexChanged += (s, e) => LoadData();
             
-            DataGridViewStyle.Apply(dgvDanhMuc);
+            StyleHelper.ApplyDGV(dgvDanhMuc);
             dgvDanhMuc.CellClick += DgvDanhMuc_CellClick;
 
             btnSua.Click += btnSua_Click;
@@ -35,7 +51,7 @@ namespace QLNCKH.Forms {
             if (cboDanhMuc.SelectedValue == null) return;
 
             string key = cboDanhMuc.SelectedValue.ToString();
-            dgvDanhMuc.DataSource = DanhMucBUS.GetAll(key);
+            dgvDanhMuc.DataSource = DanhMucService.GetAll(key);
 
             selectedId = -1;
             txtTen.Text = "";
@@ -51,14 +67,14 @@ namespace QLNCKH.Forms {
         private void btnThem_Click(object sender, EventArgs e) {
             if (string.IsNullOrWhiteSpace(txtTen.Text)) return;
 
-            DanhMucBUS.Add(cboDanhMuc.SelectedValue.ToString(), txtTen.Text);
+            DanhMucService.Add(cboDanhMuc.SelectedValue.ToString(), txtTen.Text);
             LoadData();
         }
 
         private void btnSua_Click(object sender, EventArgs e) {
             if (selectedId < 0) return;
 
-            DanhMucBUS.Update(
+            DanhMucService.Update(
                 cboDanhMuc.SelectedValue.ToString(),
                 selectedId,
                 txtTen.Text
@@ -71,7 +87,7 @@ namespace QLNCKH.Forms {
 
             if (MessageBox.Show("Xóa mục này?", "Xác nhận",
                 MessageBoxButtons.YesNo) == DialogResult.Yes) {
-                DanhMucBUS.Delete(cboDanhMuc.SelectedValue.ToString(), selectedId);
+                DanhMucService.Delete(cboDanhMuc.SelectedValue.ToString(), selectedId);
                 LoadData();
             }
         }

@@ -36,21 +36,21 @@ namespace QLNCKH.Forms {
         }
 
         private void LoadDanhMuc() {
-            cbDanToc.DataSource = DanhMucBUS.GetAll("Dân tộc");
+            cbDanToc.DataSource = DanhMucService.GetAll("Dân tộc");
             cbDanToc.DisplayMember = "Tên";
             cbDanToc.ValueMember = "ID";
             cbDanToc.SelectedIndex = -1;
 
-            cbTonGiao.DataSource = DanhMucBUS.GetAll("Tôn giáo");
+            cbTonGiao.DataSource = DanhMucService.GetAll("Tôn giáo");
             cbTonGiao.DisplayMember = "Tên";
             cbTonGiao.ValueMember = "ID";
 
-            cbChucVu.DataSource = DanhMucBUS.GetAll("Chức vụ");
+            cbChucVu.DataSource = DanhMucService.GetAll("Chức vụ");
             cbChucVu.DisplayMember = "Tên";
             cbChucVu.ValueMember = "ID";
             cbChucVu.SelectedIndex = -1;
 
-            cbTinh.DataSource = TinhXaBus.GetTinhs();
+            cbTinh.DataSource = new Repository<Tinh>().GetAll();
             cbTinh.DisplayMember = "TenTinh";
             cbTinh.ValueMember = "TinhId";
             cbTinh.SelectedIndex = -1;
@@ -58,33 +58,39 @@ namespace QLNCKH.Forms {
         }
 
         private void LoadXa() {
+            if (cbTinh.SelectedValue == null) return;
+
             cbXa.Enabled = true;
-            cbXa.DataSource = TinhXaBus.GetXasFromTinh((int)cbTinh.SelectedValue);
+            cbXa.DataSource = new Repository<Xa>().Filter(x => x.TinhId == (int)cbTinh.SelectedValue);
+            //cbXa.DataSource = TinhXaBus.GetXasFromTinh((int)cbTinh.SelectedValue);
             cbXa.DisplayMember = "TenXa";
             cbXa.ValueMember = "XaId";
         }
 
         private void LoadData() {
-            var dt = SinhVienBUS.GetById(_id);
-            if (dt.Rows.Count == 0) return;
+            if (string.IsNullOrEmpty(_id)) return;
+            SinhVien r = new Repository<SinhVien>().GetById(_id);
+            if (r == null) return;
 
-            var r = dt.Rows[0];
-            txtMaSV.Text = r["MaSV"].ToString();
-            txtHoTen.Text = r["HoTen"].ToString();
-            txtSDT.Text = r["SDT"].ToString();
-            txtLop.Text = r["Lop"].ToString();
-            txtNganh.Text = r["Nganh"].ToString();
-            txtChuyenNganh.Text = r["ChuyenNganh"].ToString();
+            txtMaSV.Text = r.MaSV;
+            txtHoTen.Text = r.HoTen;
+            txtSDT.Text = r.SDT;
+            txtLop.Text = r.Lop;
+            txtNganh.Text = r.Nganh;
+            txtChuyenNganh.Text = r.ChuyenNganh;
 
-            dtNgaySinh.Value = Convert.ToDateTime(r["NgaySinh"]);
-            cbDanToc.SelectedValue = r["DanTocId"];
-            cbTonGiao.SelectedValue = r["TonGiaoId"];
-            cbGioiTinh.SelectedIndex = cbGioiTinh.Items.IndexOf(r["GioiTinh"].ToString());
+            dtNgaySinh.Value = r.NgaySinh;
+            cbDanToc.SelectedValue = r.DanTocId;
+            cbTonGiao.SelectedValue = r.TonGiaoId;
+            //cbGioiTinh.SelectedIndex = cbGioiTinh.Items.IndexOf(r.GioiTinh.ToString());
 
-            cbTinh.SelectedValue = r["TinhId"];
+            cbTinh.SelectedValue = r.TinhId;
             LoadXa();
-            cbXa.SelectedValue = r["XaId"];
-            cbChucVu.SelectedValue = r["ChucVuId"];
+            cbXa.SelectedValue = r.XaId;
+            cbChucVu.SelectedValue = r.ChucVuId;
+
+            if (cbGioiTinh.Items.Contains(r.GioiTinh))
+                cbGioiTinh.SelectedItem = r.GioiTinh;
         }
 
         private void btnLuu_Click(object sender, EventArgs e) {
@@ -120,15 +126,17 @@ namespace QLNCKH.Forms {
                 ChucVuId = (int)cbChucVu.SelectedValue,
             };
 
+
+            Repository<SinhVien> repo = new Repository<SinhVien>();
             if (_id == null) {
-                if (SinhVienBUS.GetById(sv.MaSV).Rows.Count != 0) {
+                if (repo.Exists(txtMaSV.Text)) {
                     MessageBox.Show("Mã sinh viên này đã tồn tại", "Lỗi");
                     return;
                 }
-                SinhVienBUS.Insert(sv);
+                repo.Insert(sv);
             }
             else
-                SinhVienBUS.Update(_id, sv);
+                repo.Update(sv);
 
             DialogResult = DialogResult.OK;
             Close();

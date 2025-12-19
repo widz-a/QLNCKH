@@ -14,7 +14,7 @@ namespace QLNCKH.Forms {
             InitializeComponent();
             LoadData();
             
-            DataGridViewStyle.Apply(dgvSinhVien);
+            StyleHelper.ApplyDGV(dgvSinhVien);
 
             btnThem.Click += btnThem_Click;
             btnSua.Click += btnSua_Click;
@@ -23,7 +23,16 @@ namespace QLNCKH.Forms {
 
         private void LoadData() {
             //DataGridViewStyle.Apply(dgvSinhVien);
-            dgvSinhVien.DataSource = SinhVienBUS.GetAll();   
+            dgvSinhVien.DataSource = new Repository<SinhVien>().GetSome(sv => new {
+                sv.MaSV,
+                sv.HoTen,
+                sv.NgaySinh,
+                sv.Lop
+            });
+            dgvSinhVien.Columns["MaSV"].HeaderText = "Mã sinh viên";
+            dgvSinhVien.Columns["HoTen"].HeaderText = "Họ tên";
+            dgvSinhVien.Columns["NgaySinh"].HeaderText = "Ngày sinh";
+            dgvSinhVien.Columns["Lop"].HeaderText = "Lớp";
         }
 
         private string? GetSelectedId() {
@@ -53,7 +62,8 @@ namespace QLNCKH.Forms {
 
             if (MessageBox.Show("Xóa sinh viên này?", "Xác nhận",
                 MessageBoxButtons.YesNo) == DialogResult.Yes) {
-                SinhVienBUS.Delete(id);
+                //SinhVienBUS.Delete(id);
+                new Repository<SinhVien>().Delete(id);
                 LoadData();
             }
         }

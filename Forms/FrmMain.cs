@@ -1,4 +1,5 @@
-﻿using QLNCKH.Forms;
+﻿using Microsoft.EntityFrameworkCore;
+using QLNCKH.Forms;
 
 namespace QLNCKH
 {
@@ -6,6 +7,11 @@ namespace QLNCKH
         public FrmMain() {
             InitializeComponent();
             InitSidebar();
+
+            //Database Warm up
+            using var db = new AppDbContext();
+            db.Database.OpenConnection();
+            db.Database.CloseConnection();
 
             LoadForm(new FrmHome());
         }

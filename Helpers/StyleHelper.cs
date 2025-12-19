@@ -1,7 +1,7 @@
 ﻿using ReaLTaiizor.Controls;
 
-public static class DataGridViewStyle {
-    public static void Apply(DataGridView dgv) {
+public static class StyleHelper {
+    public static void ApplyDGV(DataGridView dgv) {
         dgv.EnableHeadersVisualStyles = false;
         dgv.BorderStyle = BorderStyle.None;
         dgv.BackgroundColor = Color.White;
