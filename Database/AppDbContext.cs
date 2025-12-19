@@ -6,7 +6,7 @@ public class AppDbContext : DbContext {
     private static string ConnectionString = "Server=DESKTOP-9BRK4F9; Database=QLNCKH;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True;";
 
 
-    //Đăng ký thủ công các Danh mục
+    //Đăng ký
     public DbSet<DanToc> DanToc { get; set; }
     public DbSet<TonGiao> TonGiao { get; set; }
     public DbSet<ChucVu> ChucVu { get; set; }
@@ -25,6 +25,23 @@ public class AppDbContext : DbContext {
     public DbSet<Xa> Xa { get; set; }
 
     public DbSet<SinhVien> SinhVien { get; set; }
+    public DbSet<GiangVien> GiangVien { get; set; }
+    public DbSet<DeTai> DeTai { get; set; }
+    public DbSet<DeTai_SinhVien> DeTai_SinhVien { get; set; }
+
+    public DbSet<ChuyenDe> ChuyenDe { get; set; }
+
+    public DbSet<NopSanPham> NopSanPham { get; set; }
+
+    public DbSet<DaoVan> DaoVan { get; set; }
+
+    public DbSet<HoiDong> HoiDong { get; set; }
+    public DbSet<HoiDong_ThanhVien> HoiDong_ThanhVien { get; set; }
+    public DbSet<HoiDong_DeTai> HoiDong_DeTai { get; set; }
+
+    public DbSet<PhieuCham> PhieuCham { get; set; }
+
+    public DbSet<KetQua> KetQua { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
