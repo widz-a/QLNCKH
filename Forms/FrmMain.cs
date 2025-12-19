@@ -4,6 +4,13 @@ using QLNCKH.Forms;
 namespace QLNCKH
 {
     public partial class FrmMain : Form {
+
+        private Dictionary<string, (Func<Form> func, string title)> forms = new Dictionary<string, (Func<Form> func, string title)> {
+            ["Trang chủ"] = (() => new FrmHome(), "Trang chủ"),
+            ["Danh Mục"] = (() => new FrmDanhMuc(), "Quản lý danh mục"),
+            ["Sinh viên"] = (() => new FrmSinhVienList(), "Quản lý thông tin sinh viên")
+        };
+
         public FrmMain() {
             InitializeComponent();
             InitSidebar();
@@ -13,20 +20,13 @@ namespace QLNCKH
             db.Database.OpenConnection();
             db.Database.CloseConnection();
 
-            LoadForm(new FrmHome());
         }
 
         private void InitSidebar() {
             int top = 100;
 
-            Dictionary<string, Func<Form>> forms = new Dictionary<string, Func<Form>> {
-                { "Trang chủ", () => new FrmHome() },
-                { "Danh Mục", () => new FrmDanhMuc() },
-                { "Sinh viên", () => new FrmSinhVienList() },
-            };
-
             foreach (var item in forms) {
-                pnlSidebar.Controls.Add(CreateMenuButton(item.Key, top, () => LoadForm(item.Value())));
+                pnlSidebar.Controls.Add(CreateMenuButton(item.Key, top, () => LoadForm(item.Value.func(), item.Value.title)));
                 top += 42;
 
             }
@@ -60,12 +60,14 @@ namespace QLNCKH
             return btn;
         }
 
-        private void LoadForm(Form frm) {
+        private void LoadForm(Form frm, string newTitle) {
+            this.title.Text = newTitle;
+            this.title.Refresh();
             pnlMain.Controls.Clear();
             frm.TopLevel = false;
             frm.FormBorderStyle = FormBorderStyle.None;
             frm.Dock = DockStyle.Fill;
-            frm.Padding = new Padding(20);
+            frm.Padding = new Padding(20, 0, 20, 20);
             pnlMain.Controls.Add(frm);
             frm.Show();
         }

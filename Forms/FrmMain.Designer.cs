@@ -33,9 +33,12 @@
             logo_c500 = new PictureBox();
             label1 = new Label();
             pnlMain = new Panel();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            title = new ReaLTaiizor.Controls.FoxBigLabel();
             pnlSidebar.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)logo_c500).BeginInit();
+            tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
             // pnlSidebar
@@ -90,17 +93,47 @@
             // 
             pnlMain.BackColor = SystemColors.Control;
             pnlMain.Dock = DockStyle.Fill;
-            pnlMain.Location = new Point(220, 0);
+            pnlMain.Location = new Point(3, 88);
             pnlMain.Name = "pnlMain";
-            pnlMain.Size = new Size(840, 718);
+            pnlMain.Size = new Size(834, 627);
             pnlMain.TabIndex = 3;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 1;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Controls.Add(title, 0, 0);
+            tableLayoutPanel2.Controls.Add(pnlMain, 0, 1);
+            tableLayoutPanel2.Dock = DockStyle.Fill;
+            tableLayoutPanel2.Location = new Point(220, 0);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 2;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 11.83844F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 88.16156F));
+            tableLayoutPanel2.Size = new Size(840, 718);
+            tableLayoutPanel2.TabIndex = 4;
+            // 
+            // title
+            // 
+            title.BackColor = Color.Transparent;
+            title.Dock = DockStyle.Top;
+            title.Font = new Font("Segoe UI Semibold", 20F);
+            title.ForeColor = Color.Black;
+            title.Line = ReaLTaiizor.Controls.FoxBigLabel.Direction.Bottom;
+            title.LineColor = Color.FromArgb(200, 200, 200);
+            title.Location = new Point(20, 20);
+            title.Margin = new Padding(20, 20, 20, 0);
+            title.Name = "title";
+            title.Size = new Size(800, 49);
+            title.TabIndex = 5;
+            title.Text = "Trang chủ";
             // 
             // FrmMain
             // 
             AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1060, 718);
-            Controls.Add(pnlMain);
+            Controls.Add(tableLayoutPanel2);
             Controls.Add(pnlSidebar);
             Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -113,6 +146,7 @@
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)logo_c500).EndInit();
+            tableLayoutPanel2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -123,5 +157,7 @@
         private PictureBox logo_c500;
         private Label label1;
         private Panel pnlMain;
+        private TableLayoutPanel tableLayoutPanel2;
+        private ReaLTaiizor.Controls.FoxBigLabel title;
     }
 }

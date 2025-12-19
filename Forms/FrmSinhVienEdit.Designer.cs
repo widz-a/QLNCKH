@@ -164,7 +164,7 @@
             // 
             label10.AutoSize = true;
             label10.Dock = DockStyle.Fill;
-            label10.Font = new Font("Tahoma", 10.8F);
+            label10.Font = new Font("Segoe UI", 10.2F);
             label10.Location = new Point(3, 191);
             label10.Name = "label10";
             label10.Size = new Size(121, 40);
@@ -176,7 +176,7 @@
             // 
             label9.AutoSize = true;
             label9.Dock = DockStyle.Fill;
-            label9.Font = new Font("Tahoma", 10.8F);
+            label9.Font = new Font("Segoe UI", 10.2F);
             label9.Location = new Point(3, 152);
             label9.Name = "label9";
             label9.Size = new Size(121, 39);
@@ -188,7 +188,7 @@
             // 
             label4.AutoSize = true;
             label4.Dock = DockStyle.Fill;
-            label4.Font = new Font("Tahoma", 10.8F);
+            label4.Font = new Font("Segoe UI", 10.2F);
             label4.Location = new Point(3, 114);
             label4.Name = "label4";
             label4.Size = new Size(121, 38);
@@ -200,7 +200,7 @@
             // 
             label3.AutoSize = true;
             label3.Dock = DockStyle.Fill;
-            label3.Font = new Font("Tahoma", 10.8F);
+            label3.Font = new Font("Segoe UI", 10.2F);
             label3.Location = new Point(3, 76);
             label3.Name = "label3";
             label3.Size = new Size(121, 38);
@@ -212,7 +212,7 @@
             // 
             label2.AutoSize = true;
             label2.Dock = DockStyle.Fill;
-            label2.Font = new Font("Tahoma", 10.8F);
+            label2.Font = new Font("Segoe UI", 10.2F);
             label2.Location = new Point(3, 38);
             label2.Name = "label2";
             label2.Size = new Size(121, 38);
@@ -224,7 +224,7 @@
             // 
             label1.AutoSize = true;
             label1.Dock = DockStyle.Fill;
-            label1.Font = new Font("Tahoma", 10.8F);
+            label1.Font = new Font("Segoe UI", 10.2F);
             label1.Location = new Point(3, 0);
             label1.Name = "label1";
             label1.Size = new Size(121, 38);
@@ -250,7 +250,7 @@
             // btnLuu
             // 
             btnLuu.Dock = DockStyle.Fill;
-            btnLuu.Font = new Font("Tahoma", 10.8F);
+            btnLuu.Font = new Font("Segoe UI", 10.2F);
             btnLuu.Location = new Point(3, 3);
             btnLuu.Name = "btnLuu";
             btnLuu.Size = new Size(95, 30);
@@ -261,7 +261,7 @@
             // btnHuy
             // 
             btnHuy.Dock = DockStyle.Fill;
-            btnHuy.Font = new Font("Tahoma", 10.8F);
+            btnHuy.Font = new Font("Segoe UI", 10.2F);
             btnHuy.Location = new Point(104, 3);
             btnHuy.Name = "btnHuy";
             btnHuy.Size = new Size(96, 30);
@@ -355,7 +355,7 @@
             // 
             label12.AutoSize = true;
             label12.Dock = DockStyle.Fill;
-            label12.Font = new Font("Tahoma", 10.8F);
+            label12.Font = new Font("Segoe UI", 10.2F);
             label12.Location = new Point(3, 154);
             label12.Name = "label12";
             label12.Size = new Size(136, 38);
@@ -367,7 +367,7 @@
             // 
             label5.AutoSize = true;
             label5.Dock = DockStyle.Fill;
-            label5.Font = new Font("Tahoma", 10.8F);
+            label5.Font = new Font("Segoe UI", 10.2F);
             label5.Location = new Point(3, 115);
             label5.Name = "label5";
             label5.Size = new Size(136, 39);
@@ -379,7 +379,7 @@
             // 
             label6.AutoSize = true;
             label6.Dock = DockStyle.Fill;
-            label6.Font = new Font("Tahoma", 10.8F);
+            label6.Font = new Font("Segoe UI", 10.2F);
             label6.Location = new Point(3, 77);
             label6.Name = "label6";
             label6.Size = new Size(136, 38);
@@ -391,7 +391,7 @@
             // 
             label7.AutoSize = true;
             label7.Dock = DockStyle.Fill;
-            label7.Font = new Font("Tahoma", 10.8F);
+            label7.Font = new Font("Segoe UI", 10.2F);
             label7.Location = new Point(3, 38);
             label7.Name = "label7";
             label7.Size = new Size(136, 39);
@@ -403,7 +403,7 @@
             // 
             label8.AutoSize = true;
             label8.Dock = DockStyle.Fill;
-            label8.Font = new Font("Tahoma", 10.8F);
+            label8.Font = new Font("Segoe UI", 10.2F);
             label8.Location = new Point(3, 0);
             label8.Name = "label8";
             label8.Size = new Size(136, 38);
@@ -445,7 +445,7 @@
             // 
             label11.AutoSize = true;
             label11.Dock = DockStyle.Fill;
-            label11.Font = new Font("Tahoma", 10.8F);
+            label11.Font = new Font("Segoe UI", 10.2F);
             label11.Location = new Point(3, 0);
             label11.Name = "label11";
             label11.Size = new Size(120, 36);
