@@ -16,7 +16,8 @@ public static class DanhMucMap {
             ["Lĩnh vực"] = typeof(LinhVuc),
             ["Vai trò đề tài"] = typeof(VaiTroDeTai),
             ["Trạng thái đề tài"] = typeof(TrangThaiDeTai),
-            ["Giải thưởng"] = typeof(GiaiThuong)
+            ["Giải thưởng"] = typeof(GiaiThuong),
+            ["Đơn vị công tác"] = typeof(DonViCongTac),
         };
 }
 
@@ -308,6 +309,28 @@ public class GiaiThuong : IDanhMuc {
     public string Ten {
         get => TenGiai;
         set => TenGiai = value;
+    }
+}
+
+[Table("DonViCongTac")]
+public class DonViCongTac : IDanhMuc {
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int MaDV { get; set; }
+
+    [StringLength(50)]
+    public string TenDV { get; set; }
+
+    [NotMapped]
+    public int Id {
+        get => MaDV;
+        set => MaDV = value;
+    }
+
+    [NotMapped]
+    public string Ten {
+        get => TenDV;
+        set => TenDV = value;
     }
 }
 

@@ -13,26 +13,10 @@ namespace QLNCKH.Forms {
 
         private int selectedId = -1;
 
-        public static Dictionary<string, (string Table, string Id, string Name)> Map =
-            new Dictionary<string, (string, string, string)> {
-                ["Dân tộc"] = ("DanToc", "DanTocId", "TenDanToc"),
-                ["Tôn giáo"] = ("TonGiao", "TonGiaoId", "TenTonGiao"),
-                ["Cấp bậc"] = ("CapBac", "CapBacId", "TenCapBac"),
-                ["Chức vụ"] = ("ChucVu", "ChucVuId", "TenChucVu"),
-                ["Học hàm"] = ("HocHam", "HocHamId", "TenHocHam"),
-                ["Học vị"] = ("HocVi", "HocViId", "TenHocVi"),
-                ["Trình độ CM"] = ("TrinhDoChuyenMon", "TrinhDoCMId", "TenTrinhDo"),
-                ["Trình độ LLCT"] = ("TrinhDoLLCT", "TrinhDoLLCTId", "TenTrinhDo"),
-                ["Lĩnh vực"] = ("LinhVuc", "LinhVucId", "TenLinhVuc"),
-                ["Vai trò đề tài"] = ("VaiTroDeTai", "VaiTroId", "TenVaiTro"),
-                ["Trạng thái đề tài"] = ("TrangThaiDeTai", "TrangThaiId", "TenTrangThai"),
-                ["Giải thưởng"] = ("GiaiThuong", "GiaiId", "TenGiai")
-            };
-
         public FrmDanhMuc() {
             InitializeComponent();
 
-            cboDanhMuc.DataSource = new BindingSource(Map, null);
+            cboDanhMuc.DataSource = new BindingSource(DanhMucMap.Map, null);
             cboDanhMuc.DisplayMember = "Key";
             cboDanhMuc.ValueMember = "Key";
             cboDanhMuc.SelectedIndexChanged += (s, e) => LoadData();

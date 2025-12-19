@@ -3638,6 +3638,13 @@ INSERT INTO GiaiThuong (TenGiai) VALUES
 (N'Khuyến khích');
 GO
 
+CREATE TABLE DonViCongTac (
+    MaDV INT IDENTITY PRIMARY KEY,
+    TenDV NVARCHAR(50)
+);
+GO
+-- TODO: THÊM CÁC ĐƠN VỊ
+
 /* =========================
    SINH VIÊN (36)
    ========================= */

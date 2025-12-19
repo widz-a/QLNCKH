@@ -20,6 +20,7 @@ public class AppDbContext : DbContext {
     public DbSet<VaiTroDeTai> VaiTroDeTai { get; set; }
     public DbSet<TrangThaiDeTai> TrangThaiDeTai { get; set; }
     public DbSet<GiaiThuong> GiaiThuong { get; set; }
+    public DbSet<DonViCongTac> DonViCongTac { get; set; }
 
     public DbSet<Tinh> Tinh { get; set; }
     public DbSet<Xa> Xa { get; set; }
