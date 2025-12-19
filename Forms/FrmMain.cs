@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using QLNCKH.Forms;
+using System.Linq.Expressions;
 
 namespace QLNCKH
 {
@@ -8,7 +9,23 @@ namespace QLNCKH
         private Dictionary<string, (Func<Form> func, string title)> forms = new Dictionary<string, (Func<Form> func, string title)> {
             ["Trang chủ"] = (() => new FrmHome(), "Trang chủ"),
             ["Danh Mục"] = (() => new FrmDanhMuc(), "Quản lý danh mục"),
-            ["Sinh viên"] = (() => new FrmSinhVienList(), "Quản lý thông tin sinh viên")
+            ["Sinh viên"] = (() => new FrmList<SinhVien>(
+                new ListContext<SinhVien> {
+                    Title = "Quản lý thông tin sinh viên",
+                    GetHeaderSelector = (sv => new {
+                        sv.MaSV, sv.HoTen, sv.NgaySinh, sv.Lop
+                    }),
+                    IdColumn = "MaSV",
+                    HeaderNames = new Dictionary<string, string> {
+                        ["MaSV"] = "Mã sinh viên",
+                        ["HoTen"] = "Họ và tên",
+                        ["NgaySinh"] = "Ngày sinh",
+                        ["Lop"] = "Lớp",
+                    },
+                    GetEditForm = id => new FrmSinhVienEdit(id),
+                    GetCreateForm = () => new FrmSinhVienEdit(),
+                }    
+            ), "Quản lý thông tin sinh viên")
         };
 
         public FrmMain() {
