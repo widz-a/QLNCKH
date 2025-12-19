@@ -22,7 +22,7 @@ namespace QLNCKH
             Dictionary<string, Func<Form>> forms = new Dictionary<string, Func<Form>> {
                 { "Trang chủ", () => new FrmHome() },
                 { "Danh Mục", () => new FrmDanhMuc() },
-                { "Sinh viên", () => new FrmSinhVien() },
+                { "Sinh viên", () => new FrmSinhVienList() },
             };
 
             foreach (var item in forms) {

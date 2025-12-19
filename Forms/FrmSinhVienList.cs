@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QLNCKH.Forms {
-    public partial class FrmSinhVien : Form {
-        public FrmSinhVien() {
+    public partial class FrmSinhVienList : Form {
+        public FrmSinhVienList() {
             InitializeComponent();
             LoadData();
             

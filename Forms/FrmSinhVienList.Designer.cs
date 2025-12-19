@@ -1,5 +1,5 @@
 ﻿namespace QLNCKH.Forms {
-    partial class FrmSinhVien {
+    partial class FrmSinhVienList {
         /// <summary>
         /// Required designer variable.
         /// </summary>
