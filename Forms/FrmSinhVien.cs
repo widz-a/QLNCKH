@@ -37,7 +37,7 @@ namespace QLNCKH.Forms {
 
         private string? GetSelectedId() {
             if (dgvSinhVien.SelectedRows.Count == 0) return null;
-            return dgvSinhVien.SelectedRows[0].Cells["Mã sinh viên"].Value.ToString();
+            return dgvSinhVien.SelectedRows[0].Cells["MaSV"].Value.ToString();
         }
 
         private void btnThem_Click(object sender, EventArgs e) {

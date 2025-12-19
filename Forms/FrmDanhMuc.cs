@@ -37,7 +37,7 @@ namespace QLNCKH.Forms {
             cboDanhMuc.ValueMember = "Key";
             cboDanhMuc.SelectedIndexChanged += (s, e) => LoadData();
             
-            StyleHelper.ApplyDGV(dgvDanhMuc);
+            StyleHelper.ApplyDGV(dgvDanhMuc, false);
             dgvDanhMuc.CellClick += DgvDanhMuc_CellClick;
 
             btnSua.Click += btnSua_Click;
@@ -52,6 +52,8 @@ namespace QLNCKH.Forms {
 
             string key = cboDanhMuc.SelectedValue.ToString();
             dgvDanhMuc.DataSource = DanhMucService.GetAll(key);
+            dgvDanhMuc.Columns["Id"].HeaderText = "ID";
+            dgvDanhMuc.Columns["Ten"].HeaderText = "Tên";
 
             selectedId = -1;
             txtTen.Text = "";

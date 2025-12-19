@@ -37,16 +37,16 @@ namespace QLNCKH.Forms {
 
         private void LoadDanhMuc() {
             cbDanToc.DataSource = DanhMucService.GetAll("Dân tộc");
-            cbDanToc.DisplayMember = "Tên";
+            cbDanToc.DisplayMember = "Ten";
             cbDanToc.ValueMember = "ID";
             cbDanToc.SelectedIndex = -1;
 
             cbTonGiao.DataSource = DanhMucService.GetAll("Tôn giáo");
-            cbTonGiao.DisplayMember = "Tên";
+            cbTonGiao.DisplayMember = "Ten";
             cbTonGiao.ValueMember = "ID";
 
             cbChucVu.DataSource = DanhMucService.GetAll("Chức vụ");
-            cbChucVu.DisplayMember = "Tên";
+            cbChucVu.DisplayMember = "Ten";
             cbChucVu.ValueMember = "ID";
             cbChucVu.SelectedIndex = -1;
 
