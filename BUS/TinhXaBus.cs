@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using Microsoft.Data.SqlClient;
+using System.Data;
 
 public static class TinhXaBus {
 
@@ -17,9 +18,9 @@ public static class TinhXaBus {
         string sql = $@"
             SELECT XaId, TenXa
             FROM Xa
-            WHERE TinhId={tinhId}
+            WHERE TinhId=@tinhId
         ";
 
-        return DbHelper.GetData(sql);
+        return DbHelper.GetData(sql, new SqlParameter("@tinhId", tinhId));
     }
 }

@@ -119,8 +119,13 @@ namespace QLNCKH.Forms {
                 ChucVuId = (int)cbChucVu.SelectedValue,
             };
 
-            if (_id == null)
+            if (_id == null) {
+                if (SinhVienBUS.GetById(sv.MaSV).Rows.Count != 0) {
+                    MessageBox.Show("Mã sinh viên này đã tồn tại", "Lỗi");
+                    return;
+                }
                 SinhVienBUS.Insert(sv);
+            }
             else
                 SinhVienBUS.Update(_id, sv);
 

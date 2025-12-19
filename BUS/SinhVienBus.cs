@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using Microsoft.Data.SqlClient;
+using System.Data;
 
 public static class SinhVienBUS {
     public static DataTable GetAll() {
@@ -14,45 +15,96 @@ public static class SinhVienBUS {
     }
 
     public static DataTable GetById(string maSV) {
-        return DbHelper.GetData(
-            $"SELECT * FROM SinhVien WHERE MaSV = N'{maSV}'"
+        string sql = @"
+            SELECT *
+            FROM SinhVien
+            WHERE MaSV = @maSV
+        ";
+
+        return DbHelper.GetData(sql,
+            new SqlParameter("@maSV", maSV)
         );
     }
 
-    public static void Insert(SinhVien sv) {
-        string sql = $@"
-            INSERT INTO SinhVien
-            (MaSV, HoTen, GioiTinh, NgaySinh, TinhId, XaId, DanTocId, TonGiaoId,
-             SDT, Lop, ChucVuId, Nganh, ChuyenNganh)
-            VALUES
-            (N'{sv.MaSV}', N'{sv.HoTen}', N'{sv.GioiTinh}', '{sv.NgaySinh:yyyy-MM-dd}',
-             {sv.TinhId}, {sv.XaId}, {sv.DanTocId}, {sv.TonGiaoId},
-             N'{sv.SDT}', N'{sv.Lop}', {sv.ChucVuId},
-             N'{sv.Nganh}', N'{sv.ChuyenNganh}')";
-        DbHelper.Execute(sql);
+    public static int Insert(SinhVien sv) {
+        string sql = @"
+        INSERT INTO SinhVien (
+            MaSV, HoTen, GioiTinh, NgaySinh,
+            TinhId, XaId, DanTocId, TonGiaoId,
+            SDT, Lop, ChucVuId, Nganh, ChuyenNganh
+        )
+        VALUES (
+            @MaSV, @HoTen, @GioiTinh, @NgaySinh,
+            @TinhId, @XaId, @DanTocId, @TonGiaoId,
+            @SDT, @Lop, @ChucVuId, @Nganh, @ChuyenNganh
+        )
+    ";
+
+        return DbHelper.Execute(sql,
+            new SqlParameter("@MaSV", sv.MaSV),
+            new SqlParameter("@HoTen", sv.HoTen),
+            new SqlParameter("@GioiTinh", sv.GioiTinh),
+            new SqlParameter("@NgaySinh", sv.NgaySinh),
+
+            new SqlParameter("@TinhId", (object?)sv.TinhId ?? DBNull.Value),
+            new SqlParameter("@XaId", (object?)sv.XaId ?? DBNull.Value),
+            new SqlParameter("@DanTocId", (object?)sv.DanTocId ?? DBNull.Value),
+            new SqlParameter("@TonGiaoId", (object?)sv.TonGiaoId ?? DBNull.Value),
+
+            new SqlParameter("@SDT", sv.SDT),
+            new SqlParameter("@Lop", sv.Lop),
+            new SqlParameter("@ChucVuId", (object?)sv.ChucVuId ?? DBNull.Value),
+
+            new SqlParameter("@Nganh", sv.Nganh),
+            new SqlParameter("@ChuyenNganh", sv.ChuyenNganh)
+        );
     }
 
-    public static void Update(string maSV, SinhVien sv) {
-        string sql = $@"
+
+    public static int Update(string maSV, SinhVien sv) {
+        string sql = @"
         UPDATE SinhVien SET
-        HoTen=N'{sv.HoTen}',
-        GioiTinh=N'{sv.GioiTinh}',
-        NgaySinh='{sv.NgaySinh:yyyy-MM-dd}',
-        TinhId={sv.TinhId},
-        XaId={sv.XaId},
-        DanTocId={sv.DanTocId},
-        TonGiaoId={sv.TonGiaoId},
-        SDT=N'{sv.SDT}',
-        Lop=N'{sv.Lop}',
-        ChucVuId={sv.ChucVuId},
-        Nganh=N'{sv.Nganh}',
-        ChuyenNganh=N'{sv.ChuyenNganh}'
-        WHERE MaSV=N'{maSV}'";
-        DbHelper.Execute(sql);
+            HoTen = @HoTen,
+            GioiTinh = @GioiTinh,
+            NgaySinh = @NgaySinh,
+            TinhId = @TinhId,
+            XaId = @XaId,
+            DanTocId = @DanTocId,
+            TonGiaoId = @TonGiaoId,
+            SDT = @SDT,
+            Lop = @Lop,
+            ChucVuId = @ChucVuId,
+            Nganh = @Nganh,
+            ChuyenNganh = @ChuyenNganh
+        WHERE MaSV = @MaSV
+    ";
+
+        return DbHelper.Execute(sql,
+            new SqlParameter("@MaSV", maSV),
+
+            new SqlParameter("@HoTen", sv.HoTen),
+            new SqlParameter("@GioiTinh", sv.GioiTinh),
+            new SqlParameter("@NgaySinh", sv.NgaySinh),
+
+            new SqlParameter("@TinhId", (object?)sv.TinhId ?? DBNull.Value),
+            new SqlParameter("@XaId", (object?)sv.XaId ?? DBNull.Value),
+            new SqlParameter("@DanTocId", (object?)sv.DanTocId ?? DBNull.Value),
+            new SqlParameter("@TonGiaoId", (object?)sv.TonGiaoId ?? DBNull.Value),
+
+            new SqlParameter("@SDT", sv.SDT),
+            new SqlParameter("@Lop", sv.Lop),
+            new SqlParameter("@ChucVuId", (object?)sv.ChucVuId ?? DBNull.Value),
+
+            new SqlParameter("@Nganh", sv.Nganh),
+            new SqlParameter("@ChuyenNganh", sv.ChuyenNganh)
+        );
+    }
+    public static int Delete(string maSV) {
+        string sql = "DELETE FROM SinhVien WHERE MaSV = @MaSV";
+
+        return DbHelper.Execute(sql,
+            new SqlParameter("@MaSV", maSV)
+        );
     }
 
-
-    public static void Delete(string maSV) {
-        DbHelper.Execute($"DELETE FROM SinhVien WHERE MaSV=N'{maSV}'");
-    }
 }
