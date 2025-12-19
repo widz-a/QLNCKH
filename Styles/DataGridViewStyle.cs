@@ -38,7 +38,6 @@ public static class DataGridViewStyle {
             if (e.RowIndex == -1 && e.ColumnIndex >= 0) {
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
-                // Vẽ separator bên phải (trừ cột cuối)
                 if (e.ColumnIndex < dgv.Columns.Count - 1) {
                     using var pen = new Pen(Color.Black, 1);
                     int x = e.CellBounds.Right - 1;

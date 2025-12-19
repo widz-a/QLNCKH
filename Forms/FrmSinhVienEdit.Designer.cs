@@ -94,36 +94,40 @@
             // 
             // dtNgaySinh
             // 
+            dtNgaySinh.CustomFormat = "dd/MM/yyyy";
             dtNgaySinh.Dock = DockStyle.Fill;
             dtNgaySinh.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dtNgaySinh.Format = DateTimePickerFormat.Custom;
             dtNgaySinh.Location = new Point(130, 82);
             dtNgaySinh.Margin = new Padding(3, 6, 3, 6);
             dtNgaySinh.Name = "dtNgaySinh";
             dtNgaySinh.Size = new Size(220, 26);
-            dtNgaySinh.TabIndex = 11;
+            dtNgaySinh.TabIndex = 2;
             dtNgaySinh.Value = new DateTime(2025, 7, 10, 0, 0, 0, 0);
             // 
             // cbChucVu
             // 
             cbChucVu.Dock = DockStyle.Fill;
+            cbChucVu.DropDownStyle = ComboBoxStyle.DropDownList;
             cbChucVu.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             cbChucVu.FormattingEnabled = true;
             cbChucVu.Location = new Point(130, 197);
             cbChucVu.Margin = new Padding(3, 6, 3, 6);
             cbChucVu.Name = "cbChucVu";
             cbChucVu.Size = new Size(220, 27);
-            cbChucVu.TabIndex = 37;
+            cbChucVu.TabIndex = 5;
             // 
             // cbDanToc
             // 
             cbDanToc.Dock = DockStyle.Fill;
+            cbDanToc.DropDownStyle = ComboBoxStyle.DropDownList;
             cbDanToc.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             cbDanToc.FormattingEnabled = true;
             cbDanToc.Location = new Point(130, 158);
             cbDanToc.Margin = new Padding(3, 6, 3, 6);
             cbDanToc.Name = "cbDanToc";
             cbDanToc.Size = new Size(220, 27);
-            cbDanToc.TabIndex = 36;
+            cbDanToc.TabIndex = 4;
             // 
             // txtNganh
             // 
@@ -133,7 +137,7 @@
             txtNganh.Margin = new Padding(3, 6, 3, 6);
             txtNganh.Name = "txtNganh";
             txtNganh.Size = new Size(220, 26);
-            txtNganh.TabIndex = 35;
+            txtNganh.TabIndex = 3;
             // 
             // txtHoTen
             // 
@@ -143,7 +147,7 @@
             txtHoTen.Margin = new Padding(3, 6, 3, 6);
             txtHoTen.Name = "txtHoTen";
             txtHoTen.Size = new Size(220, 26);
-            txtHoTen.TabIndex = 34;
+            txtHoTen.TabIndex = 6;
             // 
             // txtMaSV
             // 
@@ -153,7 +157,7 @@
             txtMaSV.Margin = new Padding(3, 6, 3, 6);
             txtMaSV.Name = "txtMaSV";
             txtMaSV.Size = new Size(220, 26);
-            txtMaSV.TabIndex = 11;
+            txtMaSV.TabIndex = 7;
             // 
             // label10
             // 
@@ -211,7 +215,7 @@
             label2.Location = new Point(3, 38);
             label2.Name = "label2";
             label2.Size = new Size(121, 38);
-            label2.TabIndex = 23;
+            label2.TabIndex = 9;
             label2.Text = "Họ và tên:";
             label2.TextAlign = ContentAlignment.MiddleLeft;
             // 
@@ -223,7 +227,7 @@
             label1.Location = new Point(3, 0);
             label1.Name = "label1";
             label1.Size = new Size(121, 38);
-            label1.TabIndex = 21;
+            label1.TabIndex = 8;
             label1.Text = "Mã sinh viên:";
             label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
@@ -249,7 +253,7 @@
             btnLuu.Location = new Point(3, 3);
             btnLuu.Name = "btnLuu";
             btnLuu.Size = new Size(95, 30);
-            btnLuu.TabIndex = 9;
+            btnLuu.TabIndex = 0;
             btnLuu.Text = "Thêm";
             btnLuu.UseVisualStyleBackColor = true;
             // 
@@ -260,7 +264,7 @@
             btnHuy.Location = new Point(104, 3);
             btnHuy.Name = "btnHuy";
             btnHuy.Size = new Size(96, 30);
-            btnHuy.TabIndex = 10;
+            btnHuy.TabIndex = 1;
             btnHuy.Text = "Hủy";
             btnHuy.UseVisualStyleBackColor = true;
             // 
@@ -294,17 +298,19 @@
             // cbTonGiao
             // 
             cbTonGiao.Dock = DockStyle.Fill;
+            cbTonGiao.DropDownStyle = ComboBoxStyle.DropDownList;
             cbTonGiao.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             cbTonGiao.FormattingEnabled = true;
             cbTonGiao.Location = new Point(145, 121);
             cbTonGiao.Margin = new Padding(3, 6, 3, 6);
             cbTonGiao.Name = "cbTonGiao";
             cbTonGiao.Size = new Size(188, 27);
-            cbTonGiao.TabIndex = 35;
+            cbTonGiao.TabIndex = 3;
             // 
             // cbGioiTinh
             // 
             cbGioiTinh.Dock = DockStyle.Fill;
+            cbGioiTinh.DropDownStyle = ComboBoxStyle.DropDownList;
             cbGioiTinh.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             cbGioiTinh.FormattingEnabled = true;
             cbGioiTinh.Items.AddRange(new object[] { "Nam", "Nữ" });
@@ -312,7 +318,7 @@
             cbGioiTinh.Margin = new Padding(3, 6, 3, 6);
             cbGioiTinh.Name = "cbGioiTinh";
             cbGioiTinh.Size = new Size(188, 27);
-            cbGioiTinh.TabIndex = 34;
+            cbGioiTinh.TabIndex = 1;
             // 
             // txtSDT
             // 
@@ -322,7 +328,7 @@
             txtSDT.Margin = new Padding(3, 6, 3, 6);
             txtSDT.Name = "txtSDT";
             txtSDT.Size = new Size(188, 26);
-            txtSDT.TabIndex = 33;
+            txtSDT.TabIndex = 4;
             // 
             // txtChuyenNganh
             // 
@@ -332,7 +338,7 @@
             txtChuyenNganh.Margin = new Padding(3, 6, 3, 6);
             txtChuyenNganh.Name = "txtChuyenNganh";
             txtChuyenNganh.Size = new Size(188, 26);
-            txtChuyenNganh.TabIndex = 32;
+            txtChuyenNganh.TabIndex = 2;
             // 
             // txtLop
             // 
@@ -342,7 +348,7 @@
             txtLop.Margin = new Padding(3, 6, 3, 6);
             txtLop.Name = "txtLop";
             txtLop.Size = new Size(188, 26);
-            txtLop.TabIndex = 31;
+            txtLop.TabIndex = 0;
             // 
             // label12
             // 
@@ -424,13 +430,14 @@
             // cbXa
             // 
             cbXa.Dock = DockStyle.Fill;
+            cbXa.DropDownStyle = ComboBoxStyle.DropDownList;
             cbXa.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             cbXa.FormattingEnabled = true;
             cbXa.Location = new Point(357, 6);
             cbXa.Margin = new Padding(3, 6, 3, 6);
             cbXa.Name = "cbXa";
             cbXa.Size = new Size(222, 27);
-            cbXa.TabIndex = 34;
+            cbXa.TabIndex = 1;
             // 
             // label11
             // 
@@ -447,13 +454,14 @@
             // cbTinh
             // 
             cbTinh.Dock = DockStyle.Fill;
+            cbTinh.DropDownStyle = ComboBoxStyle.DropDownList;
             cbTinh.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             cbTinh.FormattingEnabled = true;
             cbTinh.Location = new Point(129, 6);
             cbTinh.Margin = new Padding(3, 6, 3, 6);
             cbTinh.Name = "cbTinh";
             cbTinh.Size = new Size(222, 27);
-            cbTinh.TabIndex = 33;
+            cbTinh.TabIndex = 0;
             // 
             // title
             // 
@@ -465,7 +473,7 @@
             title.Location = new Point(29, 12);
             title.Name = "title";
             title.Size = new Size(739, 51);
-            title.TabIndex = 10;
+            title.TabIndex = 0;
             title.Text = "Thêm thông tin sinh viên";
             // 
             // FrmSinhVienEdit

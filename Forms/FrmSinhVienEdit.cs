@@ -20,6 +20,10 @@ namespace QLNCKH.Forms {
 
             btnLuu.Click += btnLuu_Click;
             btnHuy.Click += btnHuy_Click;
+
+            this.Shown += (s, e) => {
+                txtMaSV.Focus();
+            };
         }
 
         public FrmSinhVienEdit(string id) : this() {
@@ -34,6 +38,7 @@ namespace QLNCKH.Forms {
             cbDanToc.DataSource = DanhMucBUS.GetAll("Dân tộc");
             cbDanToc.DisplayMember = "Tên";
             cbDanToc.ValueMember = "ID";
+            cbDanToc.SelectedIndex = -1;
 
             cbTonGiao.DataSource = DanhMucBUS.GetAll("Tôn giáo");
             cbTonGiao.DisplayMember = "Tên";
@@ -42,12 +47,13 @@ namespace QLNCKH.Forms {
             cbChucVu.DataSource = DanhMucBUS.GetAll("Chức vụ");
             cbChucVu.DisplayMember = "Tên";
             cbChucVu.ValueMember = "ID";
+            cbChucVu.SelectedIndex = -1;
 
             cbTinh.DataSource = TinhXaBus.GetTinhs();
             cbTinh.DisplayMember = "TenTinh";
             cbTinh.ValueMember = "TinhId";
+            cbTinh.SelectedIndex = -1;
             cbTinh.SelectedIndexChanged += (s, e) => LoadXa();
-            LoadXa();
         }
 
         private void LoadXa() {
