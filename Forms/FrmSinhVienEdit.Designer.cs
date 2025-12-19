@@ -431,6 +431,7 @@
             // 
             cbXa.Dock = DockStyle.Fill;
             cbXa.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbXa.Enabled = false;
             cbXa.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             cbXa.FormattingEnabled = true;
             cbXa.Location = new Point(357, 6);

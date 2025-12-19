@@ -3,7 +3,10 @@
 public static class SinhVienBUS {
     public static DataTable GetAll() {
         string sql = @"
-            SELECT MaSV, HoTen, Lop, NgaySinh
+            SELECT MaSV as N'Mã sinh viên', 
+            HoTen as N'Họ và tên', 
+            Lop as N'Lớp', 
+            NgaySinh as N'Ngày sinh'
             FROM SinhVien
             ORDER BY MaSV
         ";

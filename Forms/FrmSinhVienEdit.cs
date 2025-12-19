@@ -57,6 +57,7 @@ namespace QLNCKH.Forms {
         }
 
         private void LoadXa() {
+            cbXa.Enabled = true;
             cbXa.DataSource = TinhXaBus.GetXasFromTinh((int)cbTinh.SelectedValue);
             cbXa.DisplayMember = "TenXa";
             cbXa.ValueMember = "XaId";
@@ -86,6 +87,21 @@ namespace QLNCKH.Forms {
         }
 
         private void btnLuu_Click(object sender, EventArgs e) {
+            //Validate
+            if (!ValidateHelper.RequiredSafe(txtMaSV, "Mã sinh viên")) return;
+            if (!ValidateHelper.RequiredSafe(txtHoTen, "Họ và tên")) return;
+            if (!ValidateHelper.RequiredSafe(txtLop, "Lớp")) return;
+            if (!ValidateHelper.Required(cbGioiTinh, "Giới tính")) return;
+            if (!ValidateHelper.RequiredSafe(txtNganh, "Ngành")) return;
+            if (!ValidateHelper.RequiredSafe(txtChuyenNganh, "Chuyên ngành")) return;
+            if (!ValidateHelper.Required(cbDanToc, "Dân tộc")) return;
+            if (!ValidateHelper.Required(cbTonGiao, "Tôn giáo")) return;
+            if (!ValidateHelper.Required(cbChucVu, "Chức vụ")) return;
+            if (!ValidateHelper.Phone(txtSDT)) return;
+            if (!ValidateHelper.Required(cbTinh, "Nơi sinh")) return;
+            if (!ValidateHelper.Required(cbXa, "Nơi sinh")) return;
+
+            //Lưu
             var sv = new SinhVien {
                 MaSV = txtMaSV.Text,
                 HoTen = txtHoTen.Text,
