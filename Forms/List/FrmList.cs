@@ -2,7 +2,7 @@
 using System.Linq.Expressions;
 
 public class ListContext<T> where T : class {
-    public string Title { get; set; }
+    public string Name { get; set; }
     public Expression<Func<T, object>> GetHeaderSelector { get; set; }
     public string IdColumn { get; set; }
     public Dictionary<string, string> HeaderNames { get; set; }
@@ -59,9 +59,9 @@ public class FrmList<T> : FrmBaseList where T : class {
         string id = GetSelectedId();
         if (id == null) return;
 
-        if (MessageBox.Show("Xóa sinh viên này?", "Xác nhận",
+        if (MessageBox.Show($"Xóa {_ctx.Name} này?", "Xác nhận",
             MessageBoxButtons.YesNo) == DialogResult.Yes) {
-            new Repository<SinhVien>().Delete(id);
+            new Repository<T>().Delete(id);
             LoadData();
         }
     }

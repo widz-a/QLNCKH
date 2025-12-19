@@ -11,7 +11,7 @@ namespace QLNCKH
             ["Danh Mục"] = (() => new FrmDanhMuc(), "Quản lý danh mục"),
             ["Sinh viên"] = (() => new FrmList<SinhVien>(
                 new ListContext<SinhVien> {
-                    Title = "Quản lý thông tin sinh viên",
+                    Name = "sinh viên",
                     GetHeaderSelector = (sv => new {
                         sv.MaSV, sv.HoTen, sv.NgaySinh, sv.Lop
                     }),
