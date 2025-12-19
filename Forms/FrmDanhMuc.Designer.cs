@@ -94,7 +94,7 @@
             txtTen.CustomBGColor = Color.White;
             txtTen.Font = new Font("Tahoma", 11F);
             txtTen.ForeColor = Color.DimGray;
-            txtTen.Location = new Point(5, 26);
+            txtTen.Location = new Point(18, 26);
             txtTen.MaxLength = 32767;
             txtTen.Multiline = false;
             txtTen.Name = "txtTen";
@@ -109,7 +109,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(3, 0);
+            label2.Location = new Point(16, 0);
             label2.Name = "label2";
             label2.Size = new Size(303, 23);
             label2.TabIndex = 7;
@@ -124,7 +124,7 @@
             tableLayoutPanel1.Controls.Add(btnXoa, 2, 0);
             tableLayoutPanel1.Controls.Add(btnSua, 1, 0);
             tableLayoutPanel1.Controls.Add(btnThem, 0, 0);
-            tableLayoutPanel1.Location = new Point(5, 75);
+            tableLayoutPanel1.Location = new Point(18, 75);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.Padding = new Padding(4);
             tableLayoutPanel1.RowCount = 1;
@@ -139,7 +139,7 @@
             btnXoa.Dock = DockStyle.Fill;
             btnXoa.EnteredBorderColor = Color.FromArgb(37, 99, 235);
             btnXoa.EnteredColor = Color.FromArgb(37, 99, 235);
-            btnXoa.Font = new Font("Segoe UI", 10.2F);
+            btnXoa.Font = new Font("Tahoma", 11F);
             btnXoa.Image = null;
             btnXoa.ImageAlign = ContentAlignment.MiddleLeft;
             btnXoa.InactiveColor = Color.FromArgb(59, 130, 246);
@@ -159,7 +159,7 @@
             btnSua.Dock = DockStyle.Fill;
             btnSua.EnteredBorderColor = Color.FromArgb(37, 99, 235);
             btnSua.EnteredColor = Color.FromArgb(37, 99, 235);
-            btnSua.Font = new Font("Segoe UI", 10.2F);
+            btnSua.Font = new Font("Tahoma", 11F);
             btnSua.Image = null;
             btnSua.ImageAlign = ContentAlignment.MiddleLeft;
             btnSua.InactiveColor = Color.FromArgb(59, 130, 246);
@@ -179,7 +179,7 @@
             btnThem.Dock = DockStyle.Fill;
             btnThem.EnteredBorderColor = Color.FromArgb(37, 99, 235);
             btnThem.EnteredColor = Color.FromArgb(37, 99, 235);
-            btnThem.Font = new Font("Segoe UI", 10.2F);
+            btnThem.Font = new Font("Tahoma", 11F);
             btnThem.Image = null;
             btnThem.ImageAlign = ContentAlignment.MiddleLeft;
             btnThem.InactiveColor = Color.FromArgb(59, 130, 246);
@@ -213,17 +213,18 @@
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 1;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.Size = new Size(454, 35);
+            tableLayoutPanel4.Size = new Size(476, 35);
             tableLayoutPanel4.TabIndex = 2;
             // 
             // cboDanhMuc
             // 
             cboDanhMuc.Dock = DockStyle.Fill;
+            cboDanhMuc.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             cboDanhMuc.FormattingEnabled = true;
             cboDanhMuc.ItemHeight = 24;
-            cboDanhMuc.Location = new Point(146, 3);
+            cboDanhMuc.Location = new Point(160, 3);
             cboDanhMuc.Name = "cboDanhMuc";
-            cboDanhMuc.Size = new Size(305, 30);
+            cboDanhMuc.Size = new Size(313, 30);
             cboDanhMuc.TabIndex = 12;
             cboDanhMuc.UseSelectable = true;
             // 
@@ -231,10 +232,10 @@
             // 
             label1.AutoSize = true;
             label1.Dock = DockStyle.Fill;
-            label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Tahoma", 11F);
             label1.Location = new Point(3, 0);
             label1.Name = "label1";
-            label1.Size = new Size(137, 35);
+            label1.Size = new Size(151, 35);
             label1.TabIndex = 9;
             label1.Text = "Chọn danh mục:";
             label1.TextAlign = ContentAlignment.MiddleLeft;

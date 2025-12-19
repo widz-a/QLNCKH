@@ -25,32 +25,35 @@ namespace QLNCKH.Forms {
         public FrmSinhVienEdit(string id) : this() {
             _id = id;
             LoadData();
+
+            title.Text = "Sửa thông tin sinh viên";
+            btnLuu.Text = "Lưu";
         }
 
         private void LoadDanhMuc() {
-            cboDanToc.DataSource = DanhMucBUS.GetAll("Dân tộc");
-            cboDanToc.DisplayMember = "Tên";
-            cboDanToc.ValueMember = "ID";
+            cbDanToc.DataSource = DanhMucBUS.GetAll("Dân tộc");
+            cbDanToc.DisplayMember = "Tên";
+            cbDanToc.ValueMember = "ID";
 
-            cboTonGiao.DataSource = DanhMucBUS.GetAll("Tôn giáo");
-            cboTonGiao.DisplayMember = "Tên";
-            cboTonGiao.ValueMember = "ID";
+            cbTonGiao.DataSource = DanhMucBUS.GetAll("Tôn giáo");
+            cbTonGiao.DisplayMember = "Tên";
+            cbTonGiao.ValueMember = "ID";
 
-            cboChucVu.DataSource = DanhMucBUS.GetAll("Chức vụ");
-            cboChucVu.DisplayMember = "Tên";
-            cboChucVu.ValueMember = "ID";
+            cbChucVu.DataSource = DanhMucBUS.GetAll("Chức vụ");
+            cbChucVu.DisplayMember = "Tên";
+            cbChucVu.ValueMember = "ID";
 
-            cboTinh.DataSource = TinhXaBus.GetTinhs();
-            cboTinh.DisplayMember = "TenTinh";
-            cboTinh.ValueMember = "TinhId";
-            cboTinh.SelectedIndexChanged += (s, e) => LoadXa();
+            cbTinh.DataSource = TinhXaBus.GetTinhs();
+            cbTinh.DisplayMember = "TenTinh";
+            cbTinh.ValueMember = "TinhId";
+            cbTinh.SelectedIndexChanged += (s, e) => LoadXa();
             LoadXa();
         }
 
         private void LoadXa() {
-            cboXa.DataSource = TinhXaBus.GetXasFromTinh((int)cboTinh.SelectedValue);
-            cboXa.DisplayMember = "TenXa";
-            cboXa.ValueMember = "XaId";
+            cbXa.DataSource = TinhXaBus.GetXasFromTinh((int)cbTinh.SelectedValue);
+            cbXa.DisplayMember = "TenXa";
+            cbXa.ValueMember = "XaId";
         }
 
         private void LoadData() {
@@ -63,16 +66,17 @@ namespace QLNCKH.Forms {
             txtSDT.Text = r["SDT"].ToString();
             txtLop.Text = r["Lop"].ToString();
             txtNganh.Text = r["Nganh"].ToString();
-            txtNganh.Text = r["ChuyenNganh"].ToString(); //TODO
+            txtChuyenNganh.Text = r["ChuyenNganh"].ToString();
 
             dtNgaySinh.Value = Convert.ToDateTime(r["NgaySinh"]);
-            cboDanToc.SelectedValue = r["DanTocId"];
-            cboTonGiao.SelectedValue = r["TonGiaoId"];
-            cboGioiTinh.SelectedText = (string)r["GioiTinh"];
+            cbDanToc.SelectedValue = r["DanTocId"];
+            cbTonGiao.SelectedValue = r["TonGiaoId"];
+            cbGioiTinh.SelectedIndex = cbGioiTinh.Items.IndexOf(r["GioiTinh"].ToString());
 
-            cboTinh.SelectedValue = r["TinhId"];
-            cboXa.SelectedValue = r["XaId"];
-            cboChucVu.SelectedValue = r["ChucVuId"];
+            cbTinh.SelectedValue = r["TinhId"];
+            LoadXa();
+            cbXa.SelectedValue = r["XaId"];
+            cbChucVu.SelectedValue = r["ChucVuId"];
         }
 
         private void btnLuu_Click(object sender, EventArgs e) {
@@ -82,15 +86,15 @@ namespace QLNCKH.Forms {
                 SDT = txtSDT.Text,
                 Lop = txtLop.Text,
                 Nganh = txtNganh.Text,
-                ChuyenNganh = txtNganh.Text, //TODO
+                ChuyenNganh = txtChuyenNganh.Text,
                 NgaySinh = dtNgaySinh.Value,
-                GioiTinh = cboGioiTinh.SelectedText,
-                DanTocId = (int)cboDanToc.SelectedValue,
-                TonGiaoId = (int)cboTonGiao.SelectedValue,
+                GioiTinh = cbGioiTinh.Items[cbGioiTinh.SelectedIndex].ToString(),
+                DanTocId = (int)cbDanToc.SelectedValue,
+                TonGiaoId = (int)cbTonGiao.SelectedValue,
 
-                TinhId = (int)cboTinh.SelectedValue,
-                XaId = (int)cboXa.SelectedValue,
-                ChucVuId = (int)cboChucVu.SelectedValue,
+                TinhId = (int)cbTinh.SelectedValue,
+                XaId = (int)cbXa.SelectedValue,
+                ChucVuId = (int)cbChucVu.SelectedValue,
             };
 
             if (_id == null)

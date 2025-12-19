@@ -24,37 +24,37 @@
         /// </summary>
         private void InitializeComponent() {
             tableLayoutPanel2 = new TableLayoutPanel();
-            dtNgaySinh = new ReaLTaiizor.Controls.PoisonDateTime();
-            cboChucVu = new ReaLTaiizor.Controls.PoisonComboBox();
-            cboDanToc = new ReaLTaiizor.Controls.PoisonComboBox();
+            dtNgaySinh = new DateTimePicker();
+            cbChucVu = new ComboBox();
+            cbDanToc = new ComboBox();
+            txtNganh = new TextBox();
+            txtHoTen = new TextBox();
+            txtMaSV = new TextBox();
             label10 = new Label();
             label9 = new Label();
             label4 = new Label();
-            txtNganh = new ReaLTaiizor.Controls.SmallTextBox();
             label3 = new Label();
             label2 = new Label();
-            txtHoTen = new ReaLTaiizor.Controls.SmallTextBox();
             label1 = new Label();
-            txtMaSV = new ReaLTaiizor.Controls.SmallTextBox();
             tableLayoutPanel5 = new TableLayoutPanel();
             btnLuu = new Button();
             btnHuy = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
-            txtSDT = new ReaLTaiizor.Controls.SmallTextBox();
+            cbTonGiao = new ComboBox();
+            cbGioiTinh = new ComboBox();
+            txtSDT = new TextBox();
+            txtChuyenNganh = new TextBox();
+            txtLop = new TextBox();
             label12 = new Label();
-            cboGioiTinh = new ReaLTaiizor.Controls.PoisonComboBox();
-            cboTonGiao = new ReaLTaiizor.Controls.PoisonComboBox();
             label5 = new Label();
             label6 = new Label();
-            txtChuyenNganh = new ReaLTaiizor.Controls.SmallTextBox();
             label7 = new Label();
             label8 = new Label();
-            txtLop = new ReaLTaiizor.Controls.SmallTextBox();
             tableLayoutPanel3 = new TableLayoutPanel();
-            cboXa = new ReaLTaiizor.Controls.PoisonComboBox();
-            cboTinh = new ReaLTaiizor.Controls.PoisonComboBox();
+            cbXa = new ComboBox();
             label11 = new Label();
-            foxBigLabel2 = new ReaLTaiizor.Controls.FoxBigLabel();
+            cbTinh = new ComboBox();
+            title = new ReaLTaiizor.Controls.FoxBigLabel();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel5.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -67,17 +67,17 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35.97734F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 64.02266F));
             tableLayoutPanel2.Controls.Add(dtNgaySinh, 1, 2);
-            tableLayoutPanel2.Controls.Add(cboChucVu, 1, 5);
-            tableLayoutPanel2.Controls.Add(cboDanToc, 1, 4);
+            tableLayoutPanel2.Controls.Add(cbChucVu, 1, 5);
+            tableLayoutPanel2.Controls.Add(cbDanToc, 1, 4);
+            tableLayoutPanel2.Controls.Add(txtNganh, 1, 3);
+            tableLayoutPanel2.Controls.Add(txtHoTen, 1, 1);
+            tableLayoutPanel2.Controls.Add(txtMaSV, 1, 0);
             tableLayoutPanel2.Controls.Add(label10, 0, 5);
             tableLayoutPanel2.Controls.Add(label9, 0, 4);
             tableLayoutPanel2.Controls.Add(label4, 0, 3);
-            tableLayoutPanel2.Controls.Add(txtNganh, 1, 3);
             tableLayoutPanel2.Controls.Add(label3, 0, 2);
             tableLayoutPanel2.Controls.Add(label2, 0, 1);
-            tableLayoutPanel2.Controls.Add(txtHoTen, 1, 1);
             tableLayoutPanel2.Controls.Add(label1, 0, 0);
-            tableLayoutPanel2.Controls.Add(txtMaSV, 1, 0);
             tableLayoutPanel2.Font = new Font("Tahoma", 10.8F);
             tableLayoutPanel2.Location = new Point(29, 76);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -88,52 +88,81 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle());
             tableLayoutPanel2.RowStyles.Add(new RowStyle());
             tableLayoutPanel2.RowStyles.Add(new RowStyle());
-            tableLayoutPanel2.Size = new Size(353, 222);
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel2.Size = new Size(353, 231);
             tableLayoutPanel2.TabIndex = 1;
             // 
             // dtNgaySinh
             // 
             dtNgaySinh.Dock = DockStyle.Fill;
             dtNgaySinh.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dtNgaySinh.FontSize = ReaLTaiizor.Extension.Poison.PoisonDateTimeSize.Medium;
-            dtNgaySinh.Location = new Point(130, 79);
-            dtNgaySinh.MinimumSize = new Size(0, 30);
+            dtNgaySinh.Location = new Point(130, 82);
+            dtNgaySinh.Margin = new Padding(3, 6, 3, 6);
             dtNgaySinh.Name = "dtNgaySinh";
-            dtNgaySinh.Size = new Size(220, 30);
-            dtNgaySinh.TabIndex = 10;
+            dtNgaySinh.Size = new Size(220, 26);
+            dtNgaySinh.TabIndex = 11;
+            dtNgaySinh.Value = new DateTime(2025, 7, 10, 0, 0, 0, 0);
             // 
-            // cboChucVu
+            // cbChucVu
             // 
-            cboChucVu.Dock = DockStyle.Fill;
-            cboChucVu.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            cboChucVu.FormattingEnabled = true;
-            cboChucVu.ItemHeight = 24;
-            cboChucVu.Location = new Point(130, 189);
-            cboChucVu.Name = "cboChucVu";
-            cboChucVu.Size = new Size(220, 30);
-            cboChucVu.TabIndex = 33;
-            cboChucVu.UseSelectable = true;
+            cbChucVu.Dock = DockStyle.Fill;
+            cbChucVu.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            cbChucVu.FormattingEnabled = true;
+            cbChucVu.Location = new Point(130, 197);
+            cbChucVu.Margin = new Padding(3, 6, 3, 6);
+            cbChucVu.Name = "cbChucVu";
+            cbChucVu.Size = new Size(220, 27);
+            cbChucVu.TabIndex = 37;
             // 
-            // cboDanToc
+            // cbDanToc
             // 
-            cboDanToc.Dock = DockStyle.Fill;
-            cboDanToc.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            cboDanToc.FormattingEnabled = true;
-            cboDanToc.ItemHeight = 24;
-            cboDanToc.Location = new Point(130, 153);
-            cboDanToc.Name = "cboDanToc";
-            cboDanToc.Size = new Size(220, 30);
-            cboDanToc.TabIndex = 32;
-            cboDanToc.UseSelectable = true;
+            cbDanToc.Dock = DockStyle.Fill;
+            cbDanToc.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            cbDanToc.FormattingEnabled = true;
+            cbDanToc.Location = new Point(130, 158);
+            cbDanToc.Margin = new Padding(3, 6, 3, 6);
+            cbDanToc.Name = "cbDanToc";
+            cbDanToc.Size = new Size(220, 27);
+            cbDanToc.TabIndex = 36;
+            // 
+            // txtNganh
+            // 
+            txtNganh.Dock = DockStyle.Fill;
+            txtNganh.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtNganh.Location = new Point(130, 120);
+            txtNganh.Margin = new Padding(3, 6, 3, 6);
+            txtNganh.Name = "txtNganh";
+            txtNganh.Size = new Size(220, 26);
+            txtNganh.TabIndex = 35;
+            // 
+            // txtHoTen
+            // 
+            txtHoTen.Dock = DockStyle.Fill;
+            txtHoTen.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtHoTen.Location = new Point(130, 44);
+            txtHoTen.Margin = new Padding(3, 6, 3, 6);
+            txtHoTen.Name = "txtHoTen";
+            txtHoTen.Size = new Size(220, 26);
+            txtHoTen.TabIndex = 34;
+            // 
+            // txtMaSV
+            // 
+            txtMaSV.Dock = DockStyle.Fill;
+            txtMaSV.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtMaSV.Location = new Point(130, 6);
+            txtMaSV.Margin = new Padding(3, 6, 3, 6);
+            txtMaSV.Name = "txtMaSV";
+            txtMaSV.Size = new Size(220, 26);
+            txtMaSV.TabIndex = 11;
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Dock = DockStyle.Fill;
             label10.Font = new Font("Tahoma", 10.8F);
-            label10.Location = new Point(3, 186);
+            label10.Location = new Point(3, 191);
             label10.Name = "label10";
-            label10.Size = new Size(121, 36);
+            label10.Size = new Size(121, 40);
             label10.TabIndex = 31;
             label10.Text = "Chức vụ:";
             label10.TextAlign = ContentAlignment.MiddleLeft;
@@ -143,9 +172,9 @@
             label9.AutoSize = true;
             label9.Dock = DockStyle.Fill;
             label9.Font = new Font("Tahoma", 10.8F);
-            label9.Location = new Point(3, 150);
+            label9.Location = new Point(3, 152);
             label9.Name = "label9";
-            label9.Size = new Size(121, 36);
+            label9.Size = new Size(121, 39);
             label9.TabIndex = 29;
             label9.Text = "Dân tộc:";
             label9.TextAlign = ContentAlignment.MiddleLeft;
@@ -155,31 +184,12 @@
             label4.AutoSize = true;
             label4.Dock = DockStyle.Fill;
             label4.Font = new Font("Tahoma", 10.8F);
-            label4.Location = new Point(3, 112);
+            label4.Location = new Point(3, 114);
             label4.Name = "label4";
             label4.Size = new Size(121, 38);
             label4.TabIndex = 27;
             label4.Text = "Ngành:";
             label4.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // txtNganh
-            // 
-            txtNganh.BackColor = Color.Transparent;
-            txtNganh.BorderColor = Color.FromArgb(180, 180, 180);
-            txtNganh.CustomBGColor = Color.White;
-            txtNganh.Dock = DockStyle.Fill;
-            txtNganh.Font = new Font("Tahoma", 10.8F);
-            txtNganh.ForeColor = Color.DimGray;
-            txtNganh.Location = new Point(130, 115);
-            txtNganh.MaxLength = 32767;
-            txtNganh.Multiline = false;
-            txtNganh.Name = "txtNganh";
-            txtNganh.ReadOnly = false;
-            txtNganh.Size = new Size(220, 32);
-            txtNganh.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            txtNganh.TabIndex = 26;
-            txtNganh.TextAlignment = HorizontalAlignment.Left;
-            txtNganh.UseSystemPasswordChar = false;
             // 
             // label3
             // 
@@ -188,7 +198,7 @@
             label3.Font = new Font("Tahoma", 10.8F);
             label3.Location = new Point(3, 76);
             label3.Name = "label3";
-            label3.Size = new Size(121, 36);
+            label3.Size = new Size(121, 38);
             label3.TabIndex = 25;
             label3.Text = "Ngày sinh:";
             label3.TextAlign = ContentAlignment.MiddleLeft;
@@ -205,25 +215,6 @@
             label2.Text = "Họ và tên:";
             label2.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // txtHoTen
-            // 
-            txtHoTen.BackColor = Color.Transparent;
-            txtHoTen.BorderColor = Color.FromArgb(180, 180, 180);
-            txtHoTen.CustomBGColor = Color.White;
-            txtHoTen.Dock = DockStyle.Fill;
-            txtHoTen.Font = new Font("Tahoma", 10.8F);
-            txtHoTen.ForeColor = Color.DimGray;
-            txtHoTen.Location = new Point(130, 41);
-            txtHoTen.MaxLength = 32767;
-            txtHoTen.Multiline = false;
-            txtHoTen.Name = "txtHoTen";
-            txtHoTen.ReadOnly = false;
-            txtHoTen.Size = new Size(220, 32);
-            txtHoTen.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            txtHoTen.TabIndex = 22;
-            txtHoTen.TextAlignment = HorizontalAlignment.Left;
-            txtHoTen.UseSystemPasswordChar = false;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -235,25 +226,6 @@
             label1.TabIndex = 21;
             label1.Text = "Mã sinh viên:";
             label1.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // txtMaSV
-            // 
-            txtMaSV.BackColor = Color.Transparent;
-            txtMaSV.BorderColor = Color.FromArgb(180, 180, 180);
-            txtMaSV.CustomBGColor = Color.White;
-            txtMaSV.Dock = DockStyle.Fill;
-            txtMaSV.Font = new Font("Tahoma", 10.8F);
-            txtMaSV.ForeColor = Color.DimGray;
-            txtMaSV.Location = new Point(130, 3);
-            txtMaSV.MaxLength = 32767;
-            txtMaSV.Multiline = false;
-            txtMaSV.Name = "txtMaSV";
-            txtMaSV.ReadOnly = false;
-            txtMaSV.Size = new Size(220, 32);
-            txtMaSV.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            txtMaSV.TabIndex = 20;
-            txtMaSV.TextAlignment = HorizontalAlignment.Left;
-            txtMaSV.UseSystemPasswordChar = false;
             // 
             // tableLayoutPanel5
             // 
@@ -278,7 +250,7 @@
             btnLuu.Name = "btnLuu";
             btnLuu.Size = new Size(95, 30);
             btnLuu.TabIndex = 9;
-            btnLuu.Text = "Lưu";
+            btnLuu.Text = "Thêm";
             btnLuu.UseVisualStyleBackColor = true;
             // 
             // btnHuy
@@ -297,16 +269,16 @@
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 142F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Controls.Add(cbTonGiao, 1, 3);
+            tableLayoutPanel1.Controls.Add(cbGioiTinh, 1, 1);
             tableLayoutPanel1.Controls.Add(txtSDT, 1, 4);
+            tableLayoutPanel1.Controls.Add(txtChuyenNganh, 1, 2);
+            tableLayoutPanel1.Controls.Add(txtLop, 1, 0);
             tableLayoutPanel1.Controls.Add(label12, 0, 4);
-            tableLayoutPanel1.Controls.Add(cboGioiTinh, 1, 1);
-            tableLayoutPanel1.Controls.Add(cboTonGiao, 1, 3);
             tableLayoutPanel1.Controls.Add(label5, 0, 3);
             tableLayoutPanel1.Controls.Add(label6, 0, 2);
-            tableLayoutPanel1.Controls.Add(txtChuyenNganh, 1, 2);
             tableLayoutPanel1.Controls.Add(label7, 0, 1);
             tableLayoutPanel1.Controls.Add(label8, 0, 0);
-            tableLayoutPanel1.Controls.Add(txtLop, 1, 0);
             tableLayoutPanel1.Font = new Font("Tahoma", 10.8F);
             tableLayoutPanel1.Location = new Point(432, 115);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -316,73 +288,82 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(336, 183);
+            tableLayoutPanel1.Size = new Size(336, 192);
             tableLayoutPanel1.TabIndex = 6;
+            // 
+            // cbTonGiao
+            // 
+            cbTonGiao.Dock = DockStyle.Fill;
+            cbTonGiao.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            cbTonGiao.FormattingEnabled = true;
+            cbTonGiao.Location = new Point(145, 121);
+            cbTonGiao.Margin = new Padding(3, 6, 3, 6);
+            cbTonGiao.Name = "cbTonGiao";
+            cbTonGiao.Size = new Size(188, 27);
+            cbTonGiao.TabIndex = 35;
+            // 
+            // cbGioiTinh
+            // 
+            cbGioiTinh.Dock = DockStyle.Fill;
+            cbGioiTinh.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            cbGioiTinh.FormattingEnabled = true;
+            cbGioiTinh.Items.AddRange(new object[] { "Nam", "Nữ" });
+            cbGioiTinh.Location = new Point(145, 44);
+            cbGioiTinh.Margin = new Padding(3, 6, 3, 6);
+            cbGioiTinh.Name = "cbGioiTinh";
+            cbGioiTinh.Size = new Size(188, 27);
+            cbGioiTinh.TabIndex = 34;
             // 
             // txtSDT
             // 
-            txtSDT.BackColor = Color.Transparent;
-            txtSDT.BorderColor = Color.FromArgb(180, 180, 180);
-            txtSDT.CustomBGColor = Color.White;
             txtSDT.Dock = DockStyle.Fill;
-            txtSDT.Font = new Font("Tahoma", 10.8F);
-            txtSDT.ForeColor = Color.DimGray;
-            txtSDT.Location = new Point(145, 151);
-            txtSDT.MaxLength = 32767;
-            txtSDT.Multiline = false;
+            txtSDT.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtSDT.Location = new Point(145, 160);
+            txtSDT.Margin = new Padding(3, 6, 3, 6);
             txtSDT.Name = "txtSDT";
-            txtSDT.ReadOnly = false;
-            txtSDT.Size = new Size(188, 32);
-            txtSDT.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            txtSDT.TabIndex = 31;
-            txtSDT.TextAlignment = HorizontalAlignment.Left;
-            txtSDT.UseSystemPasswordChar = false;
+            txtSDT.Size = new Size(188, 26);
+            txtSDT.TabIndex = 33;
+            // 
+            // txtChuyenNganh
+            // 
+            txtChuyenNganh.Dock = DockStyle.Fill;
+            txtChuyenNganh.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtChuyenNganh.Location = new Point(145, 83);
+            txtChuyenNganh.Margin = new Padding(3, 6, 3, 6);
+            txtChuyenNganh.Name = "txtChuyenNganh";
+            txtChuyenNganh.Size = new Size(188, 26);
+            txtChuyenNganh.TabIndex = 32;
+            // 
+            // txtLop
+            // 
+            txtLop.Dock = DockStyle.Fill;
+            txtLop.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtLop.Location = new Point(145, 6);
+            txtLop.Margin = new Padding(3, 6, 3, 6);
+            txtLop.Name = "txtLop";
+            txtLop.Size = new Size(188, 26);
+            txtLop.TabIndex = 31;
             // 
             // label12
             // 
             label12.AutoSize = true;
             label12.Dock = DockStyle.Fill;
             label12.Font = new Font("Tahoma", 10.8F);
-            label12.Location = new Point(3, 148);
+            label12.Location = new Point(3, 154);
             label12.Name = "label12";
-            label12.Size = new Size(136, 35);
+            label12.Size = new Size(136, 38);
             label12.TabIndex = 30;
             label12.Text = "Số điện thoại:";
             label12.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // cboGioiTinh
-            // 
-            cboGioiTinh.Dock = DockStyle.Fill;
-            cboGioiTinh.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            cboGioiTinh.FormattingEnabled = true;
-            cboGioiTinh.ItemHeight = 24;
-            cboGioiTinh.Items.AddRange(new object[] { "Nam", "Nữ" });
-            cboGioiTinh.Location = new Point(145, 41);
-            cboGioiTinh.Name = "cboGioiTinh";
-            cboGioiTinh.Size = new Size(188, 30);
-            cboGioiTinh.TabIndex = 29;
-            cboGioiTinh.UseSelectable = true;
-            // 
-            // cboTonGiao
-            // 
-            cboTonGiao.Dock = DockStyle.Fill;
-            cboTonGiao.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            cboTonGiao.FormattingEnabled = true;
-            cboTonGiao.ItemHeight = 24;
-            cboTonGiao.Location = new Point(145, 115);
-            cboTonGiao.Name = "cboTonGiao";
-            cboTonGiao.Size = new Size(188, 30);
-            cboTonGiao.TabIndex = 28;
-            cboTonGiao.UseSelectable = true;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Dock = DockStyle.Fill;
             label5.Font = new Font("Tahoma", 10.8F);
-            label5.Location = new Point(3, 112);
+            label5.Location = new Point(3, 115);
             label5.Name = "label5";
-            label5.Size = new Size(136, 36);
+            label5.Size = new Size(136, 39);
             label5.TabIndex = 27;
             label5.Text = "Tôn giáo:";
             label5.TextAlign = ContentAlignment.MiddleLeft;
@@ -392,31 +373,12 @@
             label6.AutoSize = true;
             label6.Dock = DockStyle.Fill;
             label6.Font = new Font("Tahoma", 10.8F);
-            label6.Location = new Point(3, 74);
+            label6.Location = new Point(3, 77);
             label6.Name = "label6";
             label6.Size = new Size(136, 38);
             label6.TabIndex = 25;
             label6.Text = "Chuyên ngành:";
             label6.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // txtChuyenNganh
-            // 
-            txtChuyenNganh.BackColor = Color.Transparent;
-            txtChuyenNganh.BorderColor = Color.FromArgb(180, 180, 180);
-            txtChuyenNganh.CustomBGColor = Color.White;
-            txtChuyenNganh.Dock = DockStyle.Fill;
-            txtChuyenNganh.Font = new Font("Tahoma", 10.8F);
-            txtChuyenNganh.ForeColor = Color.DimGray;
-            txtChuyenNganh.Location = new Point(145, 77);
-            txtChuyenNganh.MaxLength = 32767;
-            txtChuyenNganh.Multiline = false;
-            txtChuyenNganh.Name = "txtChuyenNganh";
-            txtChuyenNganh.ReadOnly = false;
-            txtChuyenNganh.Size = new Size(188, 32);
-            txtChuyenNganh.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            txtChuyenNganh.TabIndex = 24;
-            txtChuyenNganh.TextAlignment = HorizontalAlignment.Left;
-            txtChuyenNganh.UseSystemPasswordChar = false;
             // 
             // label7
             // 
@@ -425,7 +387,7 @@
             label7.Font = new Font("Tahoma", 10.8F);
             label7.Location = new Point(3, 38);
             label7.Name = "label7";
-            label7.Size = new Size(136, 36);
+            label7.Size = new Size(136, 39);
             label7.TabIndex = 23;
             label7.Text = "Giới tính:";
             label7.TextAlign = ContentAlignment.MiddleLeft;
@@ -442,65 +404,33 @@
             label8.Text = "Lớp:";
             label8.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // txtLop
-            // 
-            txtLop.BackColor = Color.Transparent;
-            txtLop.BorderColor = Color.FromArgb(180, 180, 180);
-            txtLop.CustomBGColor = Color.White;
-            txtLop.Dock = DockStyle.Fill;
-            txtLop.Font = new Font("Tahoma", 10.8F);
-            txtLop.ForeColor = Color.DimGray;
-            txtLop.Location = new Point(145, 3);
-            txtLop.MaxLength = 32767;
-            txtLop.Multiline = false;
-            txtLop.Name = "txtLop";
-            txtLop.ReadOnly = false;
-            txtLop.Size = new Size(188, 32);
-            txtLop.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            txtLop.TabIndex = 20;
-            txtLop.TextAlignment = HorizontalAlignment.Left;
-            txtLop.UseSystemPasswordChar = false;
-            // 
             // tableLayoutPanel3
             // 
             tableLayoutPanel3.ColumnCount = 3;
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 126F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Controls.Add(cboXa, 2, 0);
-            tableLayoutPanel3.Controls.Add(cboTinh, 1, 0);
+            tableLayoutPanel3.Controls.Add(cbXa, 2, 0);
             tableLayoutPanel3.Controls.Add(label11, 0, 0);
+            tableLayoutPanel3.Controls.Add(cbTinh, 1, 0);
             tableLayoutPanel3.Font = new Font("Tahoma", 10.8F);
-            tableLayoutPanel3.Location = new Point(29, 301);
+            tableLayoutPanel3.Location = new Point(29, 310);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel3.Size = new Size(582, 36);
             tableLayoutPanel3.TabIndex = 8;
             // 
-            // cboXa
+            // cbXa
             // 
-            cboXa.Dock = DockStyle.Fill;
-            cboXa.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            cboXa.FormattingEnabled = true;
-            cboXa.ItemHeight = 24;
-            cboXa.Location = new Point(357, 3);
-            cboXa.Name = "cboXa";
-            cboXa.Size = new Size(222, 30);
-            cboXa.TabIndex = 33;
-            cboXa.UseSelectable = true;
-            // 
-            // cboTinh
-            // 
-            cboTinh.Dock = DockStyle.Fill;
-            cboTinh.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            cboTinh.FormattingEnabled = true;
-            cboTinh.ItemHeight = 24;
-            cboTinh.Location = new Point(129, 3);
-            cboTinh.Name = "cboTinh";
-            cboTinh.Size = new Size(222, 30);
-            cboTinh.TabIndex = 13;
-            cboTinh.UseSelectable = true;
+            cbXa.Dock = DockStyle.Fill;
+            cbXa.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            cbXa.FormattingEnabled = true;
+            cbXa.Location = new Point(357, 6);
+            cbXa.Margin = new Padding(3, 6, 3, 6);
+            cbXa.Name = "cbXa";
+            cbXa.Size = new Size(222, 27);
+            cbXa.TabIndex = 34;
             // 
             // label11
             // 
@@ -514,25 +444,36 @@
             label11.Text = "Nơi sinh:";
             label11.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // foxBigLabel2
+            // cbTinh
             // 
-            foxBigLabel2.BackColor = Color.Transparent;
-            foxBigLabel2.Font = new Font("Segoe UI Semibold", 20F);
-            foxBigLabel2.ForeColor = Color.Black;
-            foxBigLabel2.Line = ReaLTaiizor.Controls.FoxBigLabel.Direction.Bottom;
-            foxBigLabel2.LineColor = Color.FromArgb(200, 200, 200);
-            foxBigLabel2.Location = new Point(29, 12);
-            foxBigLabel2.Name = "foxBigLabel2";
-            foxBigLabel2.Size = new Size(739, 51);
-            foxBigLabel2.TabIndex = 10;
-            foxBigLabel2.Text = "Thông tin sinh viên";
+            cbTinh.Dock = DockStyle.Fill;
+            cbTinh.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            cbTinh.FormattingEnabled = true;
+            cbTinh.Location = new Point(129, 6);
+            cbTinh.Margin = new Padding(3, 6, 3, 6);
+            cbTinh.Name = "cbTinh";
+            cbTinh.Size = new Size(222, 27);
+            cbTinh.TabIndex = 33;
+            // 
+            // title
+            // 
+            title.BackColor = Color.Transparent;
+            title.Font = new Font("Segoe UI Semibold", 20F);
+            title.ForeColor = Color.Black;
+            title.Line = ReaLTaiizor.Controls.FoxBigLabel.Direction.Bottom;
+            title.LineColor = Color.FromArgb(200, 200, 200);
+            title.Location = new Point(29, 12);
+            title.Name = "title";
+            title.Size = new Size(739, 51);
+            title.TabIndex = 10;
+            title.Text = "Thêm thông tin sinh viên";
             // 
             // FrmSinhVienEdit
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(foxBigLabel2);
+            Controls.Add(title);
             Controls.Add(tableLayoutPanel3);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(tableLayoutPanel5);
@@ -562,26 +503,26 @@
         private TableLayoutPanel tableLayoutPanel1;
         private Label label5;
         private Label label6;
-        private ReaLTaiizor.Controls.SmallTextBox txtChuyenNganh;
         private Label label7;
         private Label label8;
-        private ReaLTaiizor.Controls.SmallTextBox txtLop;
         private Label label9;
         private Label label10;
-        private ReaLTaiizor.Controls.SmallTextBox txtNganh;
-        private ReaLTaiizor.Controls.SmallTextBox txtHoTen;
         private TableLayoutPanel tableLayoutPanel3;
         private Label label11;
-        private ReaLTaiizor.Controls.PoisonComboBox cboChucVu;
-        private ReaLTaiizor.Controls.PoisonComboBox cboDanToc;
-        private ReaLTaiizor.Controls.PoisonComboBox cboGioiTinh;
-        private ReaLTaiizor.Controls.PoisonComboBox cboTonGiao;
-        private ReaLTaiizor.Controls.PoisonComboBox cboXa;
-        private ReaLTaiizor.Controls.PoisonComboBox cboTinh;
-        private ReaLTaiizor.Controls.PoisonDateTime dtNgaySinh;
-        private ReaLTaiizor.Controls.SmallTextBox txtMaSV;
-        private ReaLTaiizor.Controls.SmallTextBox txtSDT;
         private Label label12;
-        private ReaLTaiizor.Controls.FoxBigLabel foxBigLabel2;
+        private ReaLTaiizor.Controls.FoxBigLabel title;
+        private TextBox txtMaSV;
+        private TextBox txtNganh;
+        private TextBox txtHoTen;
+        private TextBox txtSDT;
+        private TextBox txtChuyenNganh;
+        private TextBox txtLop;
+        private ComboBox cbTinh;
+        private ComboBox cbXa;
+        private ComboBox cbChucVu;
+        private ComboBox cbDanToc;
+        private ComboBox cbTonGiao;
+        private ComboBox cbGioiTinh;
+        private DateTimePicker dtNgaySinh;
     }
 }
