@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSinhVienEdit));
             tableLayoutPanel2 = new TableLayoutPanel();
             dtNgaySinh = new DateTimePicker();
             cbChucVu = new ComboBox();
@@ -487,6 +488,7 @@
             Controls.Add(tableLayoutPanel1);
             Controls.Add(tableLayoutPanel5);
             Controls.Add(tableLayoutPanel2);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmSinhVienEdit";
             Text = "FrmSinhVienEdit";
             tableLayoutPanel2.ResumeLayout(false);
