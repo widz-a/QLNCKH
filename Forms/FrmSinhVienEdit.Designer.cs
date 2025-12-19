@@ -490,7 +490,7 @@
             Controls.Add(tableLayoutPanel2);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmSinhVienEdit";
-            Text = "FrmSinhVienEdit";
+            Text = "Thêm thông tin sinh viên";
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
             tableLayoutPanel5.ResumeLayout(false);

@@ -30,6 +30,7 @@ namespace QLNCKH.Forms {
             _id = id;
             LoadData();
 
+            this.Text = "Sửa thông tin sinh viên";
             title.Text = "Sửa thông tin sinh viên";
             btnLuu.Text = "Lưu";
         }
