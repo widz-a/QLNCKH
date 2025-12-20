@@ -60,6 +60,9 @@ namespace QLNCKH
             db.Database.OpenConnection();
             db.Database.CloseConnection();
 
+            //Load home
+            LoadForm(new FrmHome(), "Trang chủ");
+
         }
 
         private void InitSidebar() {
