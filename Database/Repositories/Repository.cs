@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
+using System.ComponentModel;
 using System.Linq.Expressions;
 
 public class Repository<T> : IRepository<T> where T : class {
@@ -8,26 +9,28 @@ public class Repository<T> : IRepository<T> where T : class {
         return db.Set<T>().AsNoTracking().ToList();
     }
 
-    public List<TResult> GetSome<TResult>(Expression<Func<T, TResult>>? selector) {
+    public BindingList<TResult> GetSome<TResult>(Expression<Func<T, TResult>>? selector) {
         using var db = new AppDbContext();
-        return db.Set<T>().AsNoTracking().Select(selector).ToList();
-
+        var list = db.Set<T>().AsNoTracking().Select(selector).ToList();
+        return new BindingList<TResult>(list);
     }
 
-    public List<T> Filter(Expression<Func<T, bool>> predicate) {
+    public BindingList<T> Filter(Expression<Func<T, bool>> predicate) {
         using var db = new AppDbContext();
-        return db.Set<T>().AsNoTracking().Where(predicate).ToList();
+        var list = db.Set<T>().AsNoTracking().Where(predicate).ToList();
+        return new BindingList<T>(list);
     }
 
-    public List<TResult> Filter<TResult>(
+    public BindingList<TResult> Filter<TResult>(
         Expression<Func<T, bool>> predicate,
         Expression<Func<T, TResult>> selector) {
         using var db = new AppDbContext();
-        return db.Set<T>()
+        var list = db.Set<T>()
                  .AsNoTracking()
                  .Where(predicate)
                  .Select(selector)
                  .ToList();
+        return new BindingList<TResult>(list);
     }
 
     public T GetById(object id) {

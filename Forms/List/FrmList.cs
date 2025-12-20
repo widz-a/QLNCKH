@@ -1,16 +1,16 @@
 ﻿using QLNCKH.Forms;
 using System.Linq.Expressions;
 
-public class ListContext<T> where T : class {
+public class ListContext<T, TDto> where T : class where TDto : class {
     public string Name { get; set; }
-    public Expression<Func<T, object>> GetHeaderSelector { get; set; }
+    public Expression<Func<T, TDto>> GetHeaderSelector { get; set; }
     public string IdColumn { get; set; }
     public Dictionary<string, string> HeaderNames { get; set; }
     public Func<string, Form> GetEditForm { get; set; }
     public Func<Form> GetCreateForm { get; set; }
 }
 
-public class FrmList<T> : FrmBaseList where T : class {
+public class FrmList<T, TDto> : FrmBaseList where T : class where TDto : class {
     private FrmList() {
         PublicInitializeComponent();
         StyleHelper.ApplyDGV(GetDgv());
@@ -20,11 +20,10 @@ public class FrmList<T> : FrmBaseList where T : class {
         GetButtonXoa().Click += btnXoa_Click;
     }
 
-    private readonly ListContext<T> _ctx;
-    public FrmList(ListContext<T> ctx) : this() {
+    private readonly ListContext<T, TDto> _ctx;
+    public FrmList(ListContext<T, TDto> ctx) : this() {
         _ctx = ctx;
         LoadData();
-
     }
 
     private void LoadData() {

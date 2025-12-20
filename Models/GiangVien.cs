@@ -26,8 +26,7 @@ public class GiangVien {
     public int TrinhDoCMId { get; set; }
     public int TrinhDoLLCTId { get; set; }
 
-    [StringLength(100)]
-    public string DonViCongTac { get; set; }
+    public int MaDV { get; set; }
 
     public int ChucVuId { get; set; }
     public int CapBacId { get; set; }
@@ -47,7 +46,7 @@ public class GiangVien {
     public Xa Xa { get; set; }
     public DanToc DanToc { get; set; }
     public TonGiao TonGiao { get; set; }
-
+    [ForeignKey(nameof(TrinhDoCMId))]
     public TrinhDoChuyenMon TrinhDoChuyenMon { get; set; }
     public TrinhDoLLCT TrinhDoLLCT { get; set; }
 
@@ -56,4 +55,15 @@ public class GiangVien {
     public ChucDanh ChucDanh { get; set; }
     public HocHam HocHam { get; set; }
     public HocVi HocVi { get; set; }
+    
+    [ForeignKey(nameof(MaDV))]
+    public DonViCongTac DonViCongTac { get; set; }
+}
+
+public class GiangVienDto {
+    public string MaCB { get; set; }
+    public string HoTen { get; set; }
+    public DateTime NgaySinh { get; set; }
+    public string TenDV { get; set; }
+
 }

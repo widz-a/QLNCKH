@@ -42,3 +42,11 @@ public class SinhVien {
     public TonGiao TonGiao { get; set; }
     public ChucVu ChucVu { get; set; }
 }
+
+public class SinhVienDTO {
+    public string MaSV { get; set; }
+    public string HoTen { get; set; }
+    public DateTime NgaySinh { get; set; }
+    public string Lop { get; set; }
+
+}

@@ -33,6 +33,8 @@ namespace QLNCKH.Forms {
             this.Text = "Sửa thông tin sinh viên";
             title.Text = "Sửa thông tin sinh viên";
             btnLuu.Text = "Lưu";
+
+            txtMaSV.Enabled = false;
         }
 
         private void LoadDanhMuc() {

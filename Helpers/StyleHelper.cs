@@ -1,6 +1,4 @@
-﻿using ReaLTaiizor.Controls;
-
-public static class StyleHelper {
+﻿public static class StyleHelper {
     public static void ApplyDGV(DataGridView dgv, bool stt = true) {
         dgv.EnableHeadersVisualStyles = false;
         dgv.BorderStyle = BorderStyle.None;
@@ -83,7 +81,7 @@ public static class StyleHelper {
 
         dgv.CellPainting += (s, e) =>
         {
-            if (e.RowIndex == -1 && e.ColumnIndex >= 0) {
+            if (e.RowIndex == -1 && (e.ColumnIndex >= 0 || (e.ColumnIndex < 0 && stt))) {
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
                 if (e.ColumnIndex < dgv.Columns.Count - 1) {
@@ -97,6 +95,56 @@ public static class StyleHelper {
                 e.Handled = true;
             }
         };
+
+        if (stt) {
+            dgv.Paint += (s, e) =>
+            {
+                var grid = (DataGridView)s;
+
+                Rectangle rect = new Rectangle(
+                    0,
+                    0,
+                    grid.RowHeadersWidth,
+                    grid.ColumnHeadersHeight
+                );
+
+                // nền
+                using var bg = new SolidBrush(
+                    grid.ColumnHeadersDefaultCellStyle.BackColor);
+                e.Graphics.FillRectangle(bg, rect);
+
+                // chữ STT (chừa 1px bên phải)
+                using var sf = new StringFormat {
+                    Alignment = StringAlignment.Center,
+                    LineAlignment = StringAlignment.Center
+                };
+
+                var textRect = new Rectangle(
+                    rect.X,
+                    rect.Y,
+                    rect.Width - 1,   // ❗ chừa chỗ cho divider
+                    rect.Height
+                );
+
+                using var fg = new SolidBrush(
+                    grid.ColumnHeadersDefaultCellStyle.ForeColor);
+
+                e.Graphics.DrawString(
+                    "STT",
+                    grid.ColumnHeadersDefaultCellStyle.Font,
+                    fg,
+                    textRect,
+                    sf
+                );
+
+                // divider STT | cột đầu
+                using var pen = new Pen(Color.Black, 1);
+                int x = rect.Right - 1;
+                int y1 = rect.Top + 14;
+                int y2 = rect.Bottom - 14;
+                e.Graphics.DrawLine(pen, x, y1, x, y2);
+            };
+        }
 
         // Rows
         dgv.DefaultCellStyle.BackColor = Color.White;

@@ -9,11 +9,14 @@ namespace QLNCKH
         private Dictionary<string, (Func<Form> func, string title)> forms = new Dictionary<string, (Func<Form> func, string title)> {
             ["Trang chủ"] = (() => new FrmHome(), "Trang chủ"),
             ["Danh Mục"] = (() => new FrmDanhMuc(), "Quản lý danh mục"),
-            ["Sinh viên"] = (() => new FrmList<SinhVien>(
-                new ListContext<SinhVien> {
+            ["Sinh viên"] = (() => new FrmList<SinhVien, SinhVienDTO>(
+                new ListContext<SinhVien, SinhVienDTO> {
                     Name = "sinh viên",
-                    GetHeaderSelector = (sv => new {
-                        sv.MaSV, sv.HoTen, sv.NgaySinh, sv.Lop
+                    GetHeaderSelector = (sv => new SinhVienDTO {
+                        MaSV = sv.MaSV,
+                        HoTen = sv.HoTen,
+                        NgaySinh = sv.NgaySinh,
+                        Lop = sv.Lop
                     }),
                     IdColumn = "MaSV",
                     HeaderNames = new Dictionary<string, string> {
@@ -25,7 +28,27 @@ namespace QLNCKH
                     GetEditForm = id => new FrmSinhVienEdit(id),
                     GetCreateForm = () => new FrmSinhVienEdit(),
                 }    
-            ), "Quản lý thông tin sinh viên")
+            ), "Quản lý thông tin sinh viên"),
+            ["Giảng viên"] = (() => new FrmList<GiangVien, GiangVienDto>(
+                new ListContext<GiangVien, GiangVienDto> {
+                    Name = "giảng viên",
+                    GetHeaderSelector = (sv => new GiangVienDto {
+                        MaCB = sv.MaCB,
+                        HoTen = sv.HoTen,
+                        NgaySinh = sv.NgaySinh,
+                        TenDV = sv.DonViCongTac.TenDV,
+                    }),
+                    IdColumn = "MaCB",
+                    HeaderNames = new Dictionary<string, string> {
+                        ["MaCB"] = "Mã cán bộ",
+                        ["HoTen"] = "Họ và tên",
+                        ["NgaySinh"] = "Ngày sinh",
+                        ["TenDV"] = "Đơn vị công tác",
+                    },
+                    GetEditForm = id => new FrmGiangVienEdit(id),
+                    GetCreateForm = () => new FrmGiangVienEdit(),
+                }
+            ), "Quản lý thông tin giảng viên")
         };
 
         public FrmMain() {

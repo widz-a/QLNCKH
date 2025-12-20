@@ -8,6 +8,7 @@ public static class DanhMucMap {
             ["Dân tộc"] = typeof(DanToc),
             ["Tôn giáo"] = typeof(TonGiao),
             ["Cấp bậc"] = typeof(CapBac),
+            ["Chức danh"] = typeof(ChucDanh),
             ["Chức vụ"] = typeof(ChucVu),
             ["Học hàm"] = typeof(HocHam),
             ["Học vị"] = typeof(HocVi),
