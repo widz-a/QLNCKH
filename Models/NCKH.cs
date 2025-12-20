@@ -35,6 +35,14 @@ public class DeTai
     public ICollection<HoiDong_DeTai> HoiDongs { get; set; }
 }
 
+public class DeTaiDto {
+    public string MaDT { get; set; }
+    public string TenDT { get; set; }
+    public int SoLuongSv { get; set; }
+    public string TrangThai { get; set; }
+
+}
+
 [Table("DeTai_SinhVien")]
 public class DeTai_SinhVien
 {

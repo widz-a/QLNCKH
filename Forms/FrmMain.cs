@@ -48,7 +48,28 @@ namespace QLNCKH
                     GetEditForm = id => new FrmGiangVienEdit(id),
                     GetCreateForm = () => new FrmGiangVienEdit(),
                 }
-            ), "Quản lý thông tin giảng viên")
+            ), "Quản lý thông tin giảng viên"),
+            ["Đề tài"] = (() => new FrmList<DeTai, DeTaiDto>(
+                new ListContext<DeTai, DeTaiDto> {
+                    Name = "đề tài",
+                    GetHeaderSelector = (sv => new DeTaiDto {
+                        MaDT = sv.MaDT,
+                        TenDT = sv.TenDT,
+                        SoLuongSv = sv.SinhViens.Count,
+                        TrangThai = sv.TrangThai.TenTrangThai,
+
+                    }),
+                    IdColumn = "MaCB",
+                    HeaderNames = new Dictionary<string, string> {
+                        ["MaDT"] = "Mã đề tài",
+                        ["TenDT"] = "Tên đề tài",
+                        ["SoLuongSv"] = "Số thành viên",
+                        ["TrangThai"] = "Trạng thái",
+                    },
+                    GetEditForm = id => new FrmGiangVienEdit(id), //TODO
+                    GetCreateForm = () => new FrmGiangVienEdit(), //TODO
+                }
+            ), "Quản lý thông tin đề tài NCKH")
         };
 
         public FrmMain() {
