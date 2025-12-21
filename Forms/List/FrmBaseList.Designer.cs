@@ -51,13 +51,14 @@
             tableLayoutPanel1.Controls.Add(btnXoa, 2, 0);
             tableLayoutPanel1.Controls.Add(btnSua, 1, 0);
             tableLayoutPanel1.Controls.Add(btnThem, 0, 0);
-            tableLayoutPanel1.Location = new Point(487, 381);
+            tableLayoutPanel1.Dock = DockStyle.Bottom;
+            tableLayoutPanel1.Location = new Point(0, 402);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.Padding = new Padding(4);
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(301, 48);
-            tableLayoutPanel1.TabIndex = 9;
+            tableLayoutPanel1.Size = new Size(800, 48);
+            tableLayoutPanel1.TabIndex = 10;
             // 
             // btnXoa
             // 
@@ -70,11 +71,11 @@
             btnXoa.Image = null;
             btnXoa.ImageAlign = ContentAlignment.MiddleLeft;
             btnXoa.InactiveColor = Color.FromArgb(59, 130, 246);
-            btnXoa.Location = new Point(201, 7);
+            btnXoa.Location = new Point(533, 7);
             btnXoa.Name = "btnXoa";
             btnXoa.PressedBorderColor = Color.FromArgb(37, 99, 235);
             btnXoa.PressedColor = Color.FromArgb(37, 99, 235);
-            btnXoa.Size = new Size(93, 34);
+            btnXoa.Size = new Size(260, 34);
             btnXoa.TabIndex = 12;
             btnXoa.Text = "Xóa";
             btnXoa.TextAlignment = StringAlignment.Center;
@@ -90,11 +91,11 @@
             btnSua.Image = null;
             btnSua.ImageAlign = ContentAlignment.MiddleLeft;
             btnSua.InactiveColor = Color.FromArgb(59, 130, 246);
-            btnSua.Location = new Point(104, 7);
+            btnSua.Location = new Point(270, 7);
             btnSua.Name = "btnSua";
             btnSua.PressedBorderColor = Color.FromArgb(37, 99, 235);
             btnSua.PressedColor = Color.FromArgb(37, 99, 235);
-            btnSua.Size = new Size(91, 34);
+            btnSua.Size = new Size(257, 34);
             btnSua.TabIndex = 11;
             btnSua.Text = "Sửa";
             btnSua.TextAlignment = StringAlignment.Center;
@@ -114,19 +115,19 @@
             btnThem.Name = "btnThem";
             btnThem.PressedBorderColor = Color.FromArgb(37, 99, 235);
             btnThem.PressedColor = Color.FromArgb(37, 99, 235);
-            btnThem.Size = new Size(91, 34);
+            btnThem.Size = new Size(257, 34);
             btnThem.TabIndex = 10;
             btnThem.Text = "Thêm";
             btnThem.TextAlignment = StringAlignment.Center;
             // 
-            // FrmSinhVien
+            // FrmBaseList
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(dgvSinhVien);
-            Name = "FrmSinhVien";
+            Name = "FrmBaseList";
             Text = "FrmSinhVien";
             ((System.ComponentModel.ISupportInitialize)dgvSinhVien).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
