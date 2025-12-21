@@ -40,6 +40,8 @@ namespace QLNCKH.Forms {
                     e.Cancel = true;
                 }
 
+                MessageBox.Show(txtMaDT.Text);
+
                 FormHelper.LoadForm(new FrmList<DeTai_SinhVien, DeTai_SinhVienDto>(
                     new ListContext<DeTai_SinhVien, DeTai_SinhVienDto> {
                         Name = "sinh viên",
@@ -56,8 +58,8 @@ namespace QLNCKH.Forms {
                             ["VaiTro"] = "Vai trò",
                             ["Lop"] = "Lớp",
                         },
-                        GetEditForm = id => new FrmSinhVienEdit(id[0]), //TODO
-                        GetCreateForm = () => new FrmSinhVienEdit(), //TODO
+                        GetEditForm = id => new FrmDeTaiSVEdit(id[0], txtMaDT.Text), //TODO
+                        GetCreateForm = () => new FrmDeTaiSVEdit(txtMaDT.Text), //TODO
                         ExtraIds = [txtMaDT.Text]
                     }
                 ), pnlMain);
