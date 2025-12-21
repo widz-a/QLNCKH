@@ -40,7 +40,6 @@ namespace QLNCKH.Forms {
                     e.Cancel = true;
                 }
 
-                //TODO: Sửa
                 FormHelper.LoadForm(new FrmList<DeTai_SinhVien, DeTai_SinhVienDto>(
                     new ListContext<DeTai_SinhVien, DeTai_SinhVienDto> {
                         Name = "sinh viên",
@@ -69,11 +68,11 @@ namespace QLNCKH.Forms {
             _id = id;
             LoadData();
 
-            this.Text = "Sửa thông tin giảng viên";
-            title.Text = "Sửa thông tin giảng viên";
+            this.Text = "Sửa thông tin đề tài NCKH";
+            title.Text = "Sửa thông tin đề tài NCKH";
             btnLuu.Text = "Lưu";
 
-            //txtMaCB.Enabled = false;
+            txtMaDT.Enabled = false;
         }
 
         private void LoadDanhMuc() {
