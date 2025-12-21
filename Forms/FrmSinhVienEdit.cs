@@ -97,12 +97,12 @@ namespace QLNCKH.Forms {
 
         private void btnLuu_Click(object sender, EventArgs e) {
             //Validate
-            if (!ValidateHelper.RequiredSafe(txtMaSV, "Mã sinh viên")) return;
-            if (!ValidateHelper.RequiredSafe(txtHoTen, "Họ và tên")) return;
-            if (!ValidateHelper.RequiredSafe(txtLop, "Lớp")) return;
+            if (!ValidateHelper.Required(txtMaSV, "Mã sinh viên")) return;
+            if (!ValidateHelper.Required(txtHoTen, "Họ và tên")) return;
+            if (!ValidateHelper.Required(txtLop, "Lớp")) return;
             if (!ValidateHelper.Required(cbGioiTinh, "Giới tính")) return;
-            if (!ValidateHelper.RequiredSafe(txtNganh, "Ngành")) return;
-            if (!ValidateHelper.RequiredSafe(txtChuyenNganh, "Chuyên ngành")) return;
+            if (!ValidateHelper.Required(txtNganh, "Ngành")) return;
+            if (!ValidateHelper.Required(txtChuyenNganh, "Chuyên ngành")) return;
             if (!ValidateHelper.Required(cbDanToc, "Dân tộc")) return;
             if (!ValidateHelper.Required(cbTonGiao, "Tôn giáo")) return;
             if (!ValidateHelper.Required(cbChucVu, "Chức vụ")) return;

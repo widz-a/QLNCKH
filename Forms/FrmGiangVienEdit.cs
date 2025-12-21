@@ -110,9 +110,9 @@ namespace QLNCKH.Forms {
 
         private void btnLuu_Click(object sender, EventArgs e) {
             //Validate
-            if (!ValidateHelper.RequiredSafe(txtMaCB, "Mã cán bộ")) return;
-            if (!ValidateHelper.RequiredSafe(txtHoTen, "Họ tên")) return;
-            if (!ValidateHelper.RequiredSafe(txtLVCM, "Lĩnh vực chuyên môn")) return;
+            if (!ValidateHelper.Required(txtMaCB, "Mã cán bộ")) return;
+            if (!ValidateHelper.Required(txtHoTen, "Họ tên")) return;
+            if (!ValidateHelper.Required(txtLVCM, "Lĩnh vực chuyên môn")) return;
 
             if (!ValidateHelper.RequiredDouble(txtHSL, "Hệ số lương")) return;
 

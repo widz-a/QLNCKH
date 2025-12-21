@@ -6,8 +6,13 @@ public class ListContext<T, TDto> where T : class where TDto : class {
     public Expression<Func<T, TDto>> GetHeaderSelector { get; set; }
     public string IdColumn { get; set; }
     public Dictionary<string, string> HeaderNames { get; set; }
-    public Func<string, Form> GetEditForm { get; set; }
+    public EditFormFactory GetEditForm { get; set; }
     public Func<Form> GetCreateForm { get; set; }
+    public string[]? ExtraIds { get; set; }
+
+    // lulz
+    public delegate Form EditFormFactory(params string[] ids);
+
 }
 
 public class FrmList<T, TDto> : FrmBaseList where T : class where TDto : class {
@@ -33,9 +38,12 @@ public class FrmList<T, TDto> : FrmBaseList where T : class where TDto : class {
         }
     }
 
-    private string? GetSelectedId() {
+    private string[]? GetSelectedId() {
         if (GetDgv().SelectedRows.Count == 0) return null;
-        return GetDgv().SelectedRows[0].Cells[_ctx.IdColumn].Value.ToString();
+
+        var cellId = GetDgv().SelectedRows[0].Cells[_ctx.IdColumn].Value.ToString();
+        if (_ctx.ExtraIds == null) return [cellId];
+        else return _ctx.ExtraIds.Append(cellId).ToArray();
     }
 
     private void btnThem_Click(object sender, EventArgs e) {
@@ -46,7 +54,7 @@ public class FrmList<T, TDto> : FrmBaseList where T : class where TDto : class {
     }
 
     private void btnSua_Click(object sender, EventArgs e) {
-        string id = GetSelectedId();
+        string[] id = GetSelectedId();
         if (id == null) return;
         using (var f = _ctx.GetEditForm(id)) {
             if (f.ShowDialog() == DialogResult.OK)
@@ -55,7 +63,7 @@ public class FrmList<T, TDto> : FrmBaseList where T : class where TDto : class {
     }
 
     private void btnXoa_Click(object sender, EventArgs e) {
-        string id = GetSelectedId();
+        string[] id = GetSelectedId();
         if (id == null) return;
 
         if (MessageBox.Show($"Xóa {_ctx.Name} này?", "Xác nhận",

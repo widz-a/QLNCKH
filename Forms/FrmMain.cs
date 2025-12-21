@@ -25,7 +25,7 @@ namespace QLNCKH
                         ["NgaySinh"] = "Ngày sinh",
                         ["Lop"] = "Lớp",
                     },
-                    GetEditForm = id => new FrmSinhVienEdit(id),
+                    GetEditForm = id => new FrmSinhVienEdit(id[0]),
                     GetCreateForm = () => new FrmSinhVienEdit(),
                 }    
             ), "Quản lý thông tin sinh viên"),
@@ -45,7 +45,7 @@ namespace QLNCKH
                         ["NgaySinh"] = "Ngày sinh",
                         ["TenDV"] = "Đơn vị công tác",
                     },
-                    GetEditForm = id => new FrmGiangVienEdit(id),
+                    GetEditForm = id => new FrmGiangVienEdit(id[0]),
                     GetCreateForm = () => new FrmGiangVienEdit(),
                 }
             ), "Quản lý thông tin giảng viên"),
@@ -59,14 +59,14 @@ namespace QLNCKH
                         TrangThai = sv.TrangThai.TenTrangThai,
 
                     }),
-                    IdColumn = "MaCB",
+                    IdColumn = "MaDT",
                     HeaderNames = new Dictionary<string, string> {
                         ["MaDT"] = "Mã đề tài",
                         ["TenDT"] = "Tên đề tài",
                         ["SoLuongSv"] = "Số thành viên",
                         ["TrangThai"] = "Trạng thái",
                     },
-                    GetEditForm = id => new FrmDeTaiEdit(id),
+                    GetEditForm = id => new FrmDeTaiEdit(id[0]),
                     GetCreateForm = () => new FrmDeTaiEdit(),
                 }
             ), "Quản lý thông tin đề tài NCKH")

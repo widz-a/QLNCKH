@@ -18,7 +18,7 @@ public class DeTai
     [StringLength(20)]
     public string MaGVHuongDan { get; set; }
 
-    public DateTime? ThoiGianDuKien { get; set; }
+    public DateTime ThoiGianDuKien { get; set; }
 
     public int? TrangThaiId { get; set; }
 
@@ -62,6 +62,15 @@ public class DeTai_SinhVien
 
     [ForeignKey(nameof(VaiTroId))]
     public VaiTroDeTai VaiTro { get; set; }
+}
+
+public class DeTai_SinhVienDto {
+    public string MaSV { get; set; }
+
+    public string HoTen { get; set; }
+    public string Lop { get; set; }
+
+    public string VaiTro { get; set; }
 }
 
 #endregion

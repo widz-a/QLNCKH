@@ -33,9 +33,9 @@ public class Repository<T> : IRepository<T> where T : class {
         return new BindingList<TResult>(list);
     }
 
-    public T GetById(object id) {
+    public T GetById(params object[] keyValues) {
         using var db = new AppDbContext();
-        return db.Set<T>().Find(id);
+        return db.Set<T>().Find(keyValues);
     }
 
     public void Insert(T entity) {
@@ -50,16 +50,16 @@ public class Repository<T> : IRepository<T> where T : class {
         db.SaveChanges();
     }
 
-    public void Delete(object id) {
+    public void Delete(params object[] keyValues) {
         using var db = new AppDbContext();
-        var entity = db.Set<T>().Find(id);
+        var entity = db.Set<T>().Find(keyValues);
         if (entity == null) return;
 
         db.Set<T>().Remove(entity);
         db.SaveChanges();
     }
 
-    public bool Exists(object id) {
-        return GetById(id) != null;
+    public bool Exists(params object[] keyValues) {
+        return GetById(keyValues) != null;
     }
 }

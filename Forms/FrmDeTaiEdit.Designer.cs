@@ -31,20 +31,20 @@
             tab = new TabControl();
             tabThongTin = new TabPage();
             tableLayoutPanel3 = new TableLayoutPanel();
-            richTextBox1 = new RichTextBox();
+            txtTen = new RichTextBox();
             label4 = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
-            cbGioiTinh = new ComboBox();
-            txtLop = new TextBox();
+            cbLV = new ComboBox();
             label7 = new Label();
             label8 = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
-            dtNgaySinh = new DateTimePicker();
-            txtMaSV = new TextBox();
+            txtMaDT = new TextBox();
             label2 = new Label();
             label1 = new Label();
             tabThanhVien = new TabPage();
             pnlMain = new Panel();
+            dtDate = new DateTimePicker();
+            cbGV = new ComboBox();
             tableLayoutPanel5.SuspendLayout();
             tab.SuspendLayout();
             tabThongTin.SuspendLayout();
@@ -132,7 +132,7 @@
             tableLayoutPanel3.ColumnCount = 2;
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 22.205883F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 77.79412F));
-            tableLayoutPanel3.Controls.Add(richTextBox1, 1, 0);
+            tableLayoutPanel3.Controls.Add(txtTen, 1, 0);
             tableLayoutPanel3.Controls.Add(label4, 0, 0);
             tableLayoutPanel3.Font = new Font("Tahoma", 10.8F);
             tableLayoutPanel3.Location = new Point(29, 97);
@@ -143,15 +143,15 @@
             tableLayoutPanel3.Size = new Size(683, 89);
             tableLayoutPanel3.TabIndex = 11;
             // 
-            // richTextBox1
+            // txtTen
             // 
-            richTextBox1.Dock = DockStyle.Fill;
-            richTextBox1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            richTextBox1.Location = new Point(154, 3);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(526, 83);
-            richTextBox1.TabIndex = 12;
-            richTextBox1.Text = "";
+            txtTen.Dock = DockStyle.Fill;
+            txtTen.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtTen.Location = new Point(154, 3);
+            txtTen.Name = "txtTen";
+            txtTen.Size = new Size(526, 83);
+            txtTen.TabIndex = 12;
+            txtTen.Text = "";
             // 
             // label4
             // 
@@ -168,14 +168,14 @@
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 142F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 155F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Controls.Add(cbGioiTinh, 1, 1);
-            tableLayoutPanel1.Controls.Add(txtLop, 1, 0);
+            tableLayoutPanel1.Controls.Add(dtDate, 1, 1);
+            tableLayoutPanel1.Controls.Add(cbLV, 1, 0);
             tableLayoutPanel1.Controls.Add(label7, 0, 1);
             tableLayoutPanel1.Controls.Add(label8, 0, 0);
             tableLayoutPanel1.Font = new Font("Tahoma", 10.8F);
-            tableLayoutPanel1.Location = new Point(408, 17);
+            tableLayoutPanel1.Location = new Point(417, 17);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 5;
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
@@ -183,42 +183,31 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(304, 75);
+            tableLayoutPanel1.Size = new Size(295, 75);
             tableLayoutPanel1.TabIndex = 10;
             // 
-            // cbGioiTinh
+            // cbLV
             // 
-            cbGioiTinh.Dock = DockStyle.Fill;
-            cbGioiTinh.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbGioiTinh.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            cbGioiTinh.FormattingEnabled = true;
-            cbGioiTinh.Items.AddRange(new object[] { "Nam", "Nữ" });
-            cbGioiTinh.Location = new Point(145, 44);
-            cbGioiTinh.Margin = new Padding(3, 6, 3, 6);
-            cbGioiTinh.Name = "cbGioiTinh";
-            cbGioiTinh.Size = new Size(156, 27);
-            cbGioiTinh.TabIndex = 1;
-            // 
-            // txtLop
-            // 
-            txtLop.Dock = DockStyle.Fill;
-            txtLop.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            txtLop.Location = new Point(145, 6);
-            txtLop.Margin = new Padding(3, 6, 3, 6);
-            txtLop.Name = "txtLop";
-            txtLop.Size = new Size(156, 26);
-            txtLop.TabIndex = 0;
+            cbLV.Dock = DockStyle.Fill;
+            cbLV.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbLV.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            cbLV.FormattingEnabled = true;
+            cbLV.Location = new Point(158, 6);
+            cbLV.Margin = new Padding(3, 6, 3, 6);
+            cbLV.Name = "cbLV";
+            cbLV.Size = new Size(134, 27);
+            cbLV.TabIndex = 24;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Dock = DockStyle.Fill;
             label7.Font = new Font("Segoe UI", 10.2F);
-            label7.Location = new Point(3, 38);
+            label7.Location = new Point(3, 39);
             label7.Name = "label7";
-            label7.Size = new Size(136, 39);
+            label7.Size = new Size(149, 38);
             label7.TabIndex = 23;
-            label7.Text = "Giới tính:";
+            label7.Text = "Thời gian dự kiến:";
             label7.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label8
@@ -228,7 +217,7 @@
             label8.Font = new Font("Segoe UI", 10.2F);
             label8.Location = new Point(3, 0);
             label8.Name = "label8";
-            label8.Size = new Size(136, 38);
+            label8.Size = new Size(149, 39);
             label8.TabIndex = 21;
             label8.Text = "Lĩnh vực:";
             label8.TextAlign = ContentAlignment.MiddleLeft;
@@ -238,8 +227,8 @@
             tableLayoutPanel2.ColumnCount = 2;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 42.57703F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 57.42297F));
-            tableLayoutPanel2.Controls.Add(dtNgaySinh, 1, 1);
-            tableLayoutPanel2.Controls.Add(txtMaSV, 1, 0);
+            tableLayoutPanel2.Controls.Add(cbGV, 1, 1);
+            tableLayoutPanel2.Controls.Add(txtMaDT, 1, 0);
             tableLayoutPanel2.Controls.Add(label2, 0, 1);
             tableLayoutPanel2.Controls.Add(label1, 0, 0);
             tableLayoutPanel2.Font = new Font("Tahoma", 10.8F);
@@ -252,28 +241,15 @@
             tableLayoutPanel2.Size = new Size(357, 77);
             tableLayoutPanel2.TabIndex = 9;
             // 
-            // dtNgaySinh
+            // txtMaDT
             // 
-            dtNgaySinh.CustomFormat = "dd/MM/yyyy";
-            dtNgaySinh.Dock = DockStyle.Fill;
-            dtNgaySinh.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dtNgaySinh.Format = DateTimePickerFormat.Custom;
-            dtNgaySinh.Location = new Point(155, 44);
-            dtNgaySinh.Margin = new Padding(3, 6, 3, 6);
-            dtNgaySinh.Name = "dtNgaySinh";
-            dtNgaySinh.Size = new Size(199, 26);
-            dtNgaySinh.TabIndex = 26;
-            dtNgaySinh.Value = new DateTime(2025, 7, 10, 0, 0, 0, 0);
-            // 
-            // txtMaSV
-            // 
-            txtMaSV.Dock = DockStyle.Fill;
-            txtMaSV.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            txtMaSV.Location = new Point(155, 6);
-            txtMaSV.Margin = new Padding(3, 6, 3, 6);
-            txtMaSV.Name = "txtMaSV";
-            txtMaSV.Size = new Size(199, 26);
-            txtMaSV.TabIndex = 7;
+            txtMaDT.Dock = DockStyle.Fill;
+            txtMaDT.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtMaDT.Location = new Point(155, 6);
+            txtMaDT.Margin = new Padding(3, 6, 3, 6);
+            txtMaDT.Name = "txtMaDT";
+            txtMaDT.Size = new Size(199, 26);
+            txtMaDT.TabIndex = 7;
             // 
             // label2
             // 
@@ -284,7 +260,7 @@
             label2.Name = "label2";
             label2.Size = new Size(146, 39);
             label2.TabIndex = 9;
-            label2.Text = "Thời gian dự kiến:";
+            label2.Text = "GV hướng dẫn:";
             label2.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label1
@@ -320,6 +296,31 @@
             pnlMain.Size = new Size(725, 253);
             pnlMain.TabIndex = 7;
             // 
+            // dtDate
+            // 
+            dtDate.CustomFormat = "dd/MM/yyyy";
+            dtDate.Dock = DockStyle.Fill;
+            dtDate.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dtDate.Format = DateTimePickerFormat.Custom;
+            dtDate.Location = new Point(158, 45);
+            dtDate.Margin = new Padding(3, 6, 3, 6);
+            dtDate.Name = "dtDate";
+            dtDate.Size = new Size(134, 26);
+            dtDate.TabIndex = 27;
+            dtDate.Value = new DateTime(2025, 7, 10, 0, 0, 0, 0);
+            // 
+            // cbGV
+            // 
+            cbGV.Dock = DockStyle.Fill;
+            cbGV.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbGV.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            cbGV.FormattingEnabled = true;
+            cbGV.Location = new Point(155, 44);
+            cbGV.Margin = new Padding(3, 6, 3, 6);
+            cbGV.Name = "cbGV";
+            cbGV.Size = new Size(199, 27);
+            cbGV.TabIndex = 10;
+            // 
             // FrmDeTaiEdit
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -353,18 +354,18 @@
         private TabPage tabThongTin;
         private TabPage tabThanhVien;
         private TableLayoutPanel tableLayoutPanel1;
-        private ComboBox cbGioiTinh;
-        private TextBox txtLop;
         private Label label7;
         private Label label8;
         private TableLayoutPanel tableLayoutPanel2;
-        private TextBox txtMaSV;
+        private TextBox txtMaDT;
         private Label label2;
         private Label label1;
         private TableLayoutPanel tableLayoutPanel3;
         private Label label4;
-        private DateTimePicker dtNgaySinh;
-        private RichTextBox richTextBox1;
+        private RichTextBox txtTen;
         private Panel pnlMain;
+        private ComboBox cbLV;
+        private DateTimePicker dtDate;
+        private ComboBox cbGV;
     }
 }

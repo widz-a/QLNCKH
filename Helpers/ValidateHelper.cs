@@ -1,7 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 
 public static class ValidateHelper {
-    public static bool Required(TextBox txt, string fieldName) {
+    public static bool Required(TextBoxBase txt, string fieldName) {
         if (string.IsNullOrWhiteSpace(txt.Text)) {
             MessageBox.Show($"{fieldName} không được để trống.",
                 "Thiếu thông tin",
@@ -26,9 +26,6 @@ public static class ValidateHelper {
         return true;
     }
 
-    public static bool RequiredSafe(TextBox txt, string fieldName) {
-        return Required(txt, fieldName) && SafeText(txt, fieldName);
-    }
     public static bool Required(ComboBox cbo, string fieldName) {
         if (cbo.SelectedIndex < 0) {
             MessageBox.Show($"Vui lòng chọn {fieldName}.",
