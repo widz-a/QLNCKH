@@ -3536,7 +3536,14 @@ CREATE TABLE ChucDanh (
 );
 GO
 
-/*TODO*/
+INSERT INTO ChucDanh (TenChucDanh) VALUES
+(N'Giảng viên'),
+(N'Giảng viên chính'),
+(N'Giảng viên cao cấp'),
+(N'Chuyên viên'),
+(N'Chuyên viên chính'),
+(N'Chuyên viên cao cấp');
+GO
 
 /* =========================
    DANH MỤC TRÌNH ĐỘ
@@ -3643,7 +3650,30 @@ CREATE TABLE DonViCongTac (
     TenDV NVARCHAR(50)
 );
 GO
--- TODO: THÊM CÁC ĐƠN VỊ
+
+INSERT INTO DonViCongTac (TenDV) VALUES
+(N'Viện khoa học học viện an ninh nhân dân'),
+(N'Phòng quản lý học viên'),
+(N'Phòng chính trị'),
+(N'Phòng hậu cần'),
+(N'Phòng QLĐT và BDNC'),
+(N'Phòng quản lý nghiên cứu khoa học'),
+(N'Phòng lưu trữ thư viện'),
+(N'Phòng bảo đảm và quản lý chất lượng đào tạo'),
+(N'Khoa NV1'),
+(N'Khoa NV2'),
+(N'Khoa NV3'),
+(N'Khoa NV4'),
+(N'Khoa NV5'),
+(N'Khoa NV6'),
+(N'Khoa NV7'),
+(N'Khoa NV8'),
+(N'Khoa luật'),
+(N'Khoa LLCT và XHNV'),
+(N'Khoa QSVT và TDTT'),
+(N'Trung tâm ngoại ngữ tin học'),
+(N'Trung tâm quốc phòng an ninh');
+GO
 
 /* =========================
    SINH VIÊN (36)
