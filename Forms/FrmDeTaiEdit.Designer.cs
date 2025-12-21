@@ -34,17 +34,17 @@
             txtTen = new RichTextBox();
             label4 = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
+            dtDate = new DateTimePicker();
             cbLV = new ComboBox();
             label7 = new Label();
             label8 = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
+            cbGV = new ComboBox();
             txtMaDT = new TextBox();
             label2 = new Label();
             label1 = new Label();
             tabThanhVien = new TabPage();
             pnlMain = new Panel();
-            dtDate = new DateTimePicker();
-            cbGV = new ComboBox();
             tableLayoutPanel5.SuspendLayout();
             tab.SuspendLayout();
             tabThongTin.SuspendLayout();
@@ -186,6 +186,19 @@
             tableLayoutPanel1.Size = new Size(295, 75);
             tableLayoutPanel1.TabIndex = 10;
             // 
+            // dtDate
+            // 
+            dtDate.CustomFormat = "dd/MM/yyyy";
+            dtDate.Dock = DockStyle.Fill;
+            dtDate.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dtDate.Format = DateTimePickerFormat.Custom;
+            dtDate.Location = new Point(158, 45);
+            dtDate.Margin = new Padding(3, 6, 3, 6);
+            dtDate.Name = "dtDate";
+            dtDate.Size = new Size(134, 26);
+            dtDate.TabIndex = 27;
+            dtDate.Value = new DateTime(2025, 7, 10, 0, 0, 0, 0);
+            // 
             // cbLV
             // 
             cbLV.Dock = DockStyle.Fill;
@@ -240,6 +253,18 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel2.Size = new Size(357, 77);
             tableLayoutPanel2.TabIndex = 9;
+            // 
+            // cbGV
+            // 
+            cbGV.Dock = DockStyle.Fill;
+            cbGV.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbGV.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            cbGV.FormattingEnabled = true;
+            cbGV.Location = new Point(155, 44);
+            cbGV.Margin = new Padding(3, 6, 3, 6);
+            cbGV.Name = "cbGV";
+            cbGV.Size = new Size(199, 27);
+            cbGV.TabIndex = 10;
             // 
             // txtMaDT
             // 
@@ -296,31 +321,6 @@
             pnlMain.Size = new Size(725, 253);
             pnlMain.TabIndex = 7;
             // 
-            // dtDate
-            // 
-            dtDate.CustomFormat = "dd/MM/yyyy";
-            dtDate.Dock = DockStyle.Fill;
-            dtDate.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dtDate.Format = DateTimePickerFormat.Custom;
-            dtDate.Location = new Point(158, 45);
-            dtDate.Margin = new Padding(3, 6, 3, 6);
-            dtDate.Name = "dtDate";
-            dtDate.Size = new Size(134, 26);
-            dtDate.TabIndex = 27;
-            dtDate.Value = new DateTime(2025, 7, 10, 0, 0, 0, 0);
-            // 
-            // cbGV
-            // 
-            cbGV.Dock = DockStyle.Fill;
-            cbGV.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbGV.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            cbGV.FormattingEnabled = true;
-            cbGV.Location = new Point(155, 44);
-            cbGV.Margin = new Padding(3, 6, 3, 6);
-            cbGV.Name = "cbGV";
-            cbGV.Size = new Size(199, 27);
-            cbGV.TabIndex = 10;
-            // 
             // FrmDeTaiEdit
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -329,7 +329,9 @@
             Controls.Add(tab);
             Controls.Add(title);
             Controls.Add(tableLayoutPanel5);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             Name = "FrmDeTaiEdit";
             Text = "Đăng kí đề tài NCKH";
             tableLayoutPanel5.ResumeLayout(false);

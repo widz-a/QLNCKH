@@ -56,6 +56,7 @@ namespace QLNCKH.Forms {
 
             cbSV.DisplayMember = "Display";
             cbSV.ValueMember = "Value";
+            cbSV.SelectedIndex = -1;
         }
 
 

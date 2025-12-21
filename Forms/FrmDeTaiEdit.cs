@@ -97,6 +97,7 @@ namespace QLNCKH.Forms {
 
             cbGV.DisplayMember = "Display";
             cbGV.ValueMember = "Value";
+            cbGV.SelectedIndex = -1;
         }
 
         private void LoadData() {

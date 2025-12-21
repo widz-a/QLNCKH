@@ -488,7 +488,9 @@
             Controls.Add(tableLayoutPanel1);
             Controls.Add(tableLayoutPanel5);
             Controls.Add(tableLayoutPanel2);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             Name = "FrmSinhVienEdit";
             Text = "Thêm thông tin sinh viên";
             tableLayoutPanel2.ResumeLayout(false);
