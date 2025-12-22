@@ -50,6 +50,19 @@ public static class ValidateHelper {
         return true;
     }
 
+    public static bool RequiredPercentage(TextBox txt, string fieldName) {
+        double d;
+        if (!double.TryParse(txt.Text, out d) || d < 0 || d > 100) {
+            MessageBox.Show($"{fieldName} phải là số phần trăm hợp lệ.",
+                "Dữ liệu không hợp lệ",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+            txt.Focus();
+            return false;
+        }
+        return true;
+    }
+
     public static bool Phone(TextBox txt) {
         if (!Regex.IsMatch(txt.Text, @"^\d{9,11}$")) {
             MessageBox.Show("Số điện thoại không hợp lệ.",

@@ -90,7 +90,25 @@ namespace QLNCKH
                     GetEditForm = id => new FrmChuyenDeEdit(id[0]),
                     GetCreateForm = () => new FrmChuyenDeEdit(),
                 }
-            ), "Quản lý thông tin chuyên đề NCKH")
+            ), "Quản lý thông tin chuyên đề NCKH"),
+            ["Đạo văn"] = (() => new FrmList<DaoVan, DaoVanDto>(
+                new ListContext<DaoVan, DaoVanDto> {
+                    Name = "đề tài",
+                    GetHeaderSelector = (sv => new DaoVanDto {
+                        Id = sv.Id,
+                        TenDT = sv.DeTai.TenDT,
+                        LanQuet = sv.LanQuet,
+                        TyLeTrungLap = sv.TyLeTrungLap,
+                        KetLuan = sv.KetLuan,
+
+                    }),
+                    IdColumn = "Id",
+                    HeaderNames = new Dictionary<string, string> {
+                        //TODO
+                    },
+                    GetCreateForm = () => new FrmDaoVanEdit(),
+                }
+            ), "Quản lý kiểm tra đạo văn")
         };
 
         public FrmMain() {

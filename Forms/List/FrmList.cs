@@ -7,7 +7,7 @@ public class ListContext<T, TDto> where T : class where TDto : class {
     public Expression<Func<T, bool>>? GetFilter { get; set; }
     public string IdColumn { get; set; }
     public Dictionary<string, string> HeaderNames { get; set; }
-    public EditFormFactory GetEditForm { get; set; }
+    public EditFormFactory? GetEditForm { get; set; }
     public Func<Form> GetCreateForm { get; set; }
     public string[]? ExtraIds { get; set; }
 
@@ -59,6 +59,15 @@ public class FrmList<T, TDto> : FrmBaseList where T : class where TDto : class {
     private void btnSua_Click(object sender, EventArgs e) {
         string[] id = GetSelectedId();
         if (id == null) return;
+        if (_ctx.GetEditForm == null) {
+            MessageBox.Show(
+                "Thao tác chỉnh sửa dữ liệu này đã bị chặn",
+                "Thao tác bị cấm",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning
+            );
+            return;
+        }
         using (var f = _ctx.GetEditForm(id)) {
             if (f.ShowDialog() == DialogResult.OK)
                 LoadData();
@@ -68,6 +77,17 @@ public class FrmList<T, TDto> : FrmBaseList where T : class where TDto : class {
     private void btnXoa_Click(object sender, EventArgs e) {
         string[] id = GetSelectedId();
         if (id == null) return;
+
+        //Không edit => không chỉnh xửa => không x
+        if (_ctx.GetEditForm == null) {
+            MessageBox.Show(
+                "Thao tác chỉnh sửa dữ liệu này đã bị chặn",
+                "Thao tác bị cấm",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning
+            );
+            return;
+        }
 
         if (MessageBox.Show($"Xóa {_ctx.Name} này?", "Xác nhận",
             MessageBoxButtons.YesNo) == DialogResult.Yes) {

@@ -159,6 +159,14 @@ public class DaoVan
     public DeTai DeTai { get; set; }
 }
 
+public class DaoVanDto {
+    public int Id { get; set; }
+    public string TenDT { get; set; }
+    public int LanQuet { get; set; }
+    public double TyLeTrungLap { get; set; }
+    public string KetLuan { get; set; }
+}
+
 #endregion
 
 #region HỘI ĐỒNG CHẤM
