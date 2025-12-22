@@ -17,80 +17,84 @@ namespace QLNCKH.Forms
         public FrmNopDeTaiEdit()
         {
             InitializeComponent();
-            LoadLoai();
+            LoadComboBoxes();
             cbLoai.SelectedIndexChanged += CbLoai_SelectedIndexChanged;
-            cbMa.SelectedIndexChanged += CbMaTen_SelectedIndexChanged;
-            btnNop.Click += btnNop_Click;
-        }
-        public FrmNopDeTaiEdit(string id) : this()
-        {
+            cbMa.SelectedIndexChanged += cbMa_SelectedIndexChanged;
+            btnLuu.Click += btnLuu_Click;
         }
 
-        private void LoadLoai()
+        private void LoadComboBoxes()
         {
             cbLoai.Items.Clear();
             cbLoai.Items.Add("Đề tài");
             cbLoai.Items.Add("Chuyên đề");
             cbLoai.SelectedIndex = -1;
 
-            cbTrangThai.DataSource = DanhMucService.GetAll("Trạng thái đề tài");
-            cbTrangThai.DisplayMember = "Ten";
-            cbTrangThai.ValueMember = "ID";
-            cbTrangThai.SelectedIndex = -1;
-        }
-
-        private void LoadData()
-        {
         }
         private void CbLoai_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbLoai.SelectedItem == null) return;
             string loai = cbLoai.SelectedItem.ToString();
+            cbMa.SelectedIndex = -1;
 
             if (loai == "Đề tài")
             {
-                cbMa.DataSource = new Repository<DeTai>().GetAll();
-                cbMa.DisplayMember = "MaDT";
-                cbMa.ValueMember = "MaDT";
+                cbMa.DataSource = new Repository<DeTai>()
+                .GetSome(x => new {
+                    Value = x.MaDT,
+                    Display = $"({x.MaDT}) {x.TenDT}"
+                });
             }
             else
             {
-                cbMa.DataSource = new Repository<ChuyenDe>().GetAll();
-                cbMa.DisplayMember = "MaCD";
-                cbMa.ValueMember = "MaCD";
+                cbMa.DataSource = new Repository<ChuyenDe>()
+                .GetSome(x => new {
+                    Value = x.MaCD,
+                    Display = $"({x.MaCD}) {x.MaCD}"
+                });
             }
+            cbMa.DisplayMember = "Display";
+            cbMa.ValueMember = "Value";
             cbMa.SelectedIndex = -1;
-            txtTen.Clear();
-            cbNguoiNop.DataSource = null;
         }
 
-        private void CbMaTen_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbMa_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            if (cbMa.SelectedValue == null || cbLoai.SelectedItem == null) return;
+            if (cbLoai.SelectedIndex <= -1|| cbMa.SelectedIndex <= -1) return;
 
             string loai = cbLoai.SelectedItem.ToString();
             string ma = cbMa.SelectedValue.ToString();
 
-            // Hiển thị tên sản phẩm
             if (loai == "Đề tài")
             {
-                var dt = new Repository<DeTai>().GetById(ma);
-                txtTen.Text = dt?.TenDT ?? "";
                 // Lấy danh sách người nộp là thành viên nhóm
                 var thanhVien = new Repository<DeTai_SinhVien>()
-                                   .Filter(x => x.MaDT == ma)
-                                   .Select(x => x.SinhVien)
-                                   .ToList();
+                    .Filter(
+                        x => x.MaDT == ma,
+                        x => new {
+                            x.SinhVien.MaSV,
+                            x.SinhVien.HoTen
+                        }
+                    );
                 cbNguoiNop.DataSource = thanhVien;
                 cbNguoiNop.DisplayMember = "HoTen";
                 cbNguoiNop.ValueMember = "MaSV";
+                cbNguoiNop.SelectedIndex = -1;
+
+                //nộp bản mềm, nộp bản cứng, nộp sau chỉnh sửa
+                cbTrangThai.Items.Clear();
+
+                var dt = new Repository<DeTai>().GetById(ma);
+                if (dt == null) return;
+                if (dt.TrangThaiId == null || dt.TrangThaiId < 3) cbTrangThai.Items.Add("Nộp bản mềm");
+                if (dt.TrangThaiId == null || dt.TrangThaiId < 4) cbTrangThai.Items.Add("Nộp bản cứng");
+                cbTrangThai.Items.Add("Nộp sau chỉnh sửa");
+                cbTrangThai.SelectedIndex = -1;
+
             }
             else
             {
                 var cd = new Repository<ChuyenDe>().GetById(ma);
-                txtTen.Text = cd?.TenCD ?? "";
-                // Lấy danh sách người nộp là thành viên nhóm
                 var thanhVien = new List<SinhVien>();
                 if (cd != null && !string.IsNullOrEmpty(cd.MaSV))
                 {
@@ -100,18 +104,22 @@ namespace QLNCKH.Forms
                 cbNguoiNop.DataSource = thanhVien;
                 cbNguoiNop.DisplayMember = "HoTen";
                 cbNguoiNop.ValueMember = "MaSV";
-            }
+                cbNguoiNop.SelectedIndex = -1;
 
-            cbNguoiNop.SelectedIndex = -1;
+                cbTrangThai.Items.Clear();
+                cbTrangThai.Items.Add("Nộp bản mềm");
+                cbTrangThai.Items.Add("Nộp bản cứng");
+                cbTrangThai.Items.Add("Nộp sau chỉnh sửa");
+                cbTrangThai.SelectedIndex = -1;
+            }
         }
 
-        private void btnNop_Click(object sender, EventArgs e)
+        private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (cbLoai.SelectedIndex == -1 || cbMa.SelectedIndex == -1 || cbNguoiNop.SelectedIndex == -1 || cbTrangThai.SelectedIndex == -1)
-            {
-                MessageBox.Show("Vui lòng chọn đầy đủ thông tin!");
-                return;
-            }
+            if (!ValidateHelper.Required(cbLoai, "Loại sản phẩm")) return;
+            if (!ValidateHelper.Required(cbMa, "Sản phẩm")) return;
+            if (!ValidateHelper.Required(cbTrangThai, "Trạng thái")) return;
+            if (!ValidateHelper.Required(cbNguoiNop, "Người nộp")) return;
 
             var nop = new NopSanPham
             {
@@ -125,8 +133,29 @@ namespace QLNCKH.Forms
             new Repository<NopSanPham>().Insert(nop);
             MessageBox.Show("Nộp sản phẩm thành công!");
 
+            cbLoai.SelectedIndex = -1;
+            cbTrangThai.DataSource = null;
+            cbTrangThai.Items.Clear();
+            cbMa.DataSource = null;
+            cbMa.Items.Clear();
+            cbNguoiNop.DataSource = null;
+            cbNguoiNop.Items.Clear();
+
+            // Logic sửa trạng thái đề tài
+            if (nop.Loai != "Đề tài") return;
+            var dt = new Repository<DeTai>().GetById(nop.MaSo);
+
+            switch (nop.TrangThaiNop) {
+                case "Nộp bản mềm":
+                    if (dt.TrangThaiId < 3) dt.TrangThaiId = 3;
+                    new Repository<DeTai>().Update(dt);
+                    break;
+                default:
+                    if (dt.TrangThaiId < 4) dt.TrangThaiId = 4;
+                    new Repository<DeTai>().Update(dt);
+                    break;
+            }
         }
-        
 
         private void btnHuy_Click(object sender, EventArgs e)
         {

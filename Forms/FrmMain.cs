@@ -91,6 +91,10 @@ namespace QLNCKH
                     GetCreateForm = () => new FrmChuyenDeEdit(),
                 }
             ), "Quản lý thông tin chuyên đề NCKH"),
+
+            ["Nộp sản phẩm"] = (() => new FrmNopDeTaiEdit(), "Nộp sản phẩm"),
+
+
             ["Đạo văn"] = (() => new FrmList<DaoVan, DaoVanDto>(
                 new ListContext<DaoVan, DaoVanDto> {
                     Name = "đề tài",

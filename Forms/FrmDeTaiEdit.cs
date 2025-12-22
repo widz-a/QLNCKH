@@ -125,6 +125,7 @@ namespace QLNCKH.Forms {
                 LinhVucId = (int)cbLV.SelectedValue,
                 MaGVHuongDan = cbGV.SelectedValue.ToString(),
                 ThoiGianDuKien = dtDate.Value,
+                TrangThaiId = 1
             };
 
 
