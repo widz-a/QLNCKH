@@ -17,7 +17,6 @@ namespace QLNCKH.Forms {
 
         public FrmDeTaiSVEdit() {
             InitializeComponent();
-            LoadDanhMuc();
 
             btnLuu.Click += btnLuu_Click;
             btnHuy.Click += btnHuy_Click;
@@ -25,6 +24,8 @@ namespace QLNCKH.Forms {
 
         public FrmDeTaiSVEdit(string MaDT) : this() {
             _MaDT = MaDT;
+            LoadDanhMuc();
+
         }
 
         public FrmDeTaiSVEdit(string id, string MaDT) : this(MaDT) {
@@ -48,11 +49,21 @@ namespace QLNCKH.Forms {
                 item.Value.SelectedIndex = -1;
             }
 
+            var deTai = new Repository<DeTai>().GetById(_MaDT);
+
+            //TODO: Fix this later
+            var maSvDaCo = (deTai?.SinhViens ?? Enumerable.Empty<DeTai_SinhVien>())
+                .Select(x => x.MaSV)
+                .ToList();
+
             cbSV.DataSource = new Repository<SinhVien>()
-                .GetSome(gv => new {
-                    Value = gv.MaSV,
-                    Display = $"({gv.MaSV}) {gv.HoTen}"
-                });
+                .Filter(
+                    sv => !maSvDaCo.Contains(sv.MaSV),
+                    sv => new {
+                        Value = sv.MaSV,
+                        Display = $"({sv.MaSV}) {sv.HoTen}"
+                    }
+                );
 
             cbSV.DisplayMember = "Display";
             cbSV.ValueMember = "Value";
@@ -73,10 +84,7 @@ namespace QLNCKH.Forms {
             //Validate
             if (!ValidateHelper.Required(cbSV, "Sinh viên")) return;
             if (!ValidateHelper.Required(cbVT, "Vai trò")) return;
-            if (string.IsNullOrEmpty(_MaDT)) {
-                MessageBox.Show("_MaDT đang null");
-                return;
-            }
+
             //Lưu
             var sv = new DeTai_SinhVien {
                 MaDT = _MaDT,

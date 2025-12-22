@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 public class ListContext<T, TDto> where T : class where TDto : class {
     public string Name { get; set; }
     public Expression<Func<T, TDto>> GetHeaderSelector { get; set; }
+    public Expression<Func<T, bool>>? GetFilter { get; set; }
     public string IdColumn { get; set; }
     public Dictionary<string, string> HeaderNames { get; set; }
     public EditFormFactory GetEditForm { get; set; }
@@ -32,7 +33,9 @@ public class FrmList<T, TDto> : FrmBaseList where T : class where TDto : class {
     }
 
     private void LoadData() {
-        GetDgv().DataSource = new Repository<T>().GetSome(_ctx.GetHeaderSelector);
+        GetDgv().DataSource = _ctx.GetFilter != null ?
+            new Repository<T>().Filter(_ctx.GetFilter, _ctx.GetHeaderSelector) : 
+            new Repository<T>().GetSome(_ctx.GetHeaderSelector);
         foreach (var item in _ctx.HeaderNames) {
             GetDgv().Columns[item.Key].HeaderText = item.Value;
         }
