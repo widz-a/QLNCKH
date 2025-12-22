@@ -25,14 +25,14 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDeTaiSVEdit));
             tableLayoutPanel2 = new TableLayoutPanel();
+            cbVT = new ComboBox();
+            cbSV = new ComboBox();
             label2 = new Label();
             label1 = new Label();
             tableLayoutPanel5 = new TableLayoutPanel();
             btnLuu = new Button();
             btnHuy = new Button();
             title = new ReaLTaiizor.Controls.FoxBigLabel();
-            cbSV = new ComboBox();
-            cbVT = new ComboBox();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel5.SuspendLayout();
             SuspendLayout();
@@ -59,6 +59,32 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel2.Size = new Size(353, 74);
             tableLayoutPanel2.TabIndex = 1;
+            // 
+            // cbVT
+            // 
+            cbVT.Dock = DockStyle.Fill;
+            cbVT.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbVT.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            cbVT.FormattingEnabled = true;
+            cbVT.Items.AddRange(new object[] { "Nam", "Nữ" });
+            cbVT.Location = new Point(130, 45);
+            cbVT.Margin = new Padding(3, 6, 3, 6);
+            cbVT.Name = "cbVT";
+            cbVT.Size = new Size(220, 27);
+            cbVT.TabIndex = 11;
+            // 
+            // cbSV
+            // 
+            cbSV.Dock = DockStyle.Fill;
+            cbSV.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbSV.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            cbSV.FormattingEnabled = true;
+            cbSV.Items.AddRange(new object[] { "Nam", "Nữ" });
+            cbSV.Location = new Point(130, 6);
+            cbSV.Margin = new Padding(3, 6, 3, 6);
+            cbSV.Name = "cbSV";
+            cbSV.Size = new Size(220, 27);
+            cbSV.TabIndex = 10;
             // 
             // label2
             // 
@@ -134,32 +160,6 @@
             title.TabIndex = 0;
             title.Text = "Thêm thông tin";
             // 
-            // cbSV
-            // 
-            cbSV.Dock = DockStyle.Fill;
-            cbSV.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbSV.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            cbSV.FormattingEnabled = true;
-            cbSV.Items.AddRange(new object[] { "Nam", "Nữ" });
-            cbSV.Location = new Point(130, 6);
-            cbSV.Margin = new Padding(3, 6, 3, 6);
-            cbSV.Name = "cbSV";
-            cbSV.Size = new Size(220, 27);
-            cbSV.TabIndex = 10;
-            // 
-            // cbVT
-            // 
-            cbVT.Dock = DockStyle.Fill;
-            cbVT.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbVT.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            cbVT.FormattingEnabled = true;
-            cbVT.Items.AddRange(new object[] { "Nam", "Nữ" });
-            cbVT.Location = new Point(130, 45);
-            cbVT.Margin = new Padding(3, 6, 3, 6);
-            cbVT.Name = "cbVT";
-            cbVT.Size = new Size(220, 27);
-            cbVT.TabIndex = 11;
-            // 
             // FrmDeTaiSVEdit
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -170,7 +170,7 @@
             Controls.Add(tableLayoutPanel2);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmDeTaiSVEdit";
-            Text = "Thêm thông tin sinh viên";
+            Text = "Thêm thông tin";
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
             tableLayoutPanel5.ResumeLayout(false);

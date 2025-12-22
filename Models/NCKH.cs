@@ -99,6 +99,15 @@ public class ChuyenDe
     public LinhVuc LinhVuc { get; set; }
 }
 
+public class ChuyenDeTdo {
+    public string MaCD { get; set; }
+
+    public string TenCD { get; set; }
+
+    public string TenSV { get; set; }
+    public string LinhVuc { get; set; }
+}
+
 #endregion
 
 #region NỘP SẢN PHẨM

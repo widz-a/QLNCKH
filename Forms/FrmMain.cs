@@ -69,7 +69,28 @@ namespace QLNCKH
                     GetEditForm = id => new FrmDeTaiEdit(id[0]),
                     GetCreateForm = () => new FrmDeTaiEdit(),
                 }
-            ), "Quản lý thông tin đề tài NCKH")
+            ), "Quản lý thông tin đề tài NCKH"),
+            ["Chuyên đề"] = (() => new FrmList<ChuyenDe, ChuyenDeTdo>(
+                new ListContext<ChuyenDe, ChuyenDeTdo> {
+                    Name = "đề tài",
+                    GetHeaderSelector = (sv => new ChuyenDeTdo {
+                        MaCD = sv.MaCD,
+                        TenCD = sv.TenCD,
+                        TenSV = sv.SinhVien.HoTen,
+                        LinhVuc = sv.LinhVuc.TenLinhVuc,
+
+                    }),
+                    IdColumn = "MaCD",
+                    HeaderNames = new Dictionary<string, string> {
+                        ["MaCD"] = "Mã",
+                        ["TenCD"] = "Tên chuyên đề",
+                        ["TenSV"] = "Sinh viên",
+                        ["LinhVuc"] = "Lĩnh vực",
+                    },
+                    GetEditForm = id => new FrmChuyenDeEdit(id[0]),
+                    GetCreateForm = () => new FrmChuyenDeEdit(),
+                }
+            ), "Quản lý thông tin chuyên đề NCKH")
         };
 
         public FrmMain() {
@@ -83,7 +104,6 @@ namespace QLNCKH
 
             //Load home
             LoadForm(new FrmHome(), "Trang chủ");
-
         }
 
         private void InitSidebar() {
