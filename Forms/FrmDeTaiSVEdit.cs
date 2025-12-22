@@ -95,7 +95,7 @@ namespace QLNCKH.Forms {
 
             Repository<DeTai_SinhVien> repo = new Repository<DeTai_SinhVien>();
             if (_id == null) {
-                if (repo.Exists(cbSV.SelectedValue, _MaDT)) {
+                if (repo.Exists(_MaDT, cbSV.SelectedValue)) {
                     MessageBox.Show("Sinh viên này đã có trong nhóm", "Lỗi");
                     return;
                 }

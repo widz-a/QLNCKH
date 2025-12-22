@@ -44,7 +44,20 @@
             label2 = new Label();
             label1 = new Label();
             tabThanhVien = new TabPage();
-            pnlMain = new Panel();
+            tableLayoutPanel4 = new TableLayoutPanel();
+            listView1 = new ListView();
+            lvStt = new ColumnHeader();
+            lvMaSV = new ColumnHeader();
+            lvTenSV = new ColumnHeader();
+            lvVT = new ColumnHeader();
+            tableLayoutPanel6 = new TableLayoutPanel();
+            btnTvXoa = new Button();
+            btnTvThem = new Button();
+            tableLayoutPanel7 = new TableLayoutPanel();
+            cbVT = new ComboBox();
+            label5 = new Label();
+            cbSV = new ComboBox();
+            label3 = new Label();
             tableLayoutPanel5.SuspendLayout();
             tab.SuspendLayout();
             tabThongTin.SuspendLayout();
@@ -52,6 +65,9 @@
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tabThanhVien.SuspendLayout();
+            tableLayoutPanel4.SuspendLayout();
+            tableLayoutPanel6.SuspendLayout();
+            tableLayoutPanel7.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel5
@@ -302,7 +318,7 @@
             // 
             // tabThanhVien
             // 
-            tabThanhVien.Controls.Add(pnlMain);
+            tabThanhVien.Controls.Add(tableLayoutPanel4);
             tabThanhVien.Location = new Point(4, 29);
             tabThanhVien.Name = "tabThanhVien";
             tabThanhVien.Padding = new Padding(3);
@@ -311,15 +327,160 @@
             tabThanhVien.Text = "Thành viên";
             tabThanhVien.UseVisualStyleBackColor = true;
             // 
-            // pnlMain
+            // tableLayoutPanel4
             // 
-            pnlMain.BackColor = SystemColors.Control;
-            pnlMain.Dock = DockStyle.Fill;
-            pnlMain.Location = new Point(3, 3);
-            pnlMain.Margin = new Padding(3, 3, 3, 0);
-            pnlMain.Name = "pnlMain";
-            pnlMain.Size = new Size(725, 253);
-            pnlMain.TabIndex = 7;
+            tableLayoutPanel4.ColumnCount = 1;
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.Controls.Add(listView1, 0, 1);
+            tableLayoutPanel4.Controls.Add(tableLayoutPanel6, 0, 0);
+            tableLayoutPanel4.Dock = DockStyle.Fill;
+            tableLayoutPanel4.Location = new Point(3, 3);
+            tableLayoutPanel4.Name = "tableLayoutPanel4";
+            tableLayoutPanel4.RowCount = 2;
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 19.762846F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 80.23715F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel4.Size = new Size(725, 253);
+            tableLayoutPanel4.TabIndex = 1;
+            // 
+            // listView1
+            // 
+            listView1.Columns.AddRange(new ColumnHeader[] { lvStt, lvMaSV, lvTenSV, lvVT });
+            listView1.Dock = DockStyle.Fill;
+            listView1.FullRowSelect = true;
+            listView1.Location = new Point(3, 53);
+            listView1.MultiSelect = false;
+            listView1.Name = "listView1";
+            listView1.Size = new Size(719, 197);
+            listView1.TabIndex = 0;
+            listView1.UseCompatibleStateImageBehavior = false;
+            listView1.View = View.Details;
+            // 
+            // lvStt
+            // 
+            lvStt.Text = "STT";
+            // 
+            // lvMaSV
+            // 
+            lvMaSV.Text = "Mã sinh viên";
+            lvMaSV.Width = 150;
+            // 
+            // lvTenSV
+            // 
+            lvTenSV.Text = "Họ và tên";
+            lvTenSV.Width = 400;
+            // 
+            // lvVT
+            // 
+            lvVT.Text = "Vai trò";
+            lvVT.Width = 200;
+            // 
+            // tableLayoutPanel6
+            // 
+            tableLayoutPanel6.ColumnCount = 4;
+            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
+            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.6036158F));
+            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 1.25173855F));
+            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.6036158F));
+            tableLayoutPanel6.Controls.Add(btnTvXoa, 3, 0);
+            tableLayoutPanel6.Controls.Add(btnTvThem, 1, 0);
+            tableLayoutPanel6.Controls.Add(tableLayoutPanel7, 0, 0);
+            tableLayoutPanel6.Dock = DockStyle.Fill;
+            tableLayoutPanel6.Location = new Point(3, 3);
+            tableLayoutPanel6.Name = "tableLayoutPanel6";
+            tableLayoutPanel6.RowCount = 1;
+            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel6.Size = new Size(719, 44);
+            tableLayoutPanel6.TabIndex = 1;
+            // 
+            // btnTvXoa
+            // 
+            btnTvXoa.Dock = DockStyle.Fill;
+            btnTvXoa.Location = new Point(616, 3);
+            btnTvXoa.Name = "btnTvXoa";
+            btnTvXoa.Size = new Size(100, 38);
+            btnTvXoa.TabIndex = 16;
+            btnTvXoa.Text = "Xóa";
+            btnTvXoa.UseVisualStyleBackColor = true;
+            // 
+            // btnTvThem
+            // 
+            btnTvThem.Dock = DockStyle.Fill;
+            btnTvThem.Location = new Point(504, 3);
+            btnTvThem.Name = "btnTvThem";
+            btnTvThem.Size = new Size(98, 38);
+            btnTvThem.TabIndex = 14;
+            btnTvThem.Text = "Thêm";
+            btnTvThem.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel7
+            // 
+            tableLayoutPanel7.ColumnCount = 4;
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
+            tableLayoutPanel7.Controls.Add(cbVT, 3, 0);
+            tableLayoutPanel7.Controls.Add(label5, 2, 0);
+            tableLayoutPanel7.Controls.Add(cbSV, 1, 0);
+            tableLayoutPanel7.Controls.Add(label3, 0, 0);
+            tableLayoutPanel7.Dock = DockStyle.Fill;
+            tableLayoutPanel7.Location = new Point(3, 3);
+            tableLayoutPanel7.Name = "tableLayoutPanel7";
+            tableLayoutPanel7.RowCount = 1;
+            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel7.Size = new Size(495, 38);
+            tableLayoutPanel7.TabIndex = 17;
+            // 
+            // cbVT
+            // 
+            cbVT.Dock = DockStyle.Fill;
+            cbVT.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbVT.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            cbVT.FormattingEnabled = true;
+            cbVT.Items.AddRange(new object[] { "Nam", "Nữ" });
+            cbVT.Location = new Point(397, 6);
+            cbVT.Margin = new Padding(3, 6, 3, 6);
+            cbVT.Name = "cbVT";
+            cbVT.Size = new Size(95, 27);
+            cbVT.TabIndex = 44;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Dock = DockStyle.Fill;
+            label5.Font = new Font("Segoe UI", 10.2F);
+            label5.Location = new Point(327, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(64, 38);
+            label5.TabIndex = 43;
+            label5.Text = "Vai trò:";
+            label5.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // cbSV
+            // 
+            cbSV.Dock = DockStyle.Fill;
+            cbSV.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbSV.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            cbSV.FormattingEnabled = true;
+            cbSV.Items.AddRange(new object[] { "Nam", "Nữ" });
+            cbSV.Location = new Point(92, 6);
+            cbSV.Margin = new Padding(3, 6, 3, 6);
+            cbSV.Name = "cbSV";
+            cbSV.Size = new Size(229, 27);
+            cbSV.TabIndex = 42;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Dock = DockStyle.Fill;
+            label3.Font = new Font("Segoe UI", 10.2F);
+            label3.Location = new Point(3, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(83, 38);
+            label3.TabIndex = 22;
+            label3.Text = "Sinh viên:";
+            label3.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // FrmDeTaiEdit
             // 
@@ -344,6 +505,10 @@
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
             tabThanhVien.ResumeLayout(false);
+            tableLayoutPanel4.ResumeLayout(false);
+            tableLayoutPanel6.ResumeLayout(false);
+            tableLayoutPanel7.ResumeLayout(false);
+            tableLayoutPanel7.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -365,9 +530,22 @@
         private TableLayoutPanel tableLayoutPanel3;
         private Label label4;
         private RichTextBox txtTen;
-        private Panel pnlMain;
         private ComboBox cbLV;
         private DateTimePicker dtDate;
         private ComboBox cbGV;
+        private TableLayoutPanel tableLayoutPanel4;
+        private ListView listView1;
+        private TableLayoutPanel tableLayoutPanel6;
+        private Button btnTvThem;
+        private Button btnTvXoa;
+        private ColumnHeader lvStt;
+        private ColumnHeader lvMaSV;
+        private ColumnHeader lvTenSV;
+        private ColumnHeader lvVT;
+        private TableLayoutPanel tableLayoutPanel7;
+        private Label label3;
+        private ComboBox cbSV;
+        private Label label5;
+        private ComboBox cbVT;
     }
 }

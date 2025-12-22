@@ -52,7 +52,7 @@ public class AppDbContext : DbContext {
         base.OnModelCreating(modelBuilder);
 
         modelBuilder.Entity<DeTai_SinhVien>()
-            .HasKey(x => new { x.MaSV, x.MaDT });
+            .HasKey(x => new { x.MaDT, x.MaSV});
 
         modelBuilder.Entity<HoiDong_DeTai>()
             .HasKey(x => new { x.MaHD, x.MaDT });
