@@ -108,7 +108,11 @@ namespace QLNCKH
                     }),
                     IdColumn = "Id",
                     HeaderNames = new Dictionary<string, string> {
-                        //TODO
+                        ["Id"] = "Mã đề tài",
+                        ["TenDT"] = "Tên đề tài",
+                        ["LanQuet"] = "Lần quét",
+                        ["TyLeTrungLap"] = "KQ rà quét",
+                        ["KetLuan"] = "Kết luận",
                     },
                     GetCreateForm = () => new FrmDaoVanEdit(),
                 }
