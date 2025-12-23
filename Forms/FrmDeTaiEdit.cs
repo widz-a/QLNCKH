@@ -91,25 +91,28 @@ namespace QLNCKH.Forms {
             cbGV.SelectedIndex = -1;
         }
 
-        private void LoadDanhMucThanhVien() {
-            var vtData = DanhMucService.GetAll("Vai trò đề tài");
-            cbVT.DataSource = vtData;
-            cbVT.DisplayMember = "Ten";
-            cbVT.ValueMember = "ID";
-            cbVT.SelectedIndex = -1;
-
-            bool coNhomTruongChua = listView1.Items
+        private bool coNhomTruongChua() {
+            return listView1.Items
                 .Cast<ListViewItem>()
                 .Any(i =>
                     i.SubItems.Count > 3 &&
                     i.SubItems[3].Text == "Nhóm trưởng"
                 );
+        }
 
-            if (coNhomTruongChua) {
+        private void LoadDanhMucThanhVien() {
+            var vtData = DanhMucService.GetAll("Vai trò đề tài");
+
+            if (coNhomTruongChua()) {
                 vtData = vtData
                     .Where(x => x.Ten != "Nhóm trưởng")
                     .ToList();
             }
+
+            cbVT.DataSource = vtData;
+            cbVT.DisplayMember = "Ten";
+            cbVT.ValueMember = "ID";
+            cbVT.SelectedIndex = -1;
 
             var maSvDaCo = listView1.Items
                 .Cast<ListViewItem>()
@@ -176,6 +179,14 @@ namespace QLNCKH.Forms {
 
             if (listView1.Items.Count == 0) {
                 MessageBox.Show("Vui lòng thêm thành viên.",
+                "Thiếu thông tin",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!coNhomTruongChua()) {
+                MessageBox.Show("Vui lòng thêm nhóm trưởng",
                 "Thiếu thông tin",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Warning);
