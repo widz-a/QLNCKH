@@ -39,10 +39,12 @@ public class AppDbContext : DbContext {
     public DbSet<HoiDong> HoiDong { get; set; }
     public DbSet<HoiDong_ThanhVien> HoiDong_ThanhVien { get; set; }
     public DbSet<HoiDong_DeTai> HoiDong_DeTai { get; set; }
+    public DbSet<HoiDong_ChuyenDe> HoiDong_ChuyenDe { get; set; }
 
     public DbSet<PhieuCham> PhieuCham { get; set; }
 
-    public DbSet<KetQua> KetQua { get; set; }
+    public DbSet<KetQua_DeTai> KetQua_DeTai { get; set; }
+    public DbSet<KetQua_ChuyenDe> KetQua_ChuyenDe { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
