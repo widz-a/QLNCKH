@@ -3815,14 +3815,15 @@ GO
    ========================= */
 CREATE TABLE HoiDong (
     MaHD INT IDENTITY PRIMARY KEY,
-    NgayCham DATE
+    NgayCham DATE NOT NULL,
+    Loai NVARCHAR(20) NOT NULL -- 'DETAI', 'CHUYENDE'
 );
 GO
 
 CREATE TABLE HoiDong_ThanhVien (
     MaHD INT,
     MaCB NVARCHAR(20),
-    VaiTroHoiDong NVARCHAR(50),
+    VaiTro NVARCHAR(30), -- Chủ tịch, Thư ký, Thành viên
 
     PRIMARY KEY (MaHD, MaCB),
     FOREIGN KEY (MaHD) REFERENCES HoiDong(MaHD),
@@ -3840,30 +3841,50 @@ CREATE TABLE HoiDong_DeTai (
 );
 GO
 
+CREATE TABLE HoiDong_ChuyenDe (
+    MaHD INT,
+    MaCD NVARCHAR(20),
+    Vong INT NOT NULL, -- 1 = sơ loại, 2 = lấy giải
+
+    PRIMARY KEY (MaHD, MaCD, Vong),
+    FOREIGN KEY (MaHD) REFERENCES HoiDong(MaHD),
+    FOREIGN KEY (MaCD) REFERENCES ChuyenDe(MaCD)
+);
+GO
+
 /* =========================
    CHẤM ĐIỂM (44–45)
    ========================= */
 CREATE TABLE PhieuCham (
-    Id INT IDENTITY PRIMARY KEY,
-    MaSo NVARCHAR(20),
-    Loai NVARCHAR(10), -- DT / CD
+    MaPhieu INT IDENTITY PRIMARY KEY,
+    MaHD INT,
     MaCB NVARCHAR(20),
-    VaiTroHoiDong NVARCHAR(50),
-    Diem FLOAT,
+    Diem DECIMAL(4,2) NOT NULL,
 
-    FOREIGN KEY (MaCB) REFERENCES GiangVien(MaCB)
+    FOREIGN KEY (MaHD) REFERENCES HoiDong(MaHD),
+    FOREIGN KEY (MaCB) REFERENCES GiangVien(MaCB),
+
+    CONSTRAINT UQ_Phieu UNIQUE (MaHD, MaCB)
 );
 GO
 
 /* =========================
    KẾT QUẢ – XẾP GIẢI (46–47)
    ========================= */
-CREATE TABLE KetQua (
-    MaSo NVARCHAR(20) PRIMARY KEY,
-    Loai NVARCHAR(10),
-    DiemTrungBinh FLOAT,
-    GiaiId INT,
+CREATE TABLE KetQua_DeTai (
+    MaDT NVARCHAR(20) PRIMARY KEY,
+    DiemTB DECIMAL(4,2),
+    Giai NVARCHAR(30) NULL
+);
+GO
 
-    FOREIGN KEY (GiaiId) REFERENCES GiaiThuong(GiaiId)
+CREATE TABLE KetQua_ChuyenDe (
+    MaCD NVARCHAR(20),
+    Vong INT,
+    DiemTB DECIMAL(4,2),
+    Dat BIT,              -- vòng 1: đi tiếp hay không
+    Giai NVARCHAR(30) NULL,
+
+    PRIMARY KEY (MaCD, Vong)
 );
 GO
