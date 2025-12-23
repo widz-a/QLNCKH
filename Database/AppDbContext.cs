@@ -2,10 +2,6 @@
 
 public class AppDbContext : DbContext {
 
-    //
-    private static string ConnectionString = "Server=DESKTOP-9BRK4F9; Database=QLNCKH;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True;";
-
-
     //Đăng ký
     public DbSet<DanToc> DanToc { get; set; }
     public DbSet<TonGiao> TonGiao { get; set; }
@@ -48,7 +44,7 @@ public class AppDbContext : DbContext {
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
-        => options.UseSqlServer(ConnectionString);
+        => options.UseSqlServer(ConnectionString.connectionString);
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         base.OnModelCreating(modelBuilder);
