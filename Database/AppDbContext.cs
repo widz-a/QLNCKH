@@ -52,7 +52,11 @@ public class AppDbContext : DbContext {
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         base.OnModelCreating(modelBuilder);
-
+        foreach (var entityType in modelBuilder.Model.GetEntityTypes()) {
+            foreach (var fk in entityType.GetForeignKeys()) {
+                fk.DeleteBehavior = DeleteBehavior.Cascade;
+            }
+        }
         modelBuilder.Entity<DeTai_SinhVien>()
             .HasKey(x => new { x.MaDT, x.MaSV});
 

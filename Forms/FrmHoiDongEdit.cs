@@ -1,26 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using static System.Windows.Forms.ListView;
+﻿using System.Data;
 
 namespace QLNCKH.Forms {
     public partial class FrmHoiDongEdit : Form {
 
-        private string? _id = null;
+        private int? _id = null;
+        private string? _dc = null;
 
         public FrmHoiDongEdit() {
             InitializeComponent();
-            LoadDanhMuc();
             LoadDanhMucThanhVien();
+
+            //Ẩn tab
+            tab.TabPages.Remove(tabDTCD);
 
             btnLuu.Click += btnLuu_Click;
             btnHuy.Click += btnHuy_Click;
@@ -29,25 +20,49 @@ namespace QLNCKH.Forms {
                 //txtMaCB.Focus();
             };
 
-            /*listView1.SelectedIndexChanged += (s, e) => {
-                if (listView1.SelectedItems.Count == 0) return;
+            cbDTCD.SelectedIndexChanged += (s, e) => {
+                listView2.Items.Clear();
+                LoadDanhMucDC();
+            };
 
-                ListViewItem item = listView1.SelectedItems[0];
-                cbSV.SelectedItem = item.SubItems[1];
-                cbVT.SelectedValue = item.SubItems[3];
-            };*/
+            btnDcThem.Click += (s, e) => {
+                if (_dc == null) return;
+                if (!ValidateHelper.Required(cbNameDC, _dc)) return;
 
-            btnTvThem.Click += (s, e) => {
-                if (!ValidateHelper.Required(cbSV, "Sinh viên")) return;
-                if (!ValidateHelper.Required(cbVT, "Vai trò")) return;
-
-                var maSV = cbSV.SelectedValue.ToString();
-                var sv = new Repository<SinhVien>().GetById(maSV);
+                string maDT = cbNameDC.SelectedValue.ToString();
+                
+                string tenDT;
+                if (_dc == "Đề tài") {
+                    tenDT = new Repository<DeTai>().GetById(maDT).TenDT;
+                } else {
+                    tenDT = new Repository<ChuyenDe>().GetById(maDT).TenCD;
+                }
 
                 var item = new ListViewItem((listView1.Items.Count + 1).ToString());
-                item.SubItems.Add(maSV);
-                item.SubItems.Add(sv.HoTen);
-                item.SubItems.Add(DanhMucService.GetAll("Vai trò đề tài").Find(x => x.Id == (int)cbVT.SelectedValue).Ten);
+                item.SubItems.Add(maDT);
+                item.SubItems.Add(tenDT);
+
+                listView2.Items.Add(item);
+            };
+
+            btnDcXoa.Click += (s, e) => {
+                if (listView2.SelectedItems.Count == 0) return;
+
+                ListViewItem item = listView2.SelectedItems[0];
+                listView2.Items.Remove(item);
+            };
+
+            btnTvThem.Click += (s, e) => {
+                if (!ValidateHelper.Required(cbCB, "Giảng viên")) return;
+                if (!ValidateHelper.Required(cbVT, "Vai trò")) return;
+
+                string maCB = cbCB.SelectedValue.ToString();
+                GiangVien canbo = new Repository<GiangVien>().GetById(maCB);
+                
+                var item = new ListViewItem((listView1.Items.Count + 1).ToString());
+                item.SubItems.Add(maCB);
+                item.SubItems.Add(canbo.HoTen);
+                item.SubItems.Add(cbVT.SelectedItem.ToString());
 
                 listView1.Items.Add(item);
                 LoadDanhMucThanhVien();
@@ -63,58 +78,59 @@ namespace QLNCKH.Forms {
         }
 
         public FrmHoiDongEdit(string id) : this() {
-            _id = id;
+            int __id;
+            int.TryParse(id, out __id);
+            _id = __id;
             LoadData();
 
-            this.Text = "Sửa thông tin đề tài NCKH";
-            title.Text = "Sửa thông tin đề tài NCKH";
+            this.Text = "Sửa thông tin hội đồng";
+            title.Text = "Sửa thông tin hội đồng";
             btnLuu.Text = "Lưu";
 
-            txtMaDT.Enabled = false;
+            cbDTCD.Enabled = false;
+            LoadDanhMucDC();
         }
 
-        private void LoadDanhMuc() {
-            var lvData = DanhMucService.GetAll("Lĩnh vực");
-            cbLV.DataSource = lvData;
-            cbLV.DisplayMember = "Ten";
-            cbLV.ValueMember = "ID";
-            cbLV.SelectedIndex = -1;
+        private void LoadDanhMucDC() {
+            _dc = cbDTCD.SelectedItem.ToString();
+            tabDTCD.Text = _dc;
 
-            cbGV.DataSource = new Repository<GiangVien>()
-                .GetSome(gv => new {
-                    Value = gv.MaCB,
-                    Display = $"({gv.MaCB}) {gv.HoTen}"
-                });
+            if (tab.TabPages["tabDTCD"] == null) tab.TabPages.Add(tabDTCD);
 
-            cbGV.DisplayMember = "Display";
-            cbGV.ValueMember = "Value";
-            cbGV.SelectedIndex = -1;
+            if (_dc == "Đề tài") {
+                cbNameDC.DataSource = new Repository<DeTai>()
+                    .GetSome(x => new {
+                        Value = x.MaDT,
+                        Display = $"({x.MaDT}) {x.TenDT}"
+                    });
+            } else {
+                cbNameDC.DataSource = new Repository<ChuyenDe>()
+                    .GetSome(x => new {
+                        Value = x.MaCD,
+                        Display = $"({x.MaCD}) {x.TenCD}"
+                    });
+            }
+
+            cbNameDC.DisplayMember = "Display";
+            cbNameDC.ValueMember = "Value";
+            cbNameDC.SelectedIndex = -1;
         }
 
-        private bool coNhomTruongChua() {
+        private bool coChuTichChua() {
             return listView1.Items
                 .Cast<ListViewItem>()
                 .Any(i =>
                     i.SubItems.Count > 3 &&
-                    i.SubItems[3].Text == "Nhóm trưởng"
+                    i.SubItems[3].Text == "Chủ tịch"
                 );
         }
 
         private void LoadDanhMucThanhVien() {
-            var vtData = DanhMucService.GetAll("Vai trò đề tài");
-
-            if (coNhomTruongChua()) {
-                vtData = vtData
-                    .Where(x => x.Ten != "Nhóm trưởng")
-                    .ToList();
+            if (coChuTichChua()) {
+                cbVT.Items.Remove("Chủ tịch");
             }
 
-            cbVT.DataSource = vtData;
-            cbVT.DisplayMember = "Ten";
-            cbVT.ValueMember = "ID";
-            cbVT.SelectedIndex = -1;
-
-            var maSvDaCo = listView1.Items
+            var maCbDaCo = listView1.Items
                 .Cast<ListViewItem>()
                 .Where(i =>
                     i.SubItems.Count > 1 &&
@@ -124,59 +140,91 @@ namespace QLNCKH.Forms {
                 .ToList();
 
 
-            cbSV.DataSource = new Repository<SinhVien>()
+            cbCB.DataSource = new Repository<GiangVien>()
                 .Filter(
-                    sv => !maSvDaCo.Contains(sv.MaSV),
+                    sv => !maCbDaCo.Contains(sv.MaCB),
                     sv => new {
-                        Value = sv.MaSV,
-                        Display = $"({sv.MaSV}) {sv.HoTen}"
+                        Value = sv.MaCB,
+                        Display = $"({sv.MaCB}) {sv.HoTen}"
                     }
                 );
 
-            cbSV.DisplayMember = "Display";
-            cbSV.ValueMember = "Value";
-            cbSV.SelectedIndex = -1;
+            cbCB.DisplayMember = "Display";
+            cbCB.ValueMember = "Value";
+            cbCB.SelectedIndex = -1;
         }
 
         private void LoadData() {
-            if (string.IsNullOrEmpty(_id)) return;
-            DeTai r = new Repository<DeTai>().GetById(_id);
+            if (_id == null) return;
+            HoiDong r = new Repository<HoiDong>().GetById(_id);
             if (r == null) return;
 
-            txtMaDT.Text = r.MaDT;
-            txtTen.Text = r.TenDT;
-            cbLV.SelectedValue = r.LinhVucId;
-            cbGV.SelectedValue = r.MaGVHuongDan;
-            dtDate.Value = r.ThoiGianDuKien;
+            //Thông tin
+            cbDTCD.SelectedItem = r.Loai;
+            dtDate.Value = r.NgayCham;
 
             //Thành viên
-
-            var sinhViens = new Repository<DeTai_SinhVien>().Filter(
-                x => x.MaDT == _id,
+            var canbo = new Repository<HoiDong_ThanhVien>().Filter(
+                x => x.MaHD == _id,
                 x => new {
-                    x.MaSV,
-                    HoTen = x.SinhVien.HoTen,
-                    VaiTro = x.VaiTro.Ten
+                    x.MaCB,
+                    HoTen = x.GiangVien.HoTen,
+                    VaiTro = x.VaiTro
                 }
             );
-            foreach (var x in sinhViens) {
+            foreach (var x in canbo) {
                 var item = new ListViewItem((listView1.Items.Count + 1).ToString());
-                item.SubItems.Add(x.MaSV);
+                item.SubItems.Add(x.MaCB);
                 item.SubItems.Add(x.HoTen);
                 item.SubItems.Add(x.VaiTro);
 
                 listView1.Items.Add(item);
                 LoadDanhMucThanhVien();
             }
+
+            //TODO: Đề tài
+            if (_dc == "Đề tài") {
+                Repository<HoiDong_DeTai> repoDT = new Repository<HoiDong_DeTai>();
+
+                var dts = repoDT.Filter(
+                    x => x.MaHD == _id,
+                    x => new {
+                        Ma = x.MaHD,
+                        Ten = x.DeTai.TenDT,
+                    }
+                );
+
+                foreach (var x in dts) {
+                    var item = new ListViewItem((listView1.Items.Count + 1).ToString());
+                    item.SubItems.Add(x.Ma + "");
+                    item.SubItems.Add(x.Ten);
+
+                    listView2.Items.Add(item);
+                }
+            } else {
+                Repository<HoiDong_ChuyenDe> repoDT = new Repository<HoiDong_ChuyenDe>();
+
+                var dts = repoDT.Filter(
+                    x => x.MaHD == _id,
+                    x => new {
+                        Ma = x.MaHD,
+                        Ten = x.ChuyenDe.TenCD,
+                    }
+                );
+
+                foreach (var x in dts) {
+                    var item = new ListViewItem((listView1.Items.Count + 1).ToString());
+                    item.SubItems.Add(x.Ma + "");
+                    item.SubItems.Add(x.Ten);
+
+                    listView2.Items.Add(item);
+                }
+            }
         }
 
         private void btnLuu_Click(object sender, EventArgs e) {
             //Validate
-            if (!ValidateHelper.Required(txtMaDT, "Mã đề tài")) return;
-            if (!ValidateHelper.Required(txtTen, "Tên đề tài")) return;
-            if (!ValidateHelper.Required(cbLV, "Lĩnh vực")) return;
-            if (!ValidateHelper.Required(cbGV, "Giảng viên hướng dẫn")) return;
-
+            if (!ValidateHelper.Required(cbDTCD, "Loại")) return;
             if (listView1.Items.Count == 0) {
                 MessageBox.Show("Vui lòng thêm thành viên.",
                 "Thiếu thông tin",
@@ -185,67 +233,94 @@ namespace QLNCKH.Forms {
                 return;
             }
 
-            if (!coNhomTruongChua()) {
-                MessageBox.Show("Vui lòng thêm nhóm trưởng",
+            if (!coChuTichChua()) {
+                MessageBox.Show("Vui lòng thêm chủ tịch",
                 "Thiếu thông tin",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Warning);
                 return;
             }
 
+            if (listView2.Items.Count == 0) {
+                MessageBox.Show($"Vui lòng thêm {_dc.ToLower()}.",
+                "Thiếu thông tin",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+                return;
+            }
             //Lưu
-            DeTai data = new DeTai {
-                MaDT = txtMaDT.Text.Trim(),
-                TenDT = txtTen.Text.Trim(),
-                LinhVucId = (int)cbLV.SelectedValue,
-                MaGVHuongDan = cbGV.SelectedValue.ToString(),
-                ThoiGianDuKien = dtDate.Value,
-                TrangThaiId = 1
+            
+            HoiDong hoiDong = new HoiDong {
+                Loai = _dc,
+                NgayCham = dtDate.Value,
             };
 
-
-            Repository<DeTai> repo = new Repository<DeTai>();
+            Repository<HoiDong> repoHD = new Repository<HoiDong>();
             if (_id == null) {
-                if (repo.Exists(txtMaDT.Text)) {
-                    MessageBox.Show("Mã giảng viên này đã tồn tại", "Lỗi");
-                    return;
-                }
-                repo.Insert(data);
+                hoiDong = repoHD.Insert(hoiDong);
             } else
-                repo.Update(data);
+                hoiDong = repoHD.Update(hoiDong);
 
             // ===== LƯU LẠI THÀNH VIÊN =====
-            Repository<DeTai_SinhVien> repoSv = new Repository<DeTai_SinhVien>();
+            Repository<HoiDong_ThanhVien> repoTv = new Repository<HoiDong_ThanhVien>();
 
-            // 1️⃣ Nếu sửa → xóa hết thành viên cũ
             if (_id != null) {
-                var oldItems = repoSv.Filter(x => x.MaDT == data.MaDT);
+                var oldItems = repoTv.Filter(x => x.MaHD == hoiDong.MaHD);
                 foreach (var old in oldItems)
-                    repoSv.Delete(old.MaDT, old.MaSV);
+                    repoTv.Delete(old.MaHD, old.MaCB);
             }
 
-            // 2️⃣ Lấy danh mục vai trò (cache 1 lần)
-            var dsVaiTro = DanhMucService.GetAll("Vai trò đề tài");
-
-            // 3️⃣ Insert lại từ ListView
             foreach (ListViewItem item in listView1.Items) {
                 string maSV = item.SubItems[1].Text;
                 string vaiTroTen = item.SubItems[3].Text;
 
-                int vaiTroId = dsVaiTro
-                    .First(x => x.Ten == vaiTroTen)
-                    .Id;
-
-                var sv = new DeTai_SinhVien {
-                    MaDT = data.MaDT,
-                    MaSV = maSV,
-                    VaiTroId = vaiTroId
+                var sv = new HoiDong_ThanhVien {
+                    MaHD = hoiDong.MaHD,
+                    MaCB = item.SubItems[1].Text,
+                    VaiTro = item.SubItems[3].Text
                 };
 
-                repoSv.Insert(sv);
+                repoTv.Insert(sv);
             }
 
-            DialogResult = DialogResult.OK;
+            //đỀ TÀI, CHUYÊN ĐỀ
+
+            if (_dc == "Đề tài") {
+                Repository<HoiDong_DeTai> repoDT = new Repository<HoiDong_DeTai>();
+
+                if (_id != null) {
+                    var oldItems = repoDT.Filter(x => x.MaHD == hoiDong.MaHD);
+                    foreach (var old in oldItems)
+                        repoDT.Delete(old.MaHD, old.MaDT);
+                }
+
+                foreach (ListViewItem item in listView2.Items) {
+                    var dt = new HoiDong_DeTai {
+                        MaHD = hoiDong.MaHD,
+                        MaDT = item.SubItems[1].Text,
+                    };
+
+                    repoDT.Insert(dt);
+                }
+            } else {
+                Repository<HoiDong_ChuyenDe> repoDT = new Repository<HoiDong_ChuyenDe>();
+
+                if (_id != null) {
+                    var oldItems = repoDT.Filter(x => x.MaHD == hoiDong.MaHD);
+                    foreach (var old in oldItems)
+                        repoDT.Delete(old.MaHD, old.MaCD);
+                }
+
+                foreach (ListViewItem item in listView2.Items) {
+                    var dt = new HoiDong_ChuyenDe {
+                        MaHD = hoiDong.MaHD,
+                        MaCD = item.SubItems[1].Text,
+                    };
+
+                    repoDT.Insert(dt);
+                }
+            }
+                DialogResult = DialogResult.OK;
             Close();
         }
 

@@ -128,7 +128,7 @@ namespace QLNCKH
                     SoThanhVien = sv.HoiDong_ThanhViens.Count,
 
                 }),
-                IdColumn = "Id",
+                IdColumn = "MaHD",
                 HeaderNames = new Dictionary<string, string> {
                     ["MaHD"] = "Mã hộ đồng",
                     ["Loai"] = "Sản phẩm",

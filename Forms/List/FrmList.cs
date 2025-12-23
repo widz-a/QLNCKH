@@ -91,7 +91,15 @@ public class FrmList<T, TDto> : FrmBaseList where T : class where TDto : class {
 
         if (MessageBox.Show($"Xóa {_ctx.Name} này?", "Xác nhận",
             MessageBoxButtons.YesNo) == DialogResult.Yes) {
-            new Repository<T>().Delete(id);
+            try {
+                new Repository<T>().Delete(id);
+            } catch {
+                //idc atp
+                int i;
+                int.TryParse(id[0], out i);
+                new Repository<T>().Delete(i);
+
+            }
             LoadData();
         }
     }

@@ -10,8 +10,8 @@ public interface IRepository<T> where T : class {
         Expression<Func<T, bool>> predicate,
         Expression<Func<T, TResult>> selector);
     T GetById(params object[] keyValues);
-    void Insert(T entity);
-    void Update(T entity);
+    T Insert(T entity);
+    T Update(T entity);
     void Delete(params object[] keyValues);
     bool Exists(params object[] keyValues);
 }
