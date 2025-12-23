@@ -172,49 +172,67 @@ public class DaoVanDto {
 #region HỘI ĐỒNG CHẤM
 
 [Table("HoiDong")]
-public class HoiDong
-{
+public class HoiDong {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int MaHD { get; set; }
 
-    public DateTime? NgayCham { get; set; }
+    [Required]
+    public DateTime NgayCham { get; set; }
 
-    public ICollection<HoiDong_ThanhVien> ThanhViens { get; set; }
-    public ICollection<HoiDong_DeTai> DeTais { get; set; }
+    [Required]
+    [MaxLength(20)]
+    public string Loai { get; set; } // "DETAI", "CHUYENDE"
+
+    /* =====================
+       NAVIGATION PROPERTIES
+       ===================== */
+
+    public ICollection<HoiDong_ThanhVien> HoiDong_ThanhViens { get; set; }
+    public ICollection<HoiDong_DeTai> HoiDong_DeTais { get; set; }
+    public ICollection<HoiDong_ChuyenDe> HoiDong_ChuyenDes { get; set; }
+    public ICollection<PhieuCham> PhieuChams { get; set; }
 }
 
 [Table("HoiDong_ThanhVien")]
-public class HoiDong_ThanhVien
-{
+public class HoiDong_ThanhVien {
     public int MaHD { get; set; }
 
-    [StringLength(20)]
+    [MaxLength(20)]
     public string MaCB { get; set; }
 
-    [StringLength(50)]
-    public string VaiTroHoiDong { get; set; }
+    [MaxLength(30)]
+    public string VaiTro { get; set; } // Chủ tịch, Thư ký, Thành viên
 
-    [ForeignKey(nameof(MaHD))]
+    // Navigation
     public HoiDong HoiDong { get; set; }
-
-    [ForeignKey(nameof(MaCB))]
     public GiangVien GiangVien { get; set; }
 }
 
 [Table("HoiDong_DeTai")]
-public class HoiDong_DeTai
-{
+public class HoiDong_DeTai {
     public int MaHD { get; set; }
 
-    [StringLength(20)]
+    [MaxLength(20)]
     public string MaDT { get; set; }
 
-    [ForeignKey(nameof(MaHD))]
+    // Navigation
     public HoiDong HoiDong { get; set; }
-
-    [ForeignKey(nameof(MaDT))]
     public DeTai DeTai { get; set; }
+}
+
+[Table("HoiDong_ChuyenDe")]
+public class HoiDong_ChuyenDe {
+    public int MaHD { get; set; }
+
+    [MaxLength(20)]
+    public string MaCD { get; set; }
+
+    public int Vong { get; set; } // 1 = sơ loại, 2 = lấy giải
+
+    // Navigation
+    public HoiDong HoiDong { get; set; }
+    public ChuyenDe ChuyenDe { get; set; }
 }
 
 #endregion
@@ -222,27 +240,21 @@ public class HoiDong_DeTai
 #region CHẤM ĐIỂM
 
 [Table("PhieuCham")]
-public class PhieuCham
-{
+public class PhieuCham {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get; set; }
+    public int MaPhieu { get; set; }
 
-    [StringLength(20)]
-    public string MaSo { get; set; }
+    public int MaHD { get; set; }
 
-    [StringLength(10)]
-    public string Loai { get; set; } // DT / CD
-
-    [StringLength(20)]
+    [MaxLength(20)]
     public string MaCB { get; set; }
 
-    [StringLength(50)]
-    public string VaiTroHoiDong { get; set; }
+    [Column(TypeName = "decimal(4,2)")]
+    public decimal Diem { get; set; }
 
-    public double Diem { get; set; }
-
-    [ForeignKey(nameof(MaCB))]
+    // Navigation
+    public HoiDong HoiDong { get; set; }
     public GiangVien GiangVien { get; set; }
 }
 
@@ -250,22 +262,38 @@ public class PhieuCham
 
 #region KẾT QUẢ – XẾP GIẢI
 
-[Table("KetQua")]
-public class KetQua
-{
+[Table("KetQua_DeTai")]
+public class KetQua_DeTai {
     [Key]
-    [StringLength(20)]
-    public string MaSo { get; set; }
+    [MaxLength(20)]
+    public string MaDT { get; set; }
 
-    [StringLength(10)]
-    public string Loai { get; set; }
+    [Column(TypeName = "decimal(4,2)")]
+    public decimal? DiemTB { get; set; }
 
-    public double DiemTrungBinh { get; set; }
+    [MaxLength(30)]
+    public string Giai { get; set; }
 
-    public int? GiaiId { get; set; }
+    // Navigation
+    public DeTai DeTai { get; set; }
+}
+[Table("KetQua_ChuyenDe")]
+public class KetQua_ChuyenDe {
+    [MaxLength(20)]
+    public string MaCD { get; set; }
 
-    [ForeignKey(nameof(GiaiId))]
-    public GiaiThuong GiaiThuong { get; set; }
+    public int Vong { get; set; }
+
+    [Column(TypeName = "decimal(4,2)")]
+    public decimal? DiemTB { get; set; }
+
+    public bool? Dat { get; set; } // vòng 1
+
+    [MaxLength(30)]
+    public string Giai { get; set; }
+
+    // Navigation
+    public ChuyenDe ChuyenDe { get; set; }
 }
 
 #endregion
