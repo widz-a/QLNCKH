@@ -319,17 +319,21 @@ namespace QLNCKH.Forms {
                 }
             } else {
                 Repository<HoiDong_ChuyenDe> repoDT = new Repository<HoiDong_ChuyenDe>();
+                Dictionary<string, int> dic = new Dictionary<string, int>();
 
                 if (_id != null) {
                     var oldItems = repoDT.Filter(x => x.MaHD == hoiDong.MaHD);
-                    foreach (var old in oldItems)
+                    foreach (var old in oldItems) {
+                        dic[old.MaCD] = old.Vong;
                         repoDT.Delete(old.MaHD, old.MaCD);
+                    }
                 }
 
                 foreach (ListViewItem item in listView2.Items) {
                     var dt = new HoiDong_ChuyenDe {
                         MaHD = hoiDong.MaHD,
                         MaCD = item.SubItems[1].Text,
+                        Vong = dic.TryGetValue(item.SubItems[1].Text, out var vong) ? vong : 0
                     };
 
                     repoDT.Insert(dt);
