@@ -261,21 +261,44 @@ public class PhieuCham {
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int MaPhieu { get; set; }
 
+    // ===== FK bắt buộc =====
     public int MaHD { get; set; }
 
     [MaxLength(20)]
     public string MaCB { get; set; }
 
+    // ===== Phân loại =====
+    [Required]
+    [MaxLength(10)]
+    public string Loai { get; set; } // "DETAI" | "CHUYENDE"
+
+    // ===== FK nullable theo Loai =====
+    [MaxLength(20)]
+    public string? MaDT { get; set; }
+
+    [MaxLength(20)]
+    public string? MaCD { get; set; }
+
+    public int? Vong { get; set; }
+
     [Column(TypeName = "decimal(4,2)")]
     public decimal Diem { get; set; }
 
-    // Navigation
+    /* ========= NAVIGATION + FK ========= */
+
     [ForeignKey(nameof(MaHD))]
     public HoiDong HoiDong { get; set; }
 
     [ForeignKey(nameof(MaCB))]
     public GiangVien GiangVien { get; set; }
+
+    [ForeignKey(nameof(MaDT))]
+    public DeTai? DeTai { get; set; }
+
+    [ForeignKey(nameof(MaCD))]
+    public ChuyenDe? ChuyenDe { get; set; }
 }
+
 
 #endregion
 

@@ -106,15 +106,31 @@ namespace QLNCKH.Forms {
             MessageBox.Show(String.Join(", ", existedCodes));
 
             if (_dc == "Đề tài") {
+                var usedCodes = new Repository<HoiDong_DeTai>()
+                    .GetAll()
+                    .Select(x => x.MaDT)
+                    .Distinct()
+                    .ToList();
+
                 cbNameDC.DataSource = new Repository<DeTai>().Filter(
-                    x => !existedCodes.Contains(x.MaDT),
+                    x => !existedCodes.Contains(x.MaDT)
+                        && !usedCodes.Contains(x.MaDT),
+
                     x => new {
                         Value = x.MaDT,
                         Display = $"({x.MaDT}) {x.TenDT}"
                     });
             } else {
+                var usedCodes = new Repository<HoiDong_ChuyenDe>()
+                    .GetAll()
+                    .Select(x => x.MaCD)
+                    .Distinct()
+                    .ToList();
+
                 cbNameDC.DataSource = new Repository<ChuyenDe>().Filter(
-                    x => !existedCodes.Contains(x.MaCD),
+                    x => !existedCodes.Contains(x.MaCD)
+                        && !usedCodes.Contains(x.MaCD), 
+
                     x => new {
                         Value = x.MaCD,
                         Display = $"({x.MaCD}) {x.TenCD}"
