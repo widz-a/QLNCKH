@@ -43,6 +43,7 @@ namespace QLNCKH.Forms {
                 item.SubItems.Add(tenDT);
 
                 listView2.Items.Add(item);
+                LoadDanhMucDC();
             };
 
             btnDcXoa.Click += (s, e) => {
@@ -50,6 +51,7 @@ namespace QLNCKH.Forms {
 
                 ListViewItem item = listView2.SelectedItems[0];
                 listView2.Items.Remove(item);
+                LoadDanhMucDC();
             };
 
             btnTvThem.Click += (s, e) => {
@@ -97,15 +99,23 @@ namespace QLNCKH.Forms {
 
             if (tab.TabPages["tabDTCD"] == null) tab.TabPages.Add(tabDTCD);
 
+            var existedCodes = listView2.Items
+                .Cast<ListViewItem>()
+                .Select(i => i.SubItems[1].Text)
+                .ToList();
+            MessageBox.Show(String.Join(", ", existedCodes));
+
             if (_dc == "Đề tài") {
-                cbNameDC.DataSource = new Repository<DeTai>()
-                    .GetSome(x => new {
+                cbNameDC.DataSource = new Repository<DeTai>().Filter(
+                    x => !existedCodes.Contains(x.MaDT),
+                    x => new {
                         Value = x.MaDT,
                         Display = $"({x.MaDT}) {x.TenDT}"
                     });
             } else {
-                cbNameDC.DataSource = new Repository<ChuyenDe>()
-                    .GetSome(x => new {
+                cbNameDC.DataSource = new Repository<ChuyenDe>().Filter(
+                    x => !existedCodes.Contains(x.MaCD),
+                    x => new {
                         Value = x.MaCD,
                         Display = $"({x.MaCD}) {x.TenCD}"
                     });
@@ -126,9 +136,14 @@ namespace QLNCKH.Forms {
         }
 
         private void LoadDanhMucThanhVien() {
-            if (coChuTichChua()) {
-                cbVT.Items.Remove("Chủ tịch");
+            cbVT.Items.Clear();
+
+            if (!coChuTichChua()) {
+                cbVT.Items.Add("Chủ tịch");
             }
+
+            cbVT.Items.Add("Thư ký");
+            cbVT.Items.Add("Thành viên");
 
             var maCbDaCo = listView1.Items
                 .Cast<ListViewItem>()
