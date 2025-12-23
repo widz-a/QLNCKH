@@ -194,6 +194,13 @@ public class HoiDong {
     public ICollection<PhieuCham> PhieuChams { get; set; }
 }
 
+public class HoiDongDto {
+    public int MaHD { get; set; }
+    public string Loai { get; set; } // "DETAI", "CHUYENDE"
+    public DateTime NgayCham { get; set; }
+    public int SoThanhVien { get; set; }
+}
+
 [Table("HoiDong_ThanhVien")]
 public class HoiDong_ThanhVien {
     public int MaHD { get; set; }
@@ -205,7 +212,10 @@ public class HoiDong_ThanhVien {
     public string VaiTro { get; set; } // Chủ tịch, Thư ký, Thành viên
 
     // Navigation
+    [ForeignKey(nameof(MaHD))]
     public HoiDong HoiDong { get; set; }
+
+    [ForeignKey(nameof(MaCB))]
     public GiangVien GiangVien { get; set; }
 }
 
@@ -217,7 +227,10 @@ public class HoiDong_DeTai {
     public string MaDT { get; set; }
 
     // Navigation
+    [ForeignKey(nameof(MaHD))]
     public HoiDong HoiDong { get; set; }
+
+    [ForeignKey(nameof(MaDT))]
     public DeTai DeTai { get; set; }
 }
 
@@ -231,7 +244,10 @@ public class HoiDong_ChuyenDe {
     public int Vong { get; set; } // 1 = sơ loại, 2 = lấy giải
 
     // Navigation
+    [ForeignKey(nameof(MaHD))]
     public HoiDong HoiDong { get; set; }
+
+    [ForeignKey(nameof(MaCD))]
     public ChuyenDe ChuyenDe { get; set; }
 }
 
@@ -254,7 +270,10 @@ public class PhieuCham {
     public decimal Diem { get; set; }
 
     // Navigation
+    [ForeignKey(nameof(MaHD))]
     public HoiDong HoiDong { get; set; }
+
+    [ForeignKey(nameof(MaCB))]
     public GiangVien GiangVien { get; set; }
 }
 
@@ -275,6 +294,7 @@ public class KetQua_DeTai {
     public string Giai { get; set; }
 
     // Navigation
+    [ForeignKey(nameof(MaDT))]
     public DeTai DeTai { get; set; }
 }
 [Table("KetQua_ChuyenDe")]
@@ -293,6 +313,7 @@ public class KetQua_ChuyenDe {
     public string Giai { get; set; }
 
     // Navigation
+    [ForeignKey(nameof(MaCD))]
     public ChuyenDe ChuyenDe { get; set; }
 }
 

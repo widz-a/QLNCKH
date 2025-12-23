@@ -116,7 +116,29 @@ namespace QLNCKH
                     },
                     GetCreateForm = () => new FrmDaoVanEdit(),
                 }
-            ), "Quản lý kiểm tra đạo văn")
+            ), "Quản lý kiểm tra đạo văn"),
+
+            ["Hội đồng"] = (() => new FrmList<HoiDong, HoiDongDto>(
+            new ListContext<HoiDong, HoiDongDto> {
+                Name = "hội đồng",
+                GetHeaderSelector = (sv => new HoiDongDto {
+                    MaHD = sv.MaHD,
+                    Loai = sv.Loai,
+                    NgayCham = sv.NgayCham,
+                    SoThanhVien = sv.HoiDong_ThanhViens.Count,
+
+                }),
+                IdColumn = "Id",
+                HeaderNames = new Dictionary<string, string> {
+                    ["MaHD"] = "Mã hộ đồng",
+                    ["Loai"] = "Sản phẩm",
+                    ["NgayCham"] = "Ngày chấm",
+                    ["SoThanhVien"] = "Số thành viên",
+                },
+                GetCreateForm = () => new FrmHoiDongEdit(),
+                GetEditForm = (id) => new FrmHoiDongEdit(id[0]),
+            }
+        ), "Quản lý thông tin hội đồng")
         };
 
         public FrmMain() {

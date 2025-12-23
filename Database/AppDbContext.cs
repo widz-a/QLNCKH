@@ -56,11 +56,17 @@ public class AppDbContext : DbContext {
         modelBuilder.Entity<DeTai_SinhVien>()
             .HasKey(x => new { x.MaDT, x.MaSV});
 
+        modelBuilder.Entity<HoiDong_ThanhVien>()
+            .HasKey(x => new { x.MaHD, x.MaCB });
+
         modelBuilder.Entity<HoiDong_DeTai>()
             .HasKey(x => new { x.MaHD, x.MaDT });
 
-        modelBuilder.Entity<HoiDong_ThanhVien>()
-            .HasKey(x => new { x.MaHD, x.MaCB });
+        modelBuilder.Entity<HoiDong_ChuyenDe>()
+            .HasKey(x => new { x.MaHD, x.MaCD });
+
+        modelBuilder.Entity<KetQua_ChuyenDe>()
+            .HasKey(x => new { x.MaCD, x.Vong });
     }
 }
 
