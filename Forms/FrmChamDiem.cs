@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace QLNCKH.Forms {
     public partial class FrmChamDiem : Form {
@@ -9,10 +10,12 @@ namespace QLNCKH.Forms {
             
 
             cbDT.SelectedIndexChanged += (s, e) => {
+                btnDtCham.Enabled = true;
                 LoadDataDt();
             };
 
             cbCD.SelectedIndexChanged += (s, e) => {
+                btnCdCham.Enabled = true;
                 LoadDataCd();
             };
 
@@ -32,16 +35,29 @@ namespace QLNCKH.Forms {
                             ? x.HoiDong.PhieuChams
                                 .Where(p => p.MaDT == x.MaDT)
                                 .Average(p => p.Diem)
-                            : 0
+                            : -1
                     });
+                if (detais.Any(x => x.DiemTB == -1)) {
+                    MessageBox.Show(
+                        "Vui lòng chấm đủ điểm cho tất cả đề tài trước khi xét giải.",
+                        "Chưa chấm đủ điểm",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                    return;
+                }
                 var sorted = detais
                         .OrderByDescending(x => x.DiemTB).ToList();
                 for (int i = 0; i < sorted.Count; i++) {
                     var item = sorted[i];
                     var giai = i < 3 ? "Nhất"
-                        : i < 8 ? "Nhì"
-                        : i < 15 ? "Ba"
-                        : "Khuyến khích";
+                            : i < 8 ? "Nhì"
+                            : i < 15 ? "Ba"
+                            : i < 25 ? "Khuyến khích"
+                            : null;
+
+                    if (giai == null) continue;
+
                     var ketqua = new KetQua_DeTai {
                         MaDT = item.MaDT,
                         DiemTB = item.DiemTB,
@@ -70,10 +86,21 @@ namespace QLNCKH.Forms {
                             ? x.HoiDong.PhieuChams
                                 .Where(p => p.MaCD == x.MaCD)
                                 .Average(p => p.Diem)
-                            : 0
+                            : -1
                     });
 
                 var maxVong = chuyenDes.Max(x => x.Vong);
+
+                if (chuyenDes.Any(x => x.DiemTB == -1)) {
+                    MessageBox.Show(
+                        "Vui lòng chấm đủ điểm cho tất cả chuyên đề trước khi tiếp tục.",
+                        "Chưa chấm đủ điểm",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                    return;
+                }
+
                 if (maxVong == 1) {
                     var top15 = chuyenDes
                     .OrderByDescending(x => x.DiemTB)
@@ -101,7 +128,11 @@ namespace QLNCKH.Forms {
                         var giai = i < 3 ? "Nhất"
                             : i < 8 ? "Nhì"
                             : i < 15 ? "Ba"
-                            : "Khuyến khích";
+                            : i < 25 ? "Khuyến khích"
+                            : null;
+
+                        if (giai == null) continue;
+
                         var ketqua = new KetQua_ChuyenDe {
                             MaCD = item.MaCD,
                             Vong = 1,
@@ -117,9 +148,12 @@ namespace QLNCKH.Forms {
 
         private void setDataSource(bool changeIndex = false) {
             // Set DataSource DT
+            var dtCoGiai = new Repository<KetQua_DeTai>()
+                .GetAll()
+                .Select(kq => kq.MaDT);
             cbDT.DataSource = new Repository<HoiDong>()
                 .Filter(
-                hd => hd.Loai == "Đề tài",
+                hd => hd.Loai == "Đề tài" && !hd.HoiDong_DeTais.Any(dt => dtCoGiai.Contains(dt.MaDT)),
                 hd => new {
                     Value = hd.MaHD,
                     Display = $"HĐ#{hd.MaHD} | ĐỀ TÀI | {hd.NgayCham:dd/MM/yyyy}"
@@ -129,9 +163,12 @@ namespace QLNCKH.Forms {
             cbDT.ValueMember = "Value";
 
             // Set DataSource CD
+            var cbCoGiai = new Repository<KetQua_ChuyenDe>()
+                .GetAll()
+                .Select(kq => kq.MaCD);
             cbCD.DataSource = new Repository<HoiDong>()
                 .Filter(
-                hd => hd.Loai == "Chuyên đề",
+                hd => hd.Loai == "Chuyên đề" && !hd.HoiDong_ChuyenDes.Any(dt => dtCoGiai.Contains(dt.MaCD)),
                 hd => new {
                     Value = hd.MaHD,
                     Display = $"HĐ#{hd.MaHD} | CHUYÊN ĐỀ | Vòng {hd.HoiDong_ChuyenDes.Max(x => x.Vong) + 1} | {hd.NgayCham:dd/MM/yyyy}"
@@ -147,6 +184,8 @@ namespace QLNCKH.Forms {
         }
 
         private void LoadDataDt() {
+            listView1.Items.Clear();
+            if (cbDT.SelectedValue == null) return;
             var maHD = (int)cbDT.SelectedValue;
             var daCoGiai = new Repository<KetQua_DeTai>()
                 .GetAll()
@@ -165,7 +204,6 @@ namespace QLNCKH.Forms {
                         : ""
         }
             );
-            listView1.Items.Clear();
             foreach (var cb in deTais) {
                 var item = new ListViewItem((listView1.Items.Count + 1).ToString());
                 item.SubItems.Add(cb.MaDT);
@@ -178,6 +216,8 @@ namespace QLNCKH.Forms {
         }
 
         private void LoadDataCd() {
+            listView2.Items.Clear();
+            if (cbCD.SelectedValue == null) return;
             var maHD = (int)cbCD.SelectedValue;
             var daCoGiai = new Repository<KetQua_ChuyenDe>()
                 .GetAll()

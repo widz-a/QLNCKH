@@ -140,6 +140,7 @@ namespace QLNCKH
                 }
             ), "Quản lý thông tin hội đồng"),
             ["Chấm điểm"] = (() => new FrmChamDiem(), "Chấm điểm sản phẩm"),
+            ["Kết quả"] = (() => new FrmKetQua(), "Kết quả"),
 
         };
 
