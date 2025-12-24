@@ -9,6 +9,7 @@ namespace QLNCKH.Forms
         private FrmMain? _mainForm = null;
         public FrmHome() {
             InitializeComponent();
+            btnNopBai.Click += btnNopBai_Click;
         }
 
         public FrmHome(FrmMain mainForm) : this() {
