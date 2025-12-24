@@ -103,7 +103,6 @@ namespace QLNCKH.Forms {
                 .Cast<ListViewItem>()
                 .Select(i => i.SubItems[1].Text)
                 .ToList();
-            MessageBox.Show(String.Join(", ", existedCodes));
 
             if (_dc == "Đề tài") {
                 var usedCodes = new Repository<HoiDong_DeTai>()
@@ -230,7 +229,7 @@ namespace QLNCKH.Forms {
                 var dts = repoDT.Filter(
                     x => x.MaHD == _id,
                     x => new {
-                        Ma = x.MaHD,
+                        Ma = x.MaDT,
                         Ten = x.DeTai.TenDT,
                     }
                 );
