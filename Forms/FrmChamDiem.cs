@@ -21,8 +21,35 @@ namespace QLNCKH.Forms {
             };
 
             btnDtCham.Click += (s, e) => {
-                //todo: xét giải
-                LoadDataDt();
+                var maHd = (int)cbDT.SelectedValue;
+                var detais = new Repository<HoiDong_DeTai>().Filter(
+                    x => x.MaHD == maHd,
+                    x => new {
+                        x.MaDT,
+                        TenCD = x.DeTai != null ? x.DeTai.MaDT : "",
+                        DiemTB = x.HoiDong != null &&
+                                 x.HoiDong.PhieuChams.Any(p => p.MaDT == x.MaDT)
+                            ? x.HoiDong.PhieuChams
+                                .Where(p => p.MaDT == x.MaDT)
+                                .Average(p => p.Diem)
+                            : 0
+                    });
+                var sorted = detais
+                        .OrderByDescending(x => x.DiemTB).ToList();
+                for (int i = 0; i < sorted.Count; i++) {
+                    var item = sorted[i];
+                    var giai = i < 3 ? "Nhất"
+                        : i < 8 ? "Nhì"
+                        : i < 15 ? "Ba"
+                        : "Khuyến khích";
+                    var ketqua = new KetQua_DeTai {
+                        MaDT = item.MaDT,
+                        DiemTB = item.DiemTB,
+                        Giai = giai,
+                    };
+                    new Repository<KetQua_DeTai>().Insert(ketqua);
+                    LoadDataDt();
+                }
             };
 
             listView2.DoubleClick += (s, e) => {
@@ -65,6 +92,24 @@ namespace QLNCKH.Forms {
                             repo.Update(entity);
                         }
                     }
+                } else {
+                    // Xét giải
+                    var sorted = chuyenDes
+                        .OrderByDescending(x => x.DiemTB).ToList();
+                    for (int i = 0; i < sorted.Count; i++) {
+                        var item = sorted[i];
+                        var giai = i < 3 ? "Nhất"
+                            : i < 8 ? "Nhì"
+                            : i < 15 ? "Ba"
+                            : "Khuyến khích";
+                        var ketqua = new KetQua_ChuyenDe {
+                            MaCD = item.MaCD,
+                            Vong = 1,
+                            DiemTB = item.DiemTB,
+                            Giai = giai,
+                        };
+                        new Repository<KetQua_ChuyenDe>().Insert(ketqua);
+                    }
                 }
                 LoadDataCd();
             };
@@ -103,8 +148,11 @@ namespace QLNCKH.Forms {
 
         private void LoadDataDt() {
             var maHD = (int)cbDT.SelectedValue;
+            var daCoGiai = new Repository<KetQua_DeTai>()
+                .GetAll()
+                .Select(kq => kq.MaDT);
             var deTais = new Repository<HoiDong_DeTai>().Filter(
-                x => x.MaHD == maHD,
+                x => x.MaHD == maHD && !daCoGiai.Contains(x.MaDT),
                 x => new {
                     x.MaDT,
                     TenDT = x.DeTai != null ? x.DeTai.TenDT : "",
@@ -126,12 +174,17 @@ namespace QLNCKH.Forms {
                 listView1.Items.Add(item);
 
             }
+            setDataSource(false);
         }
 
         private void LoadDataCd() {
             var maHD = (int)cbCD.SelectedValue;
+            var daCoGiai = new Repository<KetQua_ChuyenDe>()
+                .GetAll()
+                .Select(kq => kq.MaCD);
+
             var chuyenDes = new Repository<HoiDong_ChuyenDe>().Filter(
-                x => x.MaHD == maHD,
+                x => x.MaHD == maHD && !daCoGiai.Contains(x.MaCD),
                 x => new {
                     x.MaCD,
                     TenCD = x.ChuyenDe != null ? x.ChuyenDe.MaCD : "",
@@ -168,6 +221,7 @@ namespace QLNCKH.Forms {
             }
 
             btnCdCham.Text = (maxVong == 1) ? "Xét vòng 2" : "Xét giải";
+            setDataSource(false);
         }
 
         private void OpenDialogDt() {
