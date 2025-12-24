@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Configuration;
-using System.Data.SqlClient;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLNCKH.Forms
-{
-    public partial class FrmHome : Form
-    {
-
-        public FrmHome()
-        {
+namespace QLNCKH.Forms {
+    public partial class FrmHome : Form {
+        public FrmHome() {
             InitializeComponent();
-        }
-
-        private void btnNopBai_Click(object sender, EventArgs e)
-        {
-            new FrmNopDeTaiEdit().ShowDialog();
         }
     }
 }
