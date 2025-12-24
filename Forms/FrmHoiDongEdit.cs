@@ -38,7 +38,7 @@ namespace QLNCKH.Forms {
                     tenDT = new Repository<ChuyenDe>().GetById(maDT).TenCD;
                 }
 
-                var item = new ListViewItem((listView1.Items.Count + 1).ToString());
+                var item = new ListViewItem((listView2.Items.Count + 1).ToString());
                 item.SubItems.Add(maDT);
                 item.SubItems.Add(tenDT);
 
@@ -151,14 +151,24 @@ namespace QLNCKH.Forms {
                 );
         }
 
+        private bool coThuKyChua() {
+            return listView1.Items
+                .Cast<ListViewItem>()
+                .Any(i =>
+                    i.SubItems.Count > 3 &&
+                    i.SubItems[3].Text == "Thư ký"
+                );
+        }
+
         private void LoadDanhMucThanhVien() {
             cbVT.Items.Clear();
 
             if (!coChuTichChua()) {
                 cbVT.Items.Add("Chủ tịch");
             }
-
-            cbVT.Items.Add("Thư ký");
+            if (!coThuKyChua()) {
+                cbVT.Items.Add("Thư ký");
+            }
             cbVT.Items.Add("Thành viên");
 
             var maCbDaCo = listView1.Items
@@ -226,7 +236,7 @@ namespace QLNCKH.Forms {
                 );
 
                 foreach (var x in dts) {
-                    var item = new ListViewItem((listView1.Items.Count + 1).ToString());
+                    var item = new ListViewItem((listView2.Items.Count + 1).ToString());
                     item.SubItems.Add(x.Ma + "");
                     item.SubItems.Add(x.Ten);
 
@@ -266,6 +276,22 @@ namespace QLNCKH.Forms {
 
             if (!coChuTichChua()) {
                 MessageBox.Show("Vui lòng thêm chủ tịch",
+                "Thiếu thông tin",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!coThuKyChua()) {
+                MessageBox.Show("Vui lòng thêm thư ký",
+                "Thiếu thông tin",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (listView1.Items.Count != 5) {
+                MessageBox.Show("Hội đồng phải có 5 thành viên",
                 "Thiếu thông tin",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Warning);
@@ -355,7 +381,7 @@ namespace QLNCKH.Forms {
                     repoDT.Insert(dt);
                 }
             }
-                DialogResult = DialogResult.OK;
+            DialogResult = DialogResult.OK;
             Close();
         }
 

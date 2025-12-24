@@ -119,26 +119,28 @@ namespace QLNCKH
             ), "Quản lý kiểm tra đạo văn"),
 
             ["Hội đồng"] = (() => new FrmList<HoiDong, HoiDongDto>(
-            new ListContext<HoiDong, HoiDongDto> {
-                Name = "hội đồng",
-                GetHeaderSelector = (sv => new HoiDongDto {
-                    MaHD = sv.MaHD,
-                    Loai = sv.Loai,
-                    NgayCham = sv.NgayCham,
-                    SoThanhVien = sv.HoiDong_ThanhViens.Count,
+                new ListContext<HoiDong, HoiDongDto> {
+                    Name = "hội đồng",
+                    GetHeaderSelector = (sv => new HoiDongDto {
+                        MaHD = sv.MaHD,
+                        Loai = sv.Loai,
+                        NgayCham = sv.NgayCham,
+                        SoThanhVien = sv.HoiDong_ThanhViens.Count,
 
-                }),
-                IdColumn = "MaHD",
-                HeaderNames = new Dictionary<string, string> {
-                    ["MaHD"] = "Mã hộ đồng",
-                    ["Loai"] = "Sản phẩm",
-                    ["NgayCham"] = "Ngày chấm",
-                    ["SoThanhVien"] = "Số thành viên",
-                },
-                GetCreateForm = () => new FrmHoiDongEdit(),
-                GetEditForm = (id) => new FrmHoiDongEdit(id[0]),
-            }
-        ), "Quản lý thông tin hội đồng")
+                    }),
+                    IdColumn = "MaHD",
+                    HeaderNames = new Dictionary<string, string> {
+                        ["MaHD"] = "Mã hộ đồng",
+                        ["Loai"] = "Sản phẩm",
+                        ["NgayCham"] = "Ngày chấm",
+                        ["SoThanhVien"] = "Số thành viên",
+                    },
+                    GetCreateForm = () => new FrmHoiDongEdit(),
+                    GetEditForm = (id) => new FrmHoiDongEdit(id[0]),
+                }
+            ), "Quản lý thông tin hội đồng"),
+            ["Chấm điểm"] = (() => new FrmChamDiem(), "Trang chủ"),
+
         };
 
         public FrmMain() {

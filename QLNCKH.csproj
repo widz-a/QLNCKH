@@ -20,6 +20,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Forms\ChamDiem\FrmChamDiemCdV1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ChamDiem\FrmChamDiemCd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ChamDiem\FrmChamDiemDt.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\FrmDaoVanEdit.cs">
       <SubType>Form</SubType>
     </Compile>
