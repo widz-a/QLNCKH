@@ -6,8 +6,6 @@ namespace QLNCKH
 {
     public partial class FrmMain : Form {
 
-        
-
         public FrmMain() {
             InitializeComponent();
             InitSidebar();
@@ -156,7 +154,8 @@ namespace QLNCKH
                         GetEditForm = (id) => new FrmHoiDongEdit(id[0]),
                     }
                 ), "Quản lý thông tin hội đồng"),
-                ["Chấm điểm"] = (() => new FrmChamDiem(), "Trang chủ"),
+                ["Chấm điểm"] = (() => new FrmChamDiem(), "Chấm điểm sản phẩm"),
+                ["Kết quả"] = (() => new FrmKetQua(), "Kết quả"),
 
             };
 

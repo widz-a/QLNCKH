@@ -325,12 +325,12 @@ public class KetQua_ChuyenDe {
     [MaxLength(20)]
     public string MaCD { get; set; }
 
-    public int Vong { get; set; }
+    public int Vong { get; set; } // cứ đề 1
 
     [Column(TypeName = "decimal(4,2)")]
     public decimal? DiemTB { get; set; }
 
-    public bool? Dat { get; set; } // vòng 1
+    public bool? Dat { get; set; } // ignored ?
 
     [MaxLength(30)]
     public string Giai { get; set; }
