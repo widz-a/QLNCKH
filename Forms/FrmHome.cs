@@ -5,19 +5,33 @@ using System.Windows.Forms;
 
 namespace QLNCKH.Forms
 {
-    public partial class FrmHome : Form {
+    public partial class FrmHome : Form
+    {
         private FrmMain? _mainForm = null;
-        public FrmHome() {
+        public FrmHome()
+        {
             InitializeComponent();
             btnNopBai.Click += btnNopBai_Click;
         }
 
-        public FrmHome(FrmMain mainForm) : this() {
+        public FrmHome(FrmMain mainForm) : this()
+        {
             _mainForm = mainForm;
         }
 
-        private void btnNopBai_Click(object sender, EventArgs e) {
+        private void btnNopBai_Click(object sender, EventArgs e)
+        {
             _mainForm.LoadForm(new FrmNopDeTaiEdit(), "Nộp sản phẩm");
+        }
+
+        private void pnlContent_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
