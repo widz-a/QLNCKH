@@ -15,6 +15,10 @@ namespace QLNCKH.Forms.ChamDiem {
             InitializeComponent();
         }
 
+        public FrmDiem(string diem) : this() {
+            if (decimal.TryParse(diem, out _)) textBox1.Text = diem;
+        }
+
         public double Diem { get; private set; }
 
         private void button1_Click(object sender, EventArgs e) {

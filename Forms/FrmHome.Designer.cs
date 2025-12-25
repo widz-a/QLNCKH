@@ -247,6 +247,7 @@
             // 
             // FrmHome
             // 
+            AutoScroll = true;
             ClientSize = new Size(816, 580);
             Controls.Add(pnlRoot);
             Name = "FrmHome";

@@ -26,7 +26,8 @@ namespace QLNCKH.Forms {
             listView1.DoubleClick += (s, e) => {
                 if (listView1.SelectedItems.Count == 0) return;
 
-                using (var f = new FrmDiem()) {
+                var diemGoc = listView1.SelectedItems[0].SubItems[3].Text;
+                using (var f = new FrmDiem(diemGoc)) {
                     if (f.ShowDialog() == DialogResult.OK) {
                         var diem = f.Diem;
                         listView1.SelectedItems[0].SubItems[3].Text = diem.ToString();
@@ -60,7 +61,9 @@ namespace QLNCKH.Forms {
                 var item = new ListViewItem((listView1.Items.Count + 1).ToString());
                 item.SubItems.Add(x.MaCB);
                 item.SubItems.Add(x.HoTen);
-                item.SubItems.Add("");
+                
+                var diem = new Repository<PhieuCham>().Filter(y => y.MaHD == _maHd && y.MaDT == _maDt && y.MaCB == x.MaCB, x => x.Diem).FirstOrDefault();
+                item.SubItems.Add(diem.ToString());
 
                 listView1.Items.Add(item);
             }
@@ -75,7 +78,8 @@ namespace QLNCKH.Forms {
                 var ts = repo.Filter(
                     x => x.Loai == "Đề tài" && x.MaDT == _maDt && x.MaHD == (int)_maHd && x.MaCB == item.SubItems[1].Text
                 ).FirstOrDefault();
-                decimal diem = decimal.Parse(item.SubItems[3].Text);
+                decimal diem;
+                if (!decimal.TryParse(item.SubItems[3].Text, out diem)) continue;
 
                 if (ts != null) {
                     ts.Diem = diem;
