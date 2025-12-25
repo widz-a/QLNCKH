@@ -6,6 +6,51 @@ namespace QLNCKH.Forms {
 
         public FrmKetQua() {
             InitializeComponent();
+
+            // Fake header (faker)
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn {
+                Name = "Ma",
+                HeaderText = "Mã đề tài",
+            });
+
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn {
+                Name = "Ten",
+                HeaderText = "Tên đề tài",
+            });
+
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn {
+                Name = "Extra",
+                HeaderText = "Số thành viên",
+            });
+
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn {
+                Name = "Giai",
+                HeaderText = "Giải",
+            });
+
+            dataGridView2.Columns.Add(new DataGridViewTextBoxColumn {
+                Name = "Ma",
+                HeaderText = "Mã chuyên đề",
+            });
+
+            dataGridView2.Columns.Add(new DataGridViewTextBoxColumn {
+                Name = "Ten",
+                HeaderText = "Tên chuyên đề",
+            });
+
+            dataGridView2.Columns.Add(new DataGridViewTextBoxColumn {
+                Name = "Extra",
+                HeaderText = "Sinh viên",
+            });
+
+            dataGridView2.Columns.Add(new DataGridViewTextBoxColumn {
+                Name = "Giai",
+                HeaderText = "Giải",
+            });
+
+            StyleHelper.ApplyDGV(dataGridView1);
+            StyleHelper.ApplyDGV(dataGridView2);
+
             // Set DataSource DT
             cbDT.DataSource = new Repository<HoiDong>()
                 .Filter(
@@ -68,6 +113,7 @@ namespace QLNCKH.Forms {
                     Giai = new Repository<KetQua_DeTai>().GetById(x.MaDT).Giai,
                 }
             );
+            dataGridView1.Columns.Clear();
 
             dataGridView1.DataSource = deTais;
             fixName(dataGridView1, "đề tài");
@@ -89,6 +135,7 @@ namespace QLNCKH.Forms {
                 }
             );
 
+            dataGridView2.Columns.Clear();
             dataGridView2.DataSource = chuyenDes;
             fixName(dataGridView2, "chuyên đề");
         }
