@@ -315,6 +315,7 @@ namespace QLNCKH.Forms {
             if (_id == null) {
                 hoiDong = repoHD.Insert(hoiDong);
             } else
+                hoiDong.MaHD = (int) _id;
                 hoiDong = repoHD.Update(hoiDong);
 
             // ===== LƯU LẠI THÀNH VIÊN =====
