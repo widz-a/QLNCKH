@@ -24,6 +24,7 @@ public class FrmList<T, TDto> : FrmBaseList where T : class where TDto : class {
         GetButtonThem().Click += btnThem_Click;
         GetButtonSua().Click += btnSua_Click;
         GetButtonXoa().Click += btnXoa_Click;
+        GetDgv().DoubleClick += btnSua_Click; // như nhau :v
     }
 
     private readonly ListContext<T, TDto> _ctx;
