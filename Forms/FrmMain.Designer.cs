@@ -29,6 +29,7 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             pnlSidebar = new Panel();
+            tableLayoutPanel3 = new TableLayoutPanel();
             tableLayoutPanel1 = new TableLayoutPanel();
             logo_c500 = new PictureBox();
             label1 = new Label();
@@ -36,6 +37,7 @@
             tableLayoutPanel2 = new TableLayoutPanel();
             title = new ReaLTaiizor.Controls.FoxBigLabel();
             pnlSidebar.SuspendLayout();
+            tableLayoutPanel3.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)logo_c500).BeginInit();
             tableLayoutPanel2.SuspendLayout();
@@ -44,12 +46,29 @@
             // pnlSidebar
             // 
             pnlSidebar.BackColor = Color.FromArgb(33, 42, 57);
-            pnlSidebar.Controls.Add(tableLayoutPanel1);
+            pnlSidebar.Controls.Add(tableLayoutPanel3);
             pnlSidebar.Dock = DockStyle.Left;
             pnlSidebar.Location = new Point(0, 0);
             pnlSidebar.Name = "pnlSidebar";
             pnlSidebar.Size = new Size(220, 718);
             pnlSidebar.TabIndex = 0;
+            // 
+            // tableLayoutPanel3
+            // 
+            tableLayoutPanel3.AllowDrop = true;
+            tableLayoutPanel3.ColumnCount = 1;
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel3.Controls.Add(tableLayoutPanel1, 0, 1);
+            tableLayoutPanel3.Dock = DockStyle.Fill;
+            tableLayoutPanel3.Location = new Point(0, 0);
+            tableLayoutPanel3.Name = "tableLayoutPanel3";
+            tableLayoutPanel3.RowCount = 4;
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle());
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle());
+            tableLayoutPanel3.Size = new Size(220, 718);
+            tableLayoutPanel3.TabIndex = 1;
             // 
             // tableLayoutPanel1
             // 
@@ -58,20 +77,21 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.Controls.Add(logo_c500, 0, 0);
             tableLayoutPanel1.Controls.Add(label1, 1, 0);
-            tableLayoutPanel1.Location = new Point(3, 12);
+            tableLayoutPanel1.Location = new Point(3, 13);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.Padding = new Padding(1);
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.Size = new Size(214, 66);
-            tableLayoutPanel1.TabIndex = 0;
+            tableLayoutPanel1.TabIndex = 1;
             // 
             // logo_c500
             // 
             logo_c500.Dock = DockStyle.Fill;
             logo_c500.Image = (Image)resources.GetObject("logo_c500.Image");
-            logo_c500.Location = new Point(3, 3);
+            logo_c500.Location = new Point(4, 4);
             logo_c500.Name = "logo_c500";
-            logo_c500.Size = new Size(68, 60);
+            logo_c500.Size = new Size(68, 58);
             logo_c500.SizeMode = PictureBoxSizeMode.Zoom;
             logo_c500.TabIndex = 0;
             logo_c500.TabStop = false;
@@ -82,9 +102,9 @@
             label1.Dock = DockStyle.Fill;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.Transparent;
-            label1.Location = new Point(77, 0);
+            label1.Location = new Point(78, 1);
             label1.Name = "label1";
-            label1.Size = new Size(134, 66);
+            label1.Size = new Size(132, 64);
             label1.TabIndex = 1;
             label1.Text = "Hệ thống quản lý NCKH Học viên";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -143,6 +163,7 @@
             Name = "FrmMain";
             Text = "Hệ thống Quản lý Nghiên cứu khoa học";
             pnlSidebar.ResumeLayout(false);
+            tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)logo_c500).EndInit();
@@ -153,11 +174,12 @@
         #endregion
 
         private Panel pnlSidebar;
-        private TableLayoutPanel tableLayoutPanel1;
-        private PictureBox logo_c500;
-        private Label label1;
         private Panel pnlMain;
         private TableLayoutPanel tableLayoutPanel2;
         private ReaLTaiizor.Controls.FoxBigLabel title;
+        private TableLayoutPanel tableLayoutPanel3;
+        private TableLayoutPanel tableLayoutPanel1;
+        private PictureBox logo_c500;
+        private Label label1;
     }
 }

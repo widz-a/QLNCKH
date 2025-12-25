@@ -180,25 +180,23 @@ namespace QLNCKH
 
 
             foreach (var item in forms) {
-                pnlSidebar.Controls.Add(FormHelper.CreateMenuButton(item.Key, top, () => LoadForm(item.Value.func(), item.Value.title)));
+                FormHelper.CreateMenuButton(item.Key, tableLayoutPanel3, () => LoadForm(item.Value.func(), item.Value.title));
                 top += 42;
 
             }
 
-            pnlSidebar.Controls.Add(
-                FormHelper.CreateMenuButton("Thoát", top, () => {
-                    var result = MessageBox.Show(
-                        "Bạn có chắc muốn thoát không?",
-                        "Xác nhận thoát",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question
-                    );
+            FormHelper.CreateMenuButton("Thoát", tableLayoutPanel3, () => {
+                var result = MessageBox.Show(
+                    "Bạn có chắc muốn thoát không?",
+                    "Xác nhận thoát",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
 
-                    if (result == DialogResult.Yes) {
-                        Application.Exit();
-                    }
-                })
-            );
+                if (result == DialogResult.Yes) {
+                    Application.Exit();
+                }
+            });
         }
 
         public void LoadForm(Form frm, string newTitle) {
