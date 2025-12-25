@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using QLNCKH.Forms;
+using System.Diagnostics;
 using System.Linq.Expressions;
+using System.Security.Policy;
 
 namespace QLNCKH
 {
@@ -17,6 +19,23 @@ namespace QLNCKH
 
             //Load home
             LoadForm(new FrmHome(this), "HỆ THỐNG QUẢN LÝ NGHIÊN CỨU KHOA HỌC");
+
+            //Logo hài hước
+            logo_c500.MouseEnter += (s, e) => {
+                this.Cursor = Cursors.Hand;
+            };
+
+            logo_c500.MouseLeave += (s, e) => {
+                this.Cursor = Cursors.Default;
+            };
+
+            logo_c500.Click += (s, e) => {
+                Process.Start(new ProcessStartInfo {
+                    FileName = "https://youtu.be/CilzeWP5LTA",
+                    UseShellExecute = true
+                });
+            };
+
         }
 
         private void InitSidebar() {

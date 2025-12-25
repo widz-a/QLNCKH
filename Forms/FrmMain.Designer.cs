@@ -141,7 +141,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FrmMain";
-            Text = "Hệ thống quản lý NCKH học viên";
+            Text = "Hệ thống Quản lý Nghiên cứu khoa học";
             pnlSidebar.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
