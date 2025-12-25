@@ -185,7 +185,20 @@ namespace QLNCKH
 
             }
 
-            pnlSidebar.Controls.Add(FormHelper.CreateMenuButton("Thoát", top, () => Application.Exit())); // this.Height - 60
+            pnlSidebar.Controls.Add(
+                FormHelper.CreateMenuButton("Thoát", top, () => {
+                    var result = MessageBox.Show(
+                        "Bạn có chắc muốn thoát không?",
+                        "Xác nhận thoát",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question
+                    );
+
+                    if (result == DialogResult.Yes) {
+                        Application.Exit();
+                    }
+                })
+            );
         }
 
         public void LoadForm(Form frm, string newTitle) {
