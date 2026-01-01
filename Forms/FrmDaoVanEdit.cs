@@ -57,6 +57,13 @@ namespace QLNCKH.Forms {
             Repository<DaoVan> repo = new Repository<DaoVan>();
             repo.Insert(data);
 
+            //update trạng thái đề tài
+            if (data.KetLuan == "Đạt") {
+                var dt = new Repository<DeTai>().GetById(data.MaDT);
+                dt.TrangThaiId = 5;
+                new Repository<DeTai>().Update(dt);
+            }
+
             DialogResult = DialogResult.OK;
             Close();
         }

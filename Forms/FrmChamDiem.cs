@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace QLNCKH.Forms {
@@ -10,12 +11,12 @@ namespace QLNCKH.Forms {
             
 
             cbDT.SelectedIndexChanged += (s, e) => {
-                btnDtCham.Enabled = true;
+                btnDtXep.Enabled = true;
                 LoadDataDt();
             };
 
             cbCD.SelectedIndexChanged += (s, e) => {
-                btnCdCham.Enabled = true;
+                btnCdXep.Enabled = true;
                 LoadDataCd();
             };
 
@@ -23,7 +24,7 @@ namespace QLNCKH.Forms {
                 OpenDialogDt();
             };
 
-            btnDtCham.Click += (s, e) => {
+            btnDtXep.Click += (s, e) => {
                 var maHd = (int)cbDT.SelectedValue;
                 var detais = new Repository<HoiDong_DeTai>().Filter(
                     x => x.MaHD == maHd,
@@ -64,6 +65,11 @@ namespace QLNCKH.Forms {
                         Giai = giai,
                     };
                     new Repository<KetQua_DeTai>().Insert(ketqua);
+
+                    //Chuyển trạng thái => đã xếp giải
+                    var dt = new Repository<DeTai>().GetById(ketqua.MaDT);
+                    dt.TrangThaiId = 9;
+                    new Repository<DeTai>().Update(dt);
                     LoadDataDt();
                 }
             };
@@ -72,7 +78,7 @@ namespace QLNCKH.Forms {
                 OpenDialogCd();
             };
 
-            btnCdCham.Click += (s, e) => {
+            btnCdXep.Click += (s, e) => {
                 //Lấy top 15 => đổi Vòng sang 1
                 var maHd = (int) cbCD.SelectedValue;
                 var chuyenDes = new Repository<HoiDong_ChuyenDe>().Filter(
@@ -260,7 +266,7 @@ namespace QLNCKH.Forms {
                 if (cb.Vong > maxVong) maxVong = cb.Vong;
             }
 
-            btnCdCham.Text = (maxVong == 1) ? "Xét vòng 2" : "Xét giải";
+            btnCdXep.Text = (maxVong == 1) ? "Xét vòng 2" : "Xét giải";
             setDataSource(false);
         }
 

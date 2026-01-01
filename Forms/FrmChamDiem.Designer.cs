@@ -32,7 +32,7 @@
             columnHeader3 = new ColumnHeader();
             columnHeader4 = new ColumnHeader();
             tableLayoutPanel6 = new TableLayoutPanel();
-            btnCdCham = new Button();
+            btnCdXep = new Button();
             tableLayoutPanel7 = new TableLayoutPanel();
             cbCD = new ComboBox();
             label3 = new Label();
@@ -44,7 +44,7 @@
             dtTen = new ColumnHeader();
             dtDiem = new ColumnHeader();
             tableLayoutPanel3 = new TableLayoutPanel();
-            btnDtCham = new Button();
+            btnDtXep = new Button();
             tableLayoutPanel8 = new TableLayoutPanel();
             cbDT = new ComboBox();
             label6 = new Label();
@@ -125,7 +125,7 @@
             tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 17.2612228F));
             tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel6.Controls.Add(btnCdCham, 1, 0);
+            tableLayoutPanel6.Controls.Add(btnCdXep, 1, 0);
             tableLayoutPanel6.Controls.Add(tableLayoutPanel7, 0, 0);
             tableLayoutPanel6.Dock = DockStyle.Fill;
             tableLayoutPanel6.Location = new Point(3, 3);
@@ -136,15 +136,15 @@
             tableLayoutPanel6.Size = new Size(796, 43);
             tableLayoutPanel6.TabIndex = 1;
             // 
-            // btnCdCham
+            // btnCdXep
             // 
-            btnCdCham.Dock = DockStyle.Fill;
-            btnCdCham.Enabled = false;
-            btnCdCham.Location = new Point(661, 3);
-            btnCdCham.Name = "btnCdCham";
-            btnCdCham.Size = new Size(132, 37);
-            btnCdCham.TabIndex = 18;
-            btnCdCham.UseVisualStyleBackColor = true;
+            btnCdXep.Dock = DockStyle.Fill;
+            btnCdXep.Enabled = false;
+            btnCdXep.Location = new Point(661, 3);
+            btnCdXep.Name = "btnCdXep";
+            btnCdXep.Size = new Size(132, 37);
+            btnCdXep.TabIndex = 18;
+            btnCdXep.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel7
             // 
@@ -252,7 +252,7 @@
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 17.2612228F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel3.Controls.Add(btnDtCham, 1, 0);
+            tableLayoutPanel3.Controls.Add(btnDtXep, 1, 0);
             tableLayoutPanel3.Controls.Add(tableLayoutPanel8, 0, 0);
             tableLayoutPanel3.Dock = DockStyle.Fill;
             tableLayoutPanel3.Location = new Point(3, 3);
@@ -263,16 +263,16 @@
             tableLayoutPanel3.Size = new Size(796, 43);
             tableLayoutPanel3.TabIndex = 1;
             // 
-            // btnDtCham
+            // btnDtXep
             // 
-            btnDtCham.Dock = DockStyle.Fill;
-            btnDtCham.Enabled = false;
-            btnDtCham.Location = new Point(661, 3);
-            btnDtCham.Name = "btnDtCham";
-            btnDtCham.Size = new Size(132, 37);
-            btnDtCham.TabIndex = 16;
-            btnDtCham.Text = "Xét giải";
-            btnDtCham.UseVisualStyleBackColor = true;
+            btnDtXep.Dock = DockStyle.Fill;
+            btnDtXep.Enabled = false;
+            btnDtXep.Location = new Point(661, 3);
+            btnDtXep.Name = "btnDtXep";
+            btnDtXep.Size = new Size(132, 37);
+            btnDtXep.TabIndex = 16;
+            btnDtXep.Text = "Xét giải";
+            btnDtXep.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel8
             // 
@@ -355,7 +355,7 @@
         private TabPage tabDT;
         private TableLayoutPanel tableLayoutPanel1;
         private TableLayoutPanel tableLayoutPanel3;
-        private Button btnDtCham;
+        private Button btnDtXep;
         private TableLayoutPanel tableLayoutPanel8;
         private ComboBox cbDT;
         private Label label6;
@@ -375,6 +375,6 @@
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
         private ColumnHeader columnHeader4;
-        private Button btnCdCham;
+        private Button btnCdXep;
     }
 }

@@ -39,11 +39,13 @@ namespace QLNCKH.Forms
 
             if (loai == "Đề tài")
             {
-                cbMa.DataSource = new Repository<DeTai>()
-                .GetSome(x => new {
-                    Value = x.MaDT,
-                    Display = $"({x.MaDT}) {x.TenDT}"
-                });
+                cbMa.DataSource = new Repository<DeTai>().Filter(
+                    x => x.TrangThaiId < 4,
+                    x => new {
+                        Value = x.MaDT,
+                        Display = $"({x.MaDT}) {x.TenDT}"
+                    }
+                );
             }
             else
             {

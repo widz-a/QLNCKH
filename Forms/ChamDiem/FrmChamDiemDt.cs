@@ -93,6 +93,9 @@ namespace QLNCKH.Forms {
                         Diem = diem,
                     };
                     repo.Insert(data);
+                    var dt = new Repository<DeTai>().GetById(data.MaDT);
+                    dt.TrangThaiId = 8;
+                    new Repository<DeTai>().Update(dt);
                 }
             }
 
