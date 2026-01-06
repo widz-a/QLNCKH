@@ -11,13 +11,20 @@ namespace QLNCKH.Forms
         public FrmHome()
         {
             InitializeComponent();
+
+            //Buttons
+
+            StyleHelper.ApplyButtonDep(btnDkDT, Color.FromArgb(59, 130, 246), Color.FromArgb(79, 70, 229));
+            StyleHelper.ApplyButtonDep(btnDkCD, Color.FromArgb(34, 197, 94), Color.FromArgb(5, 150, 105));
+            StyleHelper.ApplyButtonDep(btnNopBai, Color.FromArgb(168, 85, 247), Color.FromArgb(219, 39, 119));
+            StyleHelper.ApplyButtonDep(btnKQ, Color.FromArgb(249, 115, 22), Color.FromArgb(217, 119, 6));
+
             btnDkDT.Click += (s, e) => new FrmDeTaiEdit().ShowDialog();
             btnDkCD.Click += (s, e) => new FrmChuyenDeEdit().ShowDialog();
             btnNopBai.Click += (s, e) => _mainForm.LoadForm(new FrmNopDeTaiEdit(), "Nộp sản phẩm");
             btnKQ.Click += (s, e) => _mainForm.LoadForm(new FrmKetQua(), "Kết quả");
 
             //Show data
-
             lblTongDeTaiValue.Text = new Repository<DeTai>().GetAll().Count.ToString();
             lblSinhVienValue.Text = new Repository<SinhVien>().GetAll().Count.ToString();
             lblGiangVienValue.Text = new Repository<GiangVien>().GetAll().Count.ToString();

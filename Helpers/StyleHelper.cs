@@ -1,4 +1,6 @@
-﻿public static class StyleHelper {
+﻿using System.Drawing.Drawing2D;
+
+public static class StyleHelper {
     public static void ApplyDGV(DataGridView dgv, bool stt = true) {
         dgv.EnableHeadersVisualStyles = false;
         dgv.BorderStyle = BorderStyle.None;
@@ -188,4 +190,78 @@
             e.RowIndex % 2 == 0 ? Color.White : Color.FromArgb(245, 246, 250);
     }
 
+    public static void ApplyButtonDep(
+        Button btn,
+        Color color1,
+        Color color2
+    ) {
+        btn.FlatStyle = FlatStyle.Flat;
+        btn.FlatAppearance.BorderSize = 0;
+        btn.ForeColor = Color.White;
+        btn.TextAlign = ContentAlignment.MiddleLeft;
+        btn.Padding = new Padding(24);
+        btn.Cursor = Cursors.Hand;
+        btn.BackColor = Color.Transparent;
+
+        bool hover = false;
+
+        btn.MouseEnter += (_, __) => {
+            hover = true;
+            btn.Invalidate();
+        };
+
+        btn.MouseLeave += (_, __) => {
+            hover = false;
+            btn.Invalidate();
+        };
+
+        btn.Paint += (s, e) => {
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+
+            Rectangle rect = btn.ClientRectangle;
+            int radius = 8;
+
+            if (hover) {
+                // hover:scale-105 (fake)
+                rect = new Rectangle(1, 1, btn.Width - 2, btn.Height - 2);
+            }
+
+            using GraphicsPath path = RoundedRect(rect, radius);
+
+            using LinearGradientBrush brush = new LinearGradientBrush(
+                rect,
+                color1,
+                color2,
+                LinearGradientMode.Horizontal
+            );
+
+            e.Graphics.FillPath(brush, path);
+
+            // shadow
+            using Pen shadow = new Pen(Color.FromArgb(70, 0, 0, 0), 1);
+            e.Graphics.DrawPath(shadow, path);
+
+            TextRenderer.DrawText(
+                e.Graphics,
+                btn.Text,
+                btn.Font,
+                rect,
+                btn.ForeColor,
+                TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter
+            );
+        };
+    }
+
+    private static GraphicsPath RoundedRect(Rectangle rect, int radius) {
+        GraphicsPath path = new GraphicsPath();
+        int d = radius * 2;
+
+        path.AddArc(rect.X, rect.Y, d, d, 180, 90);
+        path.AddArc(rect.Right - d, rect.Y, d, d, 270, 90);
+        path.AddArc(rect.Right - d, rect.Bottom - d, d, d, 0, 90);
+        path.AddArc(rect.X, rect.Bottom - d, d, d, 90, 90);
+        path.CloseFigure();
+
+        return path;
+    }
 }
