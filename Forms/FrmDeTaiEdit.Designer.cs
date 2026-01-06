@@ -494,6 +494,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "FrmDeTaiEdit";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Đăng kí đề tài NCKH";
             tableLayoutPanel5.ResumeLayout(false);
             tab.ResumeLayout(false);

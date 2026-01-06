@@ -254,6 +254,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "FrmChamDiemCdV1";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Phiếu chấm điểm chuyên đề";
             tableLayoutPanel5.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);

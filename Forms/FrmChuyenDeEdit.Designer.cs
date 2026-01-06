@@ -25,6 +25,7 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmChuyenDeEdit));
             tableLayoutPanel2 = new TableLayoutPanel();
+            cbLV = new ComboBox();
             txtMaCD = new TextBox();
             label2 = new Label();
             label1 = new Label();
@@ -32,12 +33,11 @@
             btnLuu = new Button();
             btnHuy = new Button();
             title = new ReaLTaiizor.Controls.FoxBigLabel();
-            cbLV = new ComboBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             cbSV = new ComboBox();
+            txtTen = new TextBox();
             label3 = new Label();
             label4 = new Label();
-            txtTen = new TextBox();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel5.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -61,6 +61,19 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel2.Size = new Size(337, 71);
             tableLayoutPanel2.TabIndex = 1;
+            // 
+            // cbLV
+            // 
+            cbLV.Dock = DockStyle.Fill;
+            cbLV.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbLV.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            cbLV.FormattingEnabled = true;
+            cbLV.Items.AddRange(new object[] { "Nam", "Nữ" });
+            cbLV.Location = new Point(135, 44);
+            cbLV.Margin = new Padding(3, 6, 3, 6);
+            cbLV.Name = "cbLV";
+            cbLV.Size = new Size(199, 27);
+            cbLV.TabIndex = 42;
             // 
             // txtMaCD
             // 
@@ -146,19 +159,6 @@
             title.TabIndex = 0;
             title.Text = "Đăng kí chuyên đề NCKH";
             // 
-            // cbLV
-            // 
-            cbLV.Dock = DockStyle.Fill;
-            cbLV.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbLV.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            cbLV.FormattingEnabled = true;
-            cbLV.Items.AddRange(new object[] { "Nam", "Nữ" });
-            cbLV.Location = new Point(135, 44);
-            cbLV.Margin = new Padding(3, 6, 3, 6);
-            cbLV.Name = "cbLV";
-            cbLV.Size = new Size(199, 27);
-            cbLV.TabIndex = 42;
-            // 
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 2;
@@ -191,6 +191,16 @@
             cbSV.Size = new Size(252, 27);
             cbSV.TabIndex = 42;
             // 
+            // txtTen
+            // 
+            txtTen.Dock = DockStyle.Fill;
+            txtTen.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtTen.Location = new Point(137, 6);
+            txtTen.Margin = new Padding(3, 6, 3, 6);
+            txtTen.Name = "txtTen";
+            txtTen.Size = new Size(252, 26);
+            txtTen.TabIndex = 7;
+            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -215,16 +225,6 @@
             label4.Text = "Tên chuyên đề:";
             label4.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // txtTen
-            // 
-            txtTen.Dock = DockStyle.Fill;
-            txtTen.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            txtTen.Location = new Point(137, 6);
-            txtTen.Margin = new Padding(3, 6, 3, 6);
-            txtTen.Name = "txtTen";
-            txtTen.Size = new Size(252, 26);
-            txtTen.TabIndex = 7;
-            // 
             // FrmChuyenDeEdit
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -238,6 +238,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "FrmChuyenDeEdit";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Đăng kí chuyên đề NCKH";
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();

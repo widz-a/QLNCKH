@@ -128,6 +128,7 @@
             Controls.Add(tableLayoutPanel1);
             Controls.Add(dgvSinhVien);
             Name = "FrmBaseList";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "FrmSinhVien";
             ((System.ComponentModel.ISupportInitialize)dgvSinhVien).EndInit();
             tableLayoutPanel1.ResumeLayout(false);

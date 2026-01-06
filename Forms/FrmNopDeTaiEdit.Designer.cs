@@ -226,6 +226,7 @@
             Controls.Add(tableLayoutPanel5);
             Controls.Add(tableLayoutPanel4);
             Name = "FrmNopDeTaiEdit";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmNopDeTaiEdit";
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel3.PerformLayout();

@@ -527,6 +527,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "FrmHoiDongEdit";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Thành lập hội đồng";
             tableLayoutPanel5.ResumeLayout(false);
             tab.ResumeLayout(false);

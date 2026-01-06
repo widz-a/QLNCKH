@@ -492,6 +492,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "FrmSinhVienEdit";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Thêm thông tin sinh viên";
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();

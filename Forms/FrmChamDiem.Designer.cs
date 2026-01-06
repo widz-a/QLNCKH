@@ -335,6 +335,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "FrmChamDiem";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Thành lập hội đồng";
             tabCD.ResumeLayout(false);
             tableLayoutPanel4.ResumeLayout(false);

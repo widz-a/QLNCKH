@@ -269,6 +269,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "FrmDaoVanEdit";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Kiểm tra đạo văn";
             tableLayoutPanel5.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);

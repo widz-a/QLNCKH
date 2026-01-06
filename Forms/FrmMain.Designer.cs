@@ -161,6 +161,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FrmMain";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Hệ thống Quản lý Nghiên cứu khoa học";
             pnlSidebar.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);

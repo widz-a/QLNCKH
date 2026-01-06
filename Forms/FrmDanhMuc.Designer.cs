@@ -268,6 +268,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(tableLayoutPanel2);
             Name = "FrmDanhMuc";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Form1";
             WindowState = FormWindowState.Maximized;
             tableLayoutPanel2.ResumeLayout(false);

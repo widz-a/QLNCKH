@@ -69,6 +69,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "FrmDiem";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Nhập điểm";
             ResumeLayout(false);
             PerformLayout();
