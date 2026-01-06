@@ -11,7 +11,28 @@ namespace QLNCKH.Forms
         public FrmHome()
         {
             InitializeComponent();
-            btnNopBai.Click += btnNopBai_Click;
+            btnDkDT.Click += (s, e) => new FrmDeTaiEdit().ShowDialog();
+            btnDkCD.Click += (s, e) => new FrmChuyenDeEdit().ShowDialog();
+            btnNopBai.Click += (s, e) => _mainForm.LoadForm(new FrmNopDeTaiEdit(), "Nộp sản phẩm");
+            btnKQ.Click += (s, e) => _mainForm.LoadForm(new FrmKetQua(), "Kết quả");
+
+            //Show data
+
+            lblTongDeTaiValue.Text = new Repository<DeTai>().GetAll().Count.ToString();
+            lblSinhVienValue.Text = new Repository<SinhVien>().GetAll().Count.ToString();
+            lblGiangVienValue.Text = new Repository<GiangVien>().GetAll().Count.ToString();
+
+            /*
+             "Nhất"
+                            : i < 8 ? "Nhì"
+                            : i < 15 ? "Ba"
+                            : i < 25 ? "Khuyến khích"
+             */
+
+            lblGiaiNhatValue.Text = getSoLuongGiai("Nhất").ToString();
+            lblGiaiNhiValue.Text = getSoLuongGiai("Nhì").ToString();
+            lblGiaiBaValue.Text = getSoLuongGiai("Ba").ToString();
+            lblGiaiKKValue.Text = getSoLuongGiai("Khuyến khích").ToString();
         }
 
         public FrmHome(FrmMain mainForm) : this()
@@ -19,19 +40,13 @@ namespace QLNCKH.Forms
             _mainForm = mainForm;
         }
 
-        private void btnNopBai_Click(object sender, EventArgs e)
-        {
-            _mainForm.LoadForm(new FrmNopDeTaiEdit(), "Nộp sản phẩm");
-        }
-
-        private void pnlContent_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+        private int getSoLuongGiai(string giai) {
+            return
+            new Repository<KetQua_ChuyenDe>()
+                .Filter(kq => kq.Giai == giai).Count
+                +
+            new Repository<KetQua_DeTai>()
+                .Filter(kq => kq.Giai == giai).Count;
         }
     }
 }

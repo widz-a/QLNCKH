@@ -48,10 +48,10 @@
             label4 = new Label();
             panel3 = new Panel();
             tableLayoutPanel3 = new TableLayoutPanel();
-            button3 = new Button();
-            button2 = new Button();
-            button1 = new Button();
+            btnKQ = new Button();
             btnNopBai = new Button();
+            btnDkCD = new Button();
+            btnDkDT = new Button();
             label6 = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
             label1 = new Label();
@@ -106,7 +106,6 @@
             pnlContent.Padding = new Padding(20);
             pnlContent.Size = new Size(816, 580);
             pnlContent.TabIndex = 0;
-            pnlContent.Paint += pnlContent_Paint;
             // 
             // tableLayoutPanel2
             // 
@@ -173,9 +172,9 @@
             lblGiaiKKTitle.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblGiaiKKTitle.Location = new Point(17, 9);
             lblGiaiKKTitle.Name = "lblGiaiKKTitle";
-            lblGiaiKKTitle.Size = new Size(133, 20);
+            lblGiaiKKTitle.Size = new Size(90, 20);
             lblGiaiKKTitle.TabIndex = 0;
-            lblGiaiKKTitle.Text = "🎖 Khuyến khích:";
+            lblGiaiKKTitle.Text = "🎖 Giải KK:";
             // 
             // pGiaiBa
             // 
@@ -295,10 +294,10 @@
             tableLayoutPanel3.ColumnCount = 2;
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Controls.Add(button3, 1, 1);
-            tableLayoutPanel3.Controls.Add(button2, 0, 1);
-            tableLayoutPanel3.Controls.Add(button1, 1, 0);
-            tableLayoutPanel3.Controls.Add(btnNopBai, 0, 0);
+            tableLayoutPanel3.Controls.Add(btnKQ, 1, 1);
+            tableLayoutPanel3.Controls.Add(btnNopBai, 0, 1);
+            tableLayoutPanel3.Controls.Add(btnDkCD, 1, 0);
+            tableLayoutPanel3.Controls.Add(btnDkDT, 0, 0);
             tableLayoutPanel3.Dock = DockStyle.Fill;
             tableLayoutPanel3.Location = new Point(0, 38);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -308,45 +307,45 @@
             tableLayoutPanel3.Size = new Size(462, 156);
             tableLayoutPanel3.TabIndex = 2;
             // 
-            // button3
+            // btnKQ
             // 
-            button3.Dock = DockStyle.Fill;
-            button3.Location = new Point(241, 88);
-            button3.Margin = new Padding(10);
-            button3.Name = "button3";
-            button3.Size = new Size(211, 58);
-            button3.TabIndex = 5;
-            button3.Text = "➕ Xem kết quả";
-            // 
-            // button2
-            // 
-            button2.Dock = DockStyle.Fill;
-            button2.Location = new Point(10, 88);
-            button2.Margin = new Padding(10);
-            button2.Name = "button2";
-            button2.Size = new Size(211, 58);
-            button2.TabIndex = 4;
-            button2.Text = "➕ Nộp sản phẩm";
-            // 
-            // button1
-            // 
-            button1.Dock = DockStyle.Fill;
-            button1.Location = new Point(241, 10);
-            button1.Margin = new Padding(10);
-            button1.Name = "button1";
-            button1.Size = new Size(211, 58);
-            button1.TabIndex = 3;
-            button1.Text = "➕ Đăng kí chuyên đề";
+            btnKQ.Dock = DockStyle.Fill;
+            btnKQ.Location = new Point(241, 88);
+            btnKQ.Margin = new Padding(10);
+            btnKQ.Name = "btnKQ";
+            btnKQ.Size = new Size(211, 58);
+            btnKQ.TabIndex = 5;
+            btnKQ.Text = "➕ Xem kết quả";
             // 
             // btnNopBai
             // 
             btnNopBai.Dock = DockStyle.Fill;
-            btnNopBai.Location = new Point(10, 10);
+            btnNopBai.Location = new Point(10, 88);
             btnNopBai.Margin = new Padding(10);
             btnNopBai.Name = "btnNopBai";
             btnNopBai.Size = new Size(211, 58);
-            btnNopBai.TabIndex = 2;
-            btnNopBai.Text = "➕ Đăng kí đề tài";
+            btnNopBai.TabIndex = 4;
+            btnNopBai.Text = "➕ Nộp sản phẩm";
+            // 
+            // btnDkCD
+            // 
+            btnDkCD.Dock = DockStyle.Fill;
+            btnDkCD.Location = new Point(241, 10);
+            btnDkCD.Margin = new Padding(10);
+            btnDkCD.Name = "btnDkCD";
+            btnDkCD.Size = new Size(211, 58);
+            btnDkCD.TabIndex = 3;
+            btnDkCD.Text = "➕ Đăng kí chuyên đề";
+            // 
+            // btnDkDT
+            // 
+            btnDkDT.Dock = DockStyle.Fill;
+            btnDkDT.Location = new Point(10, 10);
+            btnDkDT.Margin = new Padding(10);
+            btnDkDT.Name = "btnDkDT";
+            btnDkDT.Size = new Size(211, 58);
+            btnDkDT.TabIndex = 2;
+            btnDkDT.Text = "➕ Đăng kí đề tài";
             // 
             // label6
             // 
@@ -548,7 +547,7 @@
         private TableLayoutPanel tableLayoutPanel1;
         private Label label1;
         private Panel panel1;
-        private Button btnNopBai;
+        private Button btnDkDT;
         private Panel pGiaiBa;
         private Label lblGiaiBaValue;
         private Label lblGiaiBaTitle;
@@ -568,8 +567,8 @@
         private Panel panel4;
         private TableLayoutPanel tableLayoutPanel3;
         private Label label6;
-        private Button button1;
-        private Button button3;
-        private Button button2;
+        private Button btnDkCD;
+        private Button btnKQ;
+        private Button btnNopBai;
     }
 }
