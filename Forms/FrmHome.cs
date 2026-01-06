@@ -11,11 +11,12 @@ namespace QLNCKH.Forms
             InitializeComponent();
 
             //Style
+            /*
             StyleHelper.ApplyButtonDep(btnDkDT, Color.FromArgb(59, 130, 246), Color.FromArgb(79, 70, 229));
             StyleHelper.ApplyButtonDep(btnDkCD, Color.FromArgb(34, 197, 94), Color.FromArgb(5, 150, 105));
             StyleHelper.ApplyButtonDep(btnNopBai, Color.FromArgb(168, 85, 247), Color.FromArgb(219, 39, 119));
             StyleHelper.ApplyButtonDep(btnKQ, Color.FromArgb(245, 158, 11), Color.FromArgb(239, 68, 68));
-            
+            */
 
             btnDkDT.Click += (s, e) => new FrmDeTaiEdit().ShowDialog();
             btnDkCD.Click += (s, e) => new FrmChuyenDeEdit().ShowDialog();

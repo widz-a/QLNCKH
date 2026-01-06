@@ -17,6 +17,7 @@
             tableLayoutPanel2 = new TableLayoutPanel();
             materialCard5 = new ReaLTaiizor.Controls.MaterialCard();
             tableLayoutPanel3 = new TableLayoutPanel();
+            btnDkDT = new Button();
             btnKQ = new Button();
             btnNopBai = new Button();
             btnDkCD = new Button();
@@ -49,7 +50,6 @@
             lblTongDeTaiValue = new Label();
             lblTongDeTaiTitle = new Label();
             panel1 = new Panel();
-            btnDkDT = new Button();
             pnlRoot.SuspendLayout();
             pnlContent.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -125,6 +125,7 @@
             // 
             // tableLayoutPanel3
             // 
+            tableLayoutPanel3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanel3.ColumnCount = 2;
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
@@ -132,44 +133,57 @@
             tableLayoutPanel3.Controls.Add(btnKQ, 1, 1);
             tableLayoutPanel3.Controls.Add(btnNopBai, 0, 1);
             tableLayoutPanel3.Controls.Add(btnDkCD, 1, 0);
-            tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(10, 43);
+            tableLayoutPanel3.Location = new Point(10, 50);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 2;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Size = new Size(434, 133);
+            tableLayoutPanel3.Size = new Size(434, 111);
             tableLayoutPanel3.TabIndex = 3;
+            // 
+            // btnDkDT
+            // 
+            btnDkDT.Dock = DockStyle.Fill;
+            btnDkDT.Font = new Font("Segoe UI", 8F);
+            btnDkDT.Location = new Point(10, 0);
+            btnDkDT.Margin = new Padding(10, 0, 10, 10);
+            btnDkDT.Name = "btnDkDT";
+            btnDkDT.Size = new Size(197, 45);
+            btnDkDT.TabIndex = 6;
+            btnDkDT.Text = "📝 Đăng kí đề tài";
             // 
             // btnKQ
             // 
             btnKQ.Dock = DockStyle.Fill;
-            btnKQ.Location = new Point(227, 76);
-            btnKQ.Margin = new Padding(10);
+            btnKQ.Font = new Font("Segoe UI", 8F);
+            btnKQ.Location = new Point(227, 55);
+            btnKQ.Margin = new Padding(10, 0, 10, 10);
             btnKQ.Name = "btnKQ";
-            btnKQ.Size = new Size(197, 47);
+            btnKQ.Size = new Size(197, 46);
             btnKQ.TabIndex = 5;
-            btnKQ.Text = "➕ Xem kết quả";
+            btnKQ.Text = "📊 Xem kết quả";
             // 
             // btnNopBai
             // 
             btnNopBai.Dock = DockStyle.Fill;
-            btnNopBai.Location = new Point(10, 76);
-            btnNopBai.Margin = new Padding(10);
+            btnNopBai.Font = new Font("Segoe UI", 8F);
+            btnNopBai.Location = new Point(10, 55);
+            btnNopBai.Margin = new Padding(10, 0, 10, 10);
             btnNopBai.Name = "btnNopBai";
-            btnNopBai.Size = new Size(197, 47);
+            btnNopBai.Size = new Size(197, 46);
             btnNopBai.TabIndex = 4;
             btnNopBai.Text = "➕ Nộp sản phẩm";
             // 
             // btnDkCD
             // 
             btnDkCD.Dock = DockStyle.Fill;
-            btnDkCD.Location = new Point(227, 10);
-            btnDkCD.Margin = new Padding(10);
+            btnDkCD.Font = new Font("Segoe UI", 8F);
+            btnDkCD.Location = new Point(227, 0);
+            btnDkCD.Margin = new Padding(10, 0, 10, 10);
             btnDkCD.Name = "btnDkCD";
-            btnDkCD.Size = new Size(197, 46);
+            btnDkCD.Size = new Size(197, 45);
             btnDkCD.TabIndex = 3;
-            btnDkCD.Text = "➕ Đăng kí chuyên đề";
+            btnDkCD.Text = "📚 Đăng kí chuyên đề";
             // 
             // label6
             // 
@@ -509,16 +523,6 @@
             panel1.Padding = new Padding(20);
             panel1.Size = new Size(776, 100);
             panel1.TabIndex = 2;
-            // 
-            // btnDkDT
-            // 
-            btnDkDT.Dock = DockStyle.Fill;
-            btnDkDT.Location = new Point(10, 10);
-            btnDkDT.Margin = new Padding(10);
-            btnDkDT.Name = "btnDkDT";
-            btnDkDT.Size = new Size(197, 46);
-            btnDkDT.TabIndex = 6;
-            btnDkDT.Text = "➕ Đăng kí đề tài";
             // 
             // FrmHome
             // 
