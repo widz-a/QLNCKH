@@ -40,6 +40,7 @@ public class DeTaiDto {
     public string TenDT { get; set; }
     public int SoLuongSv { get; set; }
     public string TrangThai { get; set; }
+    public DateTime? NgayNop { get; set; }
 
 }
 
@@ -106,6 +107,8 @@ public class ChuyenDeTdo {
 
     public string TenSV { get; set; }
     public string LinhVuc { get; set; }
+    public DateTime? NgayNop { get; set; }
+
 }
 
 #endregion

@@ -91,6 +91,7 @@ namespace QLNCKH
                             TenDT = sv.TenDT,
                             SoLuongSv = sv.SinhViens.Count,
                             TrangThai = sv.TrangThai.TenTrangThai,
+                            NgayNop = SanPhamService.GetThoiGianNop(sv.MaDT, "Đề tài")
 
                         }),
                         IdColumn = "MaDT",
@@ -99,6 +100,7 @@ namespace QLNCKH
                             ["TenDT"] = "Tên đề tài",
                             ["SoLuongSv"] = "Số thành viên",
                             ["TrangThai"] = "Trạng thái",
+                            ["NgayNop"] = "Ngày nộp",
                         },
                         GetEditForm = id => new FrmDeTaiEdit(id[0]),
                         GetCreateForm = () => new FrmDeTaiEdit(),
@@ -112,6 +114,7 @@ namespace QLNCKH
                             TenCD = sv.TenCD,
                             TenSV = sv.SinhVien.HoTen,
                             LinhVuc = sv.LinhVuc.TenLinhVuc,
+                            NgayNop = SanPhamService.GetThoiGianNop(sv.MaCD, "Chuyên đề")
 
                         }),
                         IdColumn = "MaCD",
@@ -120,6 +123,7 @@ namespace QLNCKH
                             ["TenCD"] = "Tên chuyên đề",
                             ["TenSV"] = "Sinh viên",
                             ["LinhVuc"] = "Lĩnh vực",
+                            ["NgayNop"] = "Ngày nộp",
                         },
                         GetEditForm = id => new FrmChuyenDeEdit(id[0]),
                         GetCreateForm = () => new FrmChuyenDeEdit(),
