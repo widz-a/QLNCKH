@@ -252,6 +252,38 @@ public static class StyleHelper {
         };
     }
 
+    public static void ApplyStatCardPanel(
+        Panel panel,
+        bool drawLeftBorder = true,
+        bool drawRightBorder = true
+    ) {
+        panel.BorderStyle = BorderStyle.None;
+        panel.BackColor = Color.White;
+
+        panel.Paint += (s, e) => {
+            var g = e.Graphics;
+            var r = panel.ClientRectangle;
+
+            using var pen = new Pen(Color.Black, 1);
+
+            // TOP
+            g.DrawLine(pen, 1, 1, r.Width - 2, 1);
+
+            // BOTTOM
+            g.DrawLine(pen, 1, r.Height - 2, r.Width - 2, r.Height - 2);
+
+            // LEFT
+            if (drawLeftBorder)
+                g.DrawLine(pen, 1, 1, 1, r.Height - 2);
+
+            // RIGHT
+            if (drawRightBorder)
+                g.DrawLine(pen, r.Width - 2, 1, r.Width - 2, r.Height - 2);
+        };
+
+        panel.Invalidate(); // ÉP VẼ
+    }
+
     private static GraphicsPath RoundedRect(Rectangle rect, int radius) {
         GraphicsPath path = new GraphicsPath();
         int d = radius * 2;
