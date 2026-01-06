@@ -84,8 +84,18 @@ public static class StyleHelper {
         dgv.CellPainting += (s, e) =>
         {
             if (e.RowIndex == -1 && (e.ColumnIndex >= 0 || (e.ColumnIndex < 0 && stt))) {
-                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+                // chừa 1px trái + phải để cân divider
+                var textBounds = new Rectangle(
+                    e.CellBounds.X + 1,
+                    e.CellBounds.Y,
+                    e.CellBounds.Width - 2,
+                    e.CellBounds.Height
+                );
 
+                e.PaintBackground(textBounds, true);
+                e.PaintContent(textBounds);
+
+                // vẽ divider
                 if (e.ColumnIndex < dgv.Columns.Count - 1) {
                     using var pen = new Pen(Color.Black, 1);
                     int x = e.CellBounds.Right - 1;
@@ -169,6 +179,12 @@ public static class StyleHelper {
 
         dgv.CellMouseEnter += dgv_CellMouseEnter;
         dgv.CellMouseLeave += dgv_CellMouseLeave;
+
+        dgv.DataBindingComplete += (s, e) => {
+            foreach (DataGridViewColumn col in dgv.Columns) {
+                col.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+        };
     }
 
     static int hoverRow = -1;
@@ -250,38 +266,6 @@ public static class StyleHelper {
                 TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter
             );
         };
-    }
-
-    public static void ApplyStatCardPanel(
-        Panel panel,
-        bool drawLeftBorder = true,
-        bool drawRightBorder = true
-    ) {
-        panel.BorderStyle = BorderStyle.None;
-        panel.BackColor = Color.White;
-
-        panel.Paint += (s, e) => {
-            var g = e.Graphics;
-            var r = panel.ClientRectangle;
-
-            using var pen = new Pen(Color.Black, 1);
-
-            // TOP
-            g.DrawLine(pen, 1, 1, r.Width - 2, 1);
-
-            // BOTTOM
-            g.DrawLine(pen, 1, r.Height - 2, r.Width - 2, r.Height - 2);
-
-            // LEFT
-            if (drawLeftBorder)
-                g.DrawLine(pen, 1, 1, 1, r.Height - 2);
-
-            // RIGHT
-            if (drawRightBorder)
-                g.DrawLine(pen, r.Width - 2, 1, r.Width - 2, r.Height - 2);
-        };
-
-        panel.Invalidate(); // ÉP VẼ
     }
 
     private static GraphicsPath RoundedRect(Rectangle rect, int radius) {
