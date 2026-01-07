@@ -75,10 +75,12 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(482, 453);
-            ControlBox = false;
             Controls.Add(tableLayoutPanel1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MdiChildrenMinimizedAnchorBottom = false;
+            MinimizeBox = false;
             Name = "FrmLoading";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Hệ thống Quản lý Nghiên cứu khoa học";

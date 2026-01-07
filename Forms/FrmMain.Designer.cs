@@ -159,7 +159,6 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
-            MinimizeBox = false;
             Name = "FrmMain";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Hệ thống Quản lý Nghiên cứu khoa học";
