@@ -28,23 +28,27 @@
             tableLayoutPanel2 = new TableLayoutPanel();
             tableLayoutPanel3 = new TableLayoutPanel();
             panel1 = new Panel();
+            panel2 = new Panel();
+            materialCard1 = new ReaLTaiizor.Controls.MaterialCard();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            btnXoa = new ReaLTaiizor.Controls.Button();
+            btnSua = new ReaLTaiizor.Controls.Button();
+            btnThem = new ReaLTaiizor.Controls.Button();
             tableLayoutPanel5 = new TableLayoutPanel();
             label2 = new Label();
             txtTen = new TextBox();
             tableLayoutPanel4 = new TableLayoutPanel();
             label1 = new Label();
             cboDanhMuc = new ComboBox();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            btnXoa = new ReaLTaiizor.Controls.Button();
-            btnSua = new ReaLTaiizor.Controls.Button();
-            btnThem = new ReaLTaiizor.Controls.Button();
             dgvDanhMuc = new DataGridView();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             panel1.SuspendLayout();
+            panel2.SuspendLayout();
+            materialCard1.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel5.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDanhMuc).BeginInit();
             SuspendLayout();
             // 
@@ -79,9 +83,7 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(tableLayoutPanel5);
-            panel1.Controls.Add(tableLayoutPanel4);
-            panel1.Controls.Add(tableLayoutPanel1);
+            panel1.Controls.Add(panel2);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(457, 0);
             panel1.Margin = new Padding(0);
@@ -89,19 +91,125 @@
             panel1.Size = new Size(337, 444);
             panel1.TabIndex = 2;
             // 
+            // panel2
+            // 
+            panel2.Controls.Add(materialCard1);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Padding = new Padding(3);
+            panel2.Size = new Size(337, 444);
+            panel2.TabIndex = 0;
+            // 
+            // materialCard1
+            // 
+            materialCard1.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard1.Controls.Add(tableLayoutPanel1);
+            materialCard1.Controls.Add(tableLayoutPanel5);
+            materialCard1.Controls.Add(tableLayoutPanel4);
+            materialCard1.Depth = 0;
+            materialCard1.Dock = DockStyle.Fill;
+            materialCard1.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard1.Location = new Point(3, 3);
+            materialCard1.Margin = new Padding(14);
+            materialCard1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialCard1.Name = "materialCard1";
+            materialCard1.Padding = new Padding(14);
+            materialCard1.Size = new Size(331, 438);
+            materialCard1.TabIndex = 15;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.Controls.Add(btnXoa, 2, 0);
+            tableLayoutPanel1.Controls.Add(btnSua, 1, 0);
+            tableLayoutPanel1.Controls.Add(btnThem, 0, 0);
+            tableLayoutPanel1.Dock = DockStyle.Bottom;
+            tableLayoutPanel1.Location = new Point(14, 339);
+            tableLayoutPanel1.Margin = new Padding(0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.Padding = new Padding(4, 4, 4, 40);
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Size = new Size(303, 85);
+            tableLayoutPanel1.TabIndex = 18;
+            // 
+            // btnXoa
+            // 
+            btnXoa.BackColor = Color.Transparent;
+            btnXoa.BorderColor = Color.FromArgb(59, 130, 246);
+            btnXoa.Dock = DockStyle.Fill;
+            btnXoa.EnteredBorderColor = Color.FromArgb(37, 99, 235);
+            btnXoa.EnteredColor = Color.FromArgb(37, 99, 235);
+            btnXoa.Font = new Font("Tahoma", 11F);
+            btnXoa.Image = null;
+            btnXoa.ImageAlign = ContentAlignment.MiddleLeft;
+            btnXoa.InactiveColor = Color.FromArgb(59, 130, 246);
+            btnXoa.Location = new Point(203, 7);
+            btnXoa.Name = "btnXoa";
+            btnXoa.PressedBorderColor = Color.FromArgb(37, 99, 235);
+            btnXoa.PressedColor = Color.FromArgb(37, 99, 235);
+            btnXoa.Size = new Size(93, 35);
+            btnXoa.TabIndex = 12;
+            btnXoa.Text = "Xóa";
+            btnXoa.TextAlignment = StringAlignment.Center;
+            // 
+            // btnSua
+            // 
+            btnSua.BackColor = Color.Transparent;
+            btnSua.BorderColor = Color.FromArgb(59, 130, 246);
+            btnSua.Dock = DockStyle.Fill;
+            btnSua.EnteredBorderColor = Color.FromArgb(37, 99, 235);
+            btnSua.EnteredColor = Color.FromArgb(37, 99, 235);
+            btnSua.Font = new Font("Tahoma", 11F);
+            btnSua.Image = null;
+            btnSua.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSua.InactiveColor = Color.FromArgb(59, 130, 246);
+            btnSua.Location = new Point(105, 7);
+            btnSua.Name = "btnSua";
+            btnSua.PressedBorderColor = Color.FromArgb(37, 99, 235);
+            btnSua.PressedColor = Color.FromArgb(37, 99, 235);
+            btnSua.Size = new Size(92, 35);
+            btnSua.TabIndex = 11;
+            btnSua.Text = "Sửa";
+            btnSua.TextAlignment = StringAlignment.Center;
+            // 
+            // btnThem
+            // 
+            btnThem.BackColor = Color.Transparent;
+            btnThem.BorderColor = Color.FromArgb(59, 130, 246);
+            btnThem.Dock = DockStyle.Fill;
+            btnThem.EnteredBorderColor = Color.FromArgb(37, 99, 235);
+            btnThem.EnteredColor = Color.FromArgb(37, 99, 235);
+            btnThem.Font = new Font("Tahoma", 11F);
+            btnThem.Image = null;
+            btnThem.ImageAlign = ContentAlignment.MiddleLeft;
+            btnThem.InactiveColor = Color.FromArgb(59, 130, 246);
+            btnThem.Location = new Point(7, 7);
+            btnThem.Name = "btnThem";
+            btnThem.PressedBorderColor = Color.FromArgb(37, 99, 235);
+            btnThem.PressedColor = Color.FromArgb(37, 99, 235);
+            btnThem.Size = new Size(92, 35);
+            btnThem.TabIndex = 10;
+            btnThem.Text = "Thêm";
+            btnThem.TextAlignment = StringAlignment.Center;
+            // 
             // tableLayoutPanel5
             // 
             tableLayoutPanel5.ColumnCount = 1;
             tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel5.Controls.Add(label2, 0, 0);
             tableLayoutPanel5.Controls.Add(txtTen, 0, 1);
-            tableLayoutPanel5.Location = new Point(12, 50);
+            tableLayoutPanel5.Location = new Point(9, 58);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
             tableLayoutPanel5.RowCount = 2;
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel5.Size = new Size(316, 67);
-            tableLayoutPanel5.TabIndex = 13;
+            tableLayoutPanel5.TabIndex = 17;
             // 
             // label2
             // 
@@ -129,12 +237,12 @@
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle());
             tableLayoutPanel4.Controls.Add(label1, 0, 0);
             tableLayoutPanel4.Controls.Add(cboDanhMuc, 1, 0);
-            tableLayoutPanel4.Location = new Point(12, 9);
+            tableLayoutPanel4.Location = new Point(9, 17);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 1;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel4.Size = new Size(316, 35);
-            tableLayoutPanel4.TabIndex = 11;
+            tableLayoutPanel4.TabIndex = 16;
             // 
             // label1
             // 
@@ -156,84 +264,6 @@
             cboDanhMuc.Name = "cboDanhMuc";
             cboDanhMuc.Size = new Size(167, 28);
             cboDanhMuc.TabIndex = 10;
-            // 
-            // tableLayoutPanel1
-            // 
-            tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.Controls.Add(btnXoa, 2, 0);
-            tableLayoutPanel1.Controls.Add(btnSua, 1, 0);
-            tableLayoutPanel1.Controls.Add(btnThem, 0, 0);
-            tableLayoutPanel1.Dock = DockStyle.Bottom;
-            tableLayoutPanel1.Location = new Point(0, 359);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.Padding = new Padding(4, 4, 4, 40);
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(337, 85);
-            tableLayoutPanel1.TabIndex = 8;
-            // 
-            // btnXoa
-            // 
-            btnXoa.BackColor = Color.Transparent;
-            btnXoa.BorderColor = Color.FromArgb(59, 130, 246);
-            btnXoa.Dock = DockStyle.Fill;
-            btnXoa.EnteredBorderColor = Color.FromArgb(37, 99, 235);
-            btnXoa.EnteredColor = Color.FromArgb(37, 99, 235);
-            btnXoa.Font = new Font("Tahoma", 11F);
-            btnXoa.Image = null;
-            btnXoa.ImageAlign = ContentAlignment.MiddleLeft;
-            btnXoa.InactiveColor = Color.FromArgb(59, 130, 246);
-            btnXoa.Location = new Point(225, 7);
-            btnXoa.Name = "btnXoa";
-            btnXoa.PressedBorderColor = Color.FromArgb(37, 99, 235);
-            btnXoa.PressedColor = Color.FromArgb(37, 99, 235);
-            btnXoa.Size = new Size(105, 35);
-            btnXoa.TabIndex = 12;
-            btnXoa.Text = "Xóa";
-            btnXoa.TextAlignment = StringAlignment.Center;
-            // 
-            // btnSua
-            // 
-            btnSua.BackColor = Color.Transparent;
-            btnSua.BorderColor = Color.FromArgb(59, 130, 246);
-            btnSua.Dock = DockStyle.Fill;
-            btnSua.EnteredBorderColor = Color.FromArgb(37, 99, 235);
-            btnSua.EnteredColor = Color.FromArgb(37, 99, 235);
-            btnSua.Font = new Font("Tahoma", 11F);
-            btnSua.Image = null;
-            btnSua.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSua.InactiveColor = Color.FromArgb(59, 130, 246);
-            btnSua.Location = new Point(116, 7);
-            btnSua.Name = "btnSua";
-            btnSua.PressedBorderColor = Color.FromArgb(37, 99, 235);
-            btnSua.PressedColor = Color.FromArgb(37, 99, 235);
-            btnSua.Size = new Size(103, 35);
-            btnSua.TabIndex = 11;
-            btnSua.Text = "Sửa";
-            btnSua.TextAlignment = StringAlignment.Center;
-            // 
-            // btnThem
-            // 
-            btnThem.BackColor = Color.Transparent;
-            btnThem.BorderColor = Color.FromArgb(59, 130, 246);
-            btnThem.Dock = DockStyle.Fill;
-            btnThem.EnteredBorderColor = Color.FromArgb(37, 99, 235);
-            btnThem.EnteredColor = Color.FromArgb(37, 99, 235);
-            btnThem.Font = new Font("Tahoma", 11F);
-            btnThem.Image = null;
-            btnThem.ImageAlign = ContentAlignment.MiddleLeft;
-            btnThem.InactiveColor = Color.FromArgb(59, 130, 246);
-            btnThem.Location = new Point(7, 7);
-            btnThem.Name = "btnThem";
-            btnThem.PressedBorderColor = Color.FromArgb(37, 99, 235);
-            btnThem.PressedColor = Color.FromArgb(37, 99, 235);
-            btnThem.Size = new Size(103, 35);
-            btnThem.TabIndex = 10;
-            btnThem.Text = "Thêm";
-            btnThem.TextAlignment = StringAlignment.Center;
             // 
             // dgvDanhMuc
             // 
@@ -274,11 +304,13 @@
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);
             panel1.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            materialCard1.ResumeLayout(false);
+            tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel5.ResumeLayout(false);
             tableLayoutPanel5.PerformLayout();
             tableLayoutPanel4.ResumeLayout(false);
             tableLayoutPanel4.PerformLayout();
-            tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvDanhMuc).EndInit();
             ResumeLayout(false);
         }
@@ -287,18 +319,20 @@
         private TableLayoutPanel tableLayoutPanel2;
         private TableLayoutPanel tableLayoutPanel3;
         private Panel panel1;
-        private Label label2;
-        private TableLayoutPanel tableLayoutPanel1;
         private Panel panelTxtBorder;
-        private ReaLTaiizor.Controls.Button btnThem;
-        private ReaLTaiizor.Controls.Button btnXoa;
-        private ReaLTaiizor.Controls.Button btnSua;
         private ReaLTaiizor.Controls.AloneComboBox aloneComboBox1;
         private DataGridView dgvDanhMuc;
+        private Panel panel2;
+        private ReaLTaiizor.Controls.MaterialCard materialCard1;
+        private TableLayoutPanel tableLayoutPanel1;
+        private ReaLTaiizor.Controls.Button btnXoa;
+        private ReaLTaiizor.Controls.Button btnSua;
+        private ReaLTaiizor.Controls.Button btnThem;
+        private TableLayoutPanel tableLayoutPanel5;
+        private Label label2;
+        private TextBox txtTen;
         private TableLayoutPanel tableLayoutPanel4;
         private Label label1;
         private ComboBox cboDanhMuc;
-        private TableLayoutPanel tableLayoutPanel5;
-        private TextBox txtTen;
     }
 }
