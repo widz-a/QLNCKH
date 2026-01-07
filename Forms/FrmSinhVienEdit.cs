@@ -107,8 +107,8 @@ namespace QLNCKH.Forms {
             if (!ValidateHelper.Required(cbTonGiao, "Tôn giáo")) return;
             if (!ValidateHelper.Required(cbChucVu, "Chức vụ")) return;
             if (!ValidateHelper.Phone(txtSDT)) return;
-            if (!ValidateHelper.Required(cbTinh, "Nơi sinh")) return;
-            if (!ValidateHelper.Required(cbXa, "Nơi sinh")) return;
+            if (!ValidateHelper.Required(cbTinh, "Quê quán")) return;
+            if (!ValidateHelper.Required(cbXa, "Quê quán")) return;
 
             //Lưu
             var sv = new SinhVien {

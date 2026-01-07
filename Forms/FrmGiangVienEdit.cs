@@ -124,8 +124,8 @@ namespace QLNCKH.Forms {
             if (!ValidateHelper.Required(cbGioiTinh, "Giới tính")) return;
             if (!ValidateHelper.Required(cbDanToc, "Dân tộc")) return;
             if (!ValidateHelper.Required(cbTonGiao, "Tôn giáo")) return;
-            if (!ValidateHelper.Required(cbTinh, "Tỉnh")) return;
-            if (!ValidateHelper.Required(cbXa, "Xã")) return;
+            if (!ValidateHelper.Required(cbTinh, "Quê quán")) return;
+            if (!ValidateHelper.Required(cbXa, "Quê quán")) return;
             if (!ValidateHelper.Required(cbChucVu, "Chức vụ")) return;
             if (!ValidateHelper.Required(cbHocHam, "Học hàm")) return;
             if (!ValidateHelper.Required(cbHocVi, "Học vị")) return;

@@ -450,7 +450,7 @@
             label11.Name = "label11";
             label11.Size = new Size(120, 36);
             label11.TabIndex = 32;
-            label11.Text = "Nơi sinh:";
+            label11.Text = "Quê quán:";
             label11.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // cbTinh
