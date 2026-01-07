@@ -18,9 +18,21 @@ namespace QLNCKH.Forms {
 
         private async void Run() {
             //Database Warm up
-            using (var db = new AppDbContext()) {
-                await db.Database.OpenConnectionAsync();
-                await db.Database.CloseConnectionAsync();
+            try {
+                using (var db = new AppDbContext()) {
+                    await db.Database.OpenConnectionAsync();
+                    await db.Database.CloseConnectionAsync();
+                }
+            } catch (Exception ex) {
+                MessageBox.Show(
+                    "Không thể kết nối tới cơ sở dữ liệu.\n\n" + ex.Message,
+                    "Lỗi kết nối",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+
+                Application.Exit(); // or this.Close();
+                return;
             }
 
             await Task.Delay(1000);
