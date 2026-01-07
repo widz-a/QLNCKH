@@ -12,11 +12,6 @@ namespace QLNCKH
             InitializeComponent();
             InitSidebar();
 
-            //Database Warm up
-            using var db = new AppDbContext();
-            db.Database.OpenConnection();
-            db.Database.CloseConnection();
-
             //Load home
             LoadForm(new FrmHome(this), "HỆ THỐNG QUẢN LÝ NGHIÊN CỨU KHOA HỌC");
 
