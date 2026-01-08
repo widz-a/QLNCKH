@@ -51,6 +51,12 @@ namespace QLNCKH.Forms {
 
                 ListViewItem item = listView2.SelectedItems[0];
                 listView2.Items.Remove(item);
+
+                //Reload stt
+                for (int i = 0; i < listView2.Items.Count; i++) {
+                    listView2.Items[i].SubItems[0].Text = (i + 1).ToString();
+                }
+
                 LoadDanhMucDC();
             };
 
@@ -75,6 +81,11 @@ namespace QLNCKH.Forms {
 
                 ListViewItem item = listView1.SelectedItems[0];
                 listView1.Items.Remove(item);
+
+                for (int i = 0; i < listView1.Items.Count; i++) {
+                    listView1.Items[i].SubItems[0].Text = (i + 1).ToString();
+                }
+
                 LoadDanhMucThanhVien();
             };
         }
