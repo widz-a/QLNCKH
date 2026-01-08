@@ -131,12 +131,12 @@ namespace QLNCKH
                 ["Đạo văn"] = (() => new FrmList<DaoVan, DaoVanDto>(
                     new ListContext<DaoVan, DaoVanDto> {
                         Name = "đề tài",
-                        GetHeaderSelector = (sv => new DaoVanDto {
-                            Id = sv.Id,
-                            TenDT = sv.DeTai.TenDT,
-                            LanQuet = sv.LanQuet,
-                            TyLeTrungLap = sv.TyLeTrungLap,
-                            KetLuan = sv.KetLuan,
+                        GetHeaderSelector = (dv => new DaoVanDto {
+                            Id = dv.MaDT,
+                            TenDT = dv.DeTai.TenDT,
+                            LanQuet = dv.LanQuet,
+                            TyLeTrungLap = dv.TyLeTrungLap,
+                            KetLuan = dv.KetLuan,
 
                         }),
                         IdColumn = "Id",

@@ -163,7 +163,7 @@ public class DaoVan
 }
 
 public class DaoVanDto {
-    public int Id { get; set; }
+    public string Id { get; set; }
     public string TenDT { get; set; }
     public int LanQuet { get; set; }
     public double TyLeTrungLap { get; set; }
