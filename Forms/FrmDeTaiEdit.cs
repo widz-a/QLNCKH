@@ -112,7 +112,7 @@ namespace QLNCKH.Forms {
             cbVT.DataSource = vtData;
             cbVT.DisplayMember = "Ten";
             cbVT.ValueMember = "ID";
-            cbVT.SelectedIndex = -1;
+            cbVT.SelectedIndex = 0;
 
             var maSvDaCo = listView1.Items
                 .Cast<ListViewItem>()

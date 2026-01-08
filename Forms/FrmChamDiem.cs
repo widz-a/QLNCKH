@@ -70,8 +70,9 @@ namespace QLNCKH.Forms {
                     var dt = new Repository<DeTai>().GetById(ketqua.MaDT);
                     dt.TrangThaiId = 9;
                     new Repository<DeTai>().Update(dt);
-                    LoadDataDt();
                 }
+                LoadDataDt();
+                setDataSource(false);
             };
 
             listView2.DoubleClick += (s, e) => {
@@ -149,6 +150,7 @@ namespace QLNCKH.Forms {
                     }
                 }
                 LoadDataCd();
+                setDataSource(false);
             };
         }
 
@@ -218,7 +220,6 @@ namespace QLNCKH.Forms {
                 listView1.Items.Add(item);
 
             }
-            setDataSource(false);
         }
 
         private void LoadDataCd() {
@@ -267,7 +268,6 @@ namespace QLNCKH.Forms {
             }
 
             btnCdXep.Text = (maxVong == 1) ? "Xét vòng 2" : "Xét giải";
-            setDataSource(false);
         }
 
         private void OpenDialogDt() {

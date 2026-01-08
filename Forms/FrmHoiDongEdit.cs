@@ -180,6 +180,8 @@ namespace QLNCKH.Forms {
                 cbVT.Items.Add("Thư ký");
             }
             cbVT.Items.Add("Thành viên");
+            cbCB.SelectedIndex = 0;
+
 
             var maCbDaCo = listView1.Items
                 .Cast<ListViewItem>()
