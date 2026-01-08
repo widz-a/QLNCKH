@@ -259,6 +259,7 @@
             // cboDanhMuc
             // 
             cboDanhMuc.Dock = DockStyle.Fill;
+            cboDanhMuc.DropDownStyle = ComboBoxStyle.DropDownList;
             cboDanhMuc.FormattingEnabled = true;
             cboDanhMuc.Location = new Point(146, 3);
             cboDanhMuc.Name = "cboDanhMuc";
