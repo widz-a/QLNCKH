@@ -18,9 +18,13 @@ namespace QLNCKH.Forms
         {
             InitializeComponent();
             LoadComboBoxes();
+            StyleHelper.ApplyDGV(dgv);
+            
             cbLoai.SelectedIndexChanged += CbLoai_SelectedIndexChanged;
             cbMa.SelectedIndexChanged += cbMa_SelectedIndexChanged;
             btnLuu.Click += btnLuu_Click;
+
+            LoadDGV();
         }
 
         private void LoadComboBoxes()
@@ -40,7 +44,7 @@ namespace QLNCKH.Forms
             if (loai == "Đề tài")
             {
                 cbMa.DataSource = new Repository<DeTai>().Filter(
-                    x => x.TrangThaiId < 4,
+                    x => x.TrangThaiId < 5,
                     x => new {
                         Value = x.MaDT,
                         Display = $"({x.MaDT}) {x.TenDT}"
@@ -66,6 +70,8 @@ namespace QLNCKH.Forms
 
             string loai = cbLoai.SelectedItem.ToString();
             string ma = cbMa.SelectedValue.ToString();
+
+            LoadDGV();
 
             if (loai == "Đề tài")
             {
@@ -144,19 +150,44 @@ namespace QLNCKH.Forms
             cbNguoiNop.Items.Clear();
 
             // Logic sửa trạng thái đề tài
-            if (nop.Loai != "Đề tài") return;
-            var dt = new Repository<DeTai>().GetById(nop.MaSo);
+            if (nop.Loai == "Đề tài") {
+                var dt = new Repository<DeTai>().GetById(nop.MaSo);
 
-            switch (nop.TrangThaiNop) {
-                case "Nộp bản mềm":
-                    if (dt.TrangThaiId < 3) dt.TrangThaiId = 3;
-                    new Repository<DeTai>().Update(dt);
-                    break;
-                default:
-                    if (dt.TrangThaiId < 4) dt.TrangThaiId = 4;
-                    new Repository<DeTai>().Update(dt);
-                    break;
+                switch (nop.TrangThaiNop) {
+                    case "Nộp bản mềm":
+                        if (dt.TrangThaiId < 3) dt.TrangThaiId = 3;
+                        new Repository<DeTai>().Update(dt);
+                        break;
+                    default:
+                        if (dt.TrangThaiId < 4) dt.TrangThaiId = 4;
+                        new Repository<DeTai>().Update(dt);
+                        break;
+                }
             }
+            LoadDGV();
+        }
+
+        private void LoadDGV() {
+            if (cbLoai.SelectedIndex <= -1 || cbMa.SelectedIndex <= -1) {
+                dgv.Visible = false;
+                return;
+            }
+            dgv.Visible = true;
+            string loai = cbLoai.SelectedItem.ToString();
+            string ma = cbMa.SelectedValue.ToString();
+
+            dgv.DataSource = new Repository<NopSanPham>().Filter(
+                x => x.Loai == loai && x.MaSo == ma,
+                x => new {
+                    x.TrangThaiNop,
+                    NguoiNop = new Repository<SinhVien>().GetById(x.NguoiNop).HoTen,
+                    x.NgayNop
+                }
+            );
+
+            dgv.Columns[0].HeaderText = "Mã số";
+            dgv.Columns[1].HeaderText = "Người nộp";
+            dgv.Columns[2].HeaderText = "Ngày nộp";
         }
 
         private void btnHuy_Click(object sender, EventArgs e)

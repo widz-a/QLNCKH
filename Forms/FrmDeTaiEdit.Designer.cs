@@ -83,7 +83,7 @@
             tableLayoutPanel5.RowCount = 1;
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel5.Size = new Size(203, 36);
-            tableLayoutPanel5.TabIndex = 5;
+            tableLayoutPanel5.TabIndex = 2;
             // 
             // btnLuu
             // 
@@ -128,7 +128,7 @@
             tab.Name = "tab";
             tab.SelectedIndex = 0;
             tab.Size = new Size(739, 292);
-            tab.TabIndex = 6;
+            tab.TabIndex = 1;
             // 
             // tabThongTin
             // 
@@ -157,7 +157,7 @@
             tableLayoutPanel3.RowStyles.Add(new RowStyle());
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel3.Size = new Size(683, 89);
-            tableLayoutPanel3.TabIndex = 11;
+            tableLayoutPanel3.TabIndex = 2;
             // 
             // txtTen
             // 
@@ -200,7 +200,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Size = new Size(295, 75);
-            tableLayoutPanel1.TabIndex = 10;
+            tableLayoutPanel1.TabIndex = 1;
             // 
             // dtDate
             // 
@@ -268,7 +268,7 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle());
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel2.Size = new Size(357, 77);
-            tableLayoutPanel2.TabIndex = 9;
+            tableLayoutPanel2.TabIndex = 0;
             // 
             // cbGV
             // 

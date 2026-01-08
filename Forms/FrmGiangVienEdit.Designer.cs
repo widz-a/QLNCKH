@@ -110,7 +110,7 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle());
             tableLayoutPanel2.RowStyles.Add(new RowStyle());
             tableLayoutPanel2.Size = new Size(322, 308);
-            tableLayoutPanel2.TabIndex = 1;
+            tableLayoutPanel2.TabIndex = 0;
             // 
             // txtSDT
             // 
@@ -120,7 +120,7 @@
             txtSDT.Margin = new Padding(3, 6, 3, 6);
             txtSDT.Name = "txtSDT";
             txtSDT.Size = new Size(189, 26);
-            txtSDT.TabIndex = 41;
+            txtSDT.TabIndex = 7;
             // 
             // label18
             // 
@@ -142,7 +142,7 @@
             txtLVCM.Margin = new Padding(3, 6, 3, 6);
             txtLVCM.Name = "txtLVCM";
             txtLVCM.Size = new Size(189, 26);
-            txtLVCM.TabIndex = 39;
+            txtLVCM.TabIndex = 6;
             // 
             // label16
             // 
@@ -166,7 +166,7 @@
             cbDanToc.Margin = new Padding(3, 6, 3, 6);
             cbDanToc.Name = "cbDanToc";
             cbDanToc.Size = new Size(189, 27);
-            cbDanToc.TabIndex = 32;
+            cbDanToc.TabIndex = 3;
             // 
             // dtNgaySinh
             // 
@@ -213,7 +213,7 @@
             txtHoTen.Margin = new Padding(3, 6, 3, 6);
             txtHoTen.Name = "txtHoTen";
             txtHoTen.Size = new Size(189, 26);
-            txtHoTen.TabIndex = 6;
+            txtHoTen.TabIndex = 1;
             // 
             // txtMaCB
             // 
@@ -223,7 +223,7 @@
             txtMaCB.Margin = new Padding(3, 6, 3, 6);
             txtMaCB.Name = "txtMaCB";
             txtMaCB.Size = new Size(189, 26);
-            txtMaCB.TabIndex = 7;
+            txtMaCB.TabIndex = 0;
             // 
             // label10
             // 
@@ -310,7 +310,7 @@
             tableLayoutPanel5.RowCount = 1;
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel5.Size = new Size(203, 36);
-            tableLayoutPanel5.TabIndex = 5;
+            tableLayoutPanel5.TabIndex = 4;
             // 
             // btnLuu
             // 
@@ -349,7 +349,7 @@
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel3.Size = new Size(516, 36);
-            tableLayoutPanel3.TabIndex = 8;
+            tableLayoutPanel3.TabIndex = 1;
             // 
             // cbXa
             // 
@@ -493,7 +493,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.Size = new Size(400, 270);
-            tableLayoutPanel1.TabIndex = 6;
+            tableLayoutPanel1.TabIndex = 3;
             // 
             // cbChucDanh
             // 
@@ -505,7 +505,7 @@
             cbChucDanh.Margin = new Padding(3, 6, 3, 6);
             cbChucDanh.Name = "cbChucDanh";
             cbChucDanh.Size = new Size(252, 27);
-            cbChucDanh.TabIndex = 43;
+            cbChucDanh.TabIndex = 6;
             // 
             // cbTonGiao
             // 
@@ -518,7 +518,7 @@
             cbTonGiao.Margin = new Padding(3, 6, 3, 6);
             cbTonGiao.Name = "cbTonGiao";
             cbTonGiao.Size = new Size(252, 27);
-            cbTonGiao.TabIndex = 42;
+            cbTonGiao.TabIndex = 2;
             // 
             // cbDV
             // 
@@ -531,7 +531,7 @@
             cbDV.Margin = new Padding(3, 6, 3, 6);
             cbDV.Name = "cbDV";
             cbDV.Size = new Size(252, 27);
-            cbDV.TabIndex = 41;
+            cbDV.TabIndex = 0;
             // 
             // cbLLCT
             // 
@@ -543,7 +543,7 @@
             cbLLCT.Margin = new Padding(3, 6, 3, 6);
             cbLLCT.Name = "cbLLCT";
             cbLLCT.Size = new Size(252, 27);
-            cbLLCT.TabIndex = 39;
+            cbLLCT.TabIndex = 5;
             // 
             // cbTDCM
             // 
@@ -555,7 +555,7 @@
             cbTDCM.Margin = new Padding(3, 6, 3, 6);
             cbTDCM.Name = "cbTDCM";
             cbTDCM.Size = new Size(252, 27);
-            cbTDCM.TabIndex = 38;
+            cbTDCM.TabIndex = 4;
             // 
             // srtg
             // 
@@ -621,7 +621,7 @@
             tableLayoutPanel4.RowCount = 1;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel4.Size = new Size(400, 41);
-            tableLayoutPanel4.TabIndex = 9;
+            tableLayoutPanel4.TabIndex = 2;
             // 
             // txtHSL
             // 
@@ -631,7 +631,7 @@
             txtHSL.Margin = new Padding(3, 6, 3, 6);
             txtHSL.Name = "txtHSL";
             txtHSL.Size = new Size(51, 26);
-            txtHSL.TabIndex = 31;
+            txtHSL.TabIndex = 1;
             // 
             // label17
             // 
@@ -655,7 +655,7 @@
             cbCapBac.Margin = new Padding(3, 6, 3, 6);
             cbCapBac.Name = "cbCapBac";
             cbCapBac.Size = new Size(143, 27);
-            cbCapBac.TabIndex = 29;
+            cbCapBac.TabIndex = 0;
             // 
             // label13
             // 

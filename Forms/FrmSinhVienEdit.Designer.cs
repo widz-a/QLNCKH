@@ -91,7 +91,7 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle());
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel2.Size = new Size(353, 231);
-            tableLayoutPanel2.TabIndex = 1;
+            tableLayoutPanel2.TabIndex = 0;
             // 
             // dtNgaySinh
             // 
@@ -103,7 +103,7 @@
             dtNgaySinh.Margin = new Padding(3, 6, 3, 6);
             dtNgaySinh.Name = "dtNgaySinh";
             dtNgaySinh.Size = new Size(220, 26);
-            dtNgaySinh.TabIndex = 2;
+            dtNgaySinh.TabIndex = 3;
             dtNgaySinh.Value = new DateTime(2025, 7, 10, 0, 0, 0, 0);
             // 
             // cbChucVu
@@ -116,7 +116,7 @@
             cbChucVu.Margin = new Padding(3, 6, 3, 6);
             cbChucVu.Name = "cbChucVu";
             cbChucVu.Size = new Size(220, 27);
-            cbChucVu.TabIndex = 5;
+            cbChucVu.TabIndex = 6;
             // 
             // cbDanToc
             // 
@@ -128,7 +128,7 @@
             cbDanToc.Margin = new Padding(3, 6, 3, 6);
             cbDanToc.Name = "cbDanToc";
             cbDanToc.Size = new Size(220, 27);
-            cbDanToc.TabIndex = 4;
+            cbDanToc.TabIndex = 5;
             // 
             // txtNganh
             // 
@@ -138,7 +138,7 @@
             txtNganh.Margin = new Padding(3, 6, 3, 6);
             txtNganh.Name = "txtNganh";
             txtNganh.Size = new Size(220, 26);
-            txtNganh.TabIndex = 3;
+            txtNganh.TabIndex = 4;
             // 
             // txtHoTen
             // 
@@ -148,7 +148,7 @@
             txtHoTen.Margin = new Padding(3, 6, 3, 6);
             txtHoTen.Name = "txtHoTen";
             txtHoTen.Size = new Size(220, 26);
-            txtHoTen.TabIndex = 6;
+            txtHoTen.TabIndex = 1;
             // 
             // txtMaSV
             // 
@@ -158,7 +158,7 @@
             txtMaSV.Margin = new Padding(3, 6, 3, 6);
             txtMaSV.Name = "txtMaSV";
             txtMaSV.Size = new Size(220, 26);
-            txtMaSV.TabIndex = 7;
+            txtMaSV.TabIndex = 0;
             // 
             // label10
             // 
@@ -228,7 +228,7 @@
             label1.Location = new Point(3, 0);
             label1.Name = "label1";
             label1.Size = new Size(121, 38);
-            label1.TabIndex = 8;
+            label1.TabIndex = 2;
             label1.Text = "Mã sinh viên:";
             label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
@@ -245,7 +245,7 @@
             tableLayoutPanel5.RowCount = 1;
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel5.Size = new Size(203, 36);
-            tableLayoutPanel5.TabIndex = 5;
+            tableLayoutPanel5.TabIndex = 4;
             // 
             // btnLuu
             // 
@@ -294,7 +294,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Size = new Size(336, 192);
-            tableLayoutPanel1.TabIndex = 6;
+            tableLayoutPanel1.TabIndex = 2;
             // 
             // cbTonGiao
             // 
@@ -426,7 +426,7 @@
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel3.Size = new Size(582, 36);
-            tableLayoutPanel3.TabIndex = 8;
+            tableLayoutPanel3.TabIndex = 1;
             // 
             // cbXa
             // 
@@ -449,7 +449,7 @@
             label11.Location = new Point(3, 0);
             label11.Name = "label11";
             label11.Size = new Size(120, 36);
-            label11.TabIndex = 32;
+            label11.TabIndex = 0;
             label11.Text = "Quê quán:";
             label11.TextAlign = ContentAlignment.MiddleLeft;
             // 

@@ -40,9 +40,11 @@
             cbTrangThai = new ComboBox();
             label9 = new Label();
             label10 = new Label();
+            dgv = new DataGridView();
             tableLayoutPanel3.SuspendLayout();
             tableLayoutPanel5.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanel3
@@ -120,7 +122,7 @@
             tableLayoutPanel5.Controls.Add(btnLuu, 0, 0);
             tableLayoutPanel5.Controls.Add(btnHuy, 1, 0);
             tableLayoutPanel5.Font = new Font("Tahoma", 10.8F);
-            tableLayoutPanel5.Location = new Point(595, 113);
+            tableLayoutPanel5.Location = new Point(595, 419);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
             tableLayoutPanel5.RowCount = 1;
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
@@ -166,7 +168,7 @@
             tableLayoutPanel4.RowStyles.Add(new RowStyle());
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel4.Size = new Size(337, 125);
+            tableLayoutPanel4.Size = new Size(337, 78);
             tableLayoutPanel4.TabIndex = 11;
             // 
             // cbLoai
@@ -217,13 +219,23 @@
             label10.Text = "Chọn loại sản phẩm:";
             label10.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // dgvSinhVien
+            // 
+            dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgv.Location = new Point(12, 123);
+            dgv.Name = "dgvSinhVien";
+            dgv.RowHeadersWidth = 51;
+            dgv.Size = new Size(800, 274);
+            dgv.TabIndex = 14;
+            // 
             // FrmNopDeTaiEdit
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(814, 485);
-            Controls.Add(tableLayoutPanel3);
             Controls.Add(tableLayoutPanel5);
+            Controls.Add(dgv);
+            Controls.Add(tableLayoutPanel3);
             Controls.Add(tableLayoutPanel4);
             Name = "FrmNopDeTaiEdit";
             StartPosition = FormStartPosition.CenterScreen;
@@ -233,6 +245,7 @@
             tableLayoutPanel5.ResumeLayout(false);
             tableLayoutPanel4.ResumeLayout(false);
             tableLayoutPanel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgv).EndInit();
             ResumeLayout(false);
         }
 
@@ -259,5 +272,6 @@
         private ComboBox cbNguoiNop;
         private ComboBox cbMa;
         private Label label11;
+        private DataGridView dgv;
     }
 }
