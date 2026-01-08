@@ -176,7 +176,7 @@ namespace QLNCKH.Forms {
                 .Select(kq => kq.MaCD);
             cbCD.DataSource = new Repository<HoiDong>()
                 .Filter(
-                hd => hd.Loai == "Chuyên đề" && !hd.HoiDong_ChuyenDes.Any(dt => dtCoGiai.Contains(dt.MaCD)),
+                hd => hd.Loai == "Chuyên đề" && !hd.HoiDong_ChuyenDes.Any(dt => cbCoGiai.Contains(dt.MaCD)),
                 hd => new {
                     Value = hd.MaHD,
                     Display = $"HĐ#{hd.MaHD} | CHUYÊN ĐỀ | Vòng {hd.HoiDong_ChuyenDes.Max(x => x.Vong) + 1} | {hd.NgayCham:dd/MM/yyyy}"
