@@ -219,11 +219,11 @@
             label10.Text = "Chọn loại sản phẩm:";
             label10.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // dgvSinhVien
+            // dgv
             // 
             dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgv.Location = new Point(12, 123);
-            dgv.Name = "dgvSinhVien";
+            dgv.Name = "dgv";
             dgv.RowHeadersWidth = 51;
             dgv.Size = new Size(800, 274);
             dgv.TabIndex = 14;
@@ -257,7 +257,6 @@
         private TableLayoutPanel tableLayoutPanel2;
         private Label label5;
         private Label label3;
-        private Label label1;
         private TableLayoutPanel tableLayoutPanel3;
         private ComboBox cbLoai;
         private Label label7;

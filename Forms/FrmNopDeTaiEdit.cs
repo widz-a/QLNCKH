@@ -185,7 +185,7 @@ namespace QLNCKH.Forms
                 }
             );
 
-            dgv.Columns[0].HeaderText = "Mã số";
+            dgv.Columns[0].HeaderText = "Trạng thái";
             dgv.Columns[1].HeaderText = "Người nộp";
             dgv.Columns[2].HeaderText = "Ngày nộp";
         }
