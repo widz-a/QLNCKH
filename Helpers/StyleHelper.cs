@@ -280,4 +280,17 @@ public static class StyleHelper {
 
         return path;
     }
+
+    public static void setDisableButton(ReaLTaiizor.Controls.Button btn) {
+        var bg = Color.FromArgb(156, 163, 175);
+
+        btn.ForeColor = Color.FromArgb(209, 213, 219);
+        btn.BorderColor = bg;
+        btn.EnteredBorderColor = bg;
+        btn.EnteredColor = bg;
+        btn.InactiveColor = bg;
+        btn.PressedBorderColor = bg;
+        btn.PressedColor = bg;
+    }
+
 }

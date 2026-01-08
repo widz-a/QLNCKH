@@ -30,6 +30,12 @@ public class FrmList<T, TDto> : FrmBaseList where T : class where TDto : class {
     private readonly ListContext<T, TDto> _ctx;
     public FrmList(ListContext<T, TDto> ctx) : this() {
         _ctx = ctx;
+
+        if (_ctx.GetEditForm == null) {
+            StyleHelper.setDisableButton(GetButtonSua());
+            StyleHelper.setDisableButton(GetButtonXoa());
+        }
+
         LoadData();
     }
 
