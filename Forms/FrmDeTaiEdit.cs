@@ -207,7 +207,7 @@ namespace QLNCKH.Forms {
             Repository<DeTai> repo = new Repository<DeTai>();
             if (_id == null) {
                 if (repo.Exists(txtMaDT.Text)) {
-                    MessageBox.Show("Mã giảng viên này đã tồn tại", "Lỗi");
+                    MessageBox.Show("Mã đề tài này đã tồn tại", "Lỗi");
                     return;
                 }
                 repo.Insert(data);
