@@ -249,7 +249,7 @@ namespace QLNCKH.Forms {
 
                 foreach (var x in dts) {
                     var item = new ListViewItem((listView2.Items.Count + 1).ToString());
-                    item.SubItems.Add(x.Ma + "");
+                    item.SubItems.Add(x.Ma.ToString());
                     item.SubItems.Add(x.Ten);
 
                     listView2.Items.Add(item);
@@ -260,14 +260,14 @@ namespace QLNCKH.Forms {
                 var dts = repoDT.Filter(
                     x => x.MaHD == _id,
                     x => new {
-                        Ma = x.MaHD,
+                        Ma = x.MaCD,
                         Ten = x.ChuyenDe.TenCD,
                     }
                 );
 
                 foreach (var x in dts) {
                     var item = new ListViewItem((listView1.Items.Count + 1).ToString());
-                    item.SubItems.Add(x.Ma + "");
+                    item.SubItems.Add(x.Ma.ToString());
                     item.SubItems.Add(x.Ten);
 
                     listView2.Items.Add(item);
