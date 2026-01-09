@@ -169,10 +169,10 @@ namespace QLNCKH.Forms
 
         private void LoadDGV() {
             if (cbLoai.SelectedIndex <= -1 || cbMa.SelectedIndex <= -1) {
-                dgv.Visible = false;
+                panel2.Visible = false;
                 return;
             }
-            dgv.Visible = true;
+            panel2.Visible = true;
             string loai = cbLoai.SelectedItem.ToString();
             string ma = cbMa.SelectedValue.ToString();
 

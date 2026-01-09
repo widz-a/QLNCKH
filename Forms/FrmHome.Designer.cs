@@ -144,7 +144,7 @@
             // btnDkDT
             // 
             btnDkDT.Dock = DockStyle.Fill;
-            btnDkDT.Font = new Font("Segoe UI", 8F);
+            btnDkDT.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnDkDT.Location = new Point(10, 0);
             btnDkDT.Margin = new Padding(10, 0, 10, 10);
             btnDkDT.Name = "btnDkDT";
@@ -155,7 +155,7 @@
             // btnKQ
             // 
             btnKQ.Dock = DockStyle.Fill;
-            btnKQ.Font = new Font("Segoe UI", 8F);
+            btnKQ.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnKQ.Location = new Point(227, 55);
             btnKQ.Margin = new Padding(10, 0, 10, 10);
             btnKQ.Name = "btnKQ";
@@ -166,7 +166,7 @@
             // btnNopBai
             // 
             btnNopBai.Dock = DockStyle.Fill;
-            btnNopBai.Font = new Font("Segoe UI", 8F);
+            btnNopBai.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnNopBai.Location = new Point(10, 55);
             btnNopBai.Margin = new Padding(10, 0, 10, 10);
             btnNopBai.Name = "btnNopBai";
@@ -177,7 +177,7 @@
             // btnDkCD
             // 
             btnDkCD.Dock = DockStyle.Fill;
-            btnDkCD.Font = new Font("Segoe UI", 8F);
+            btnDkCD.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnDkCD.Location = new Point(227, 0);
             btnDkCD.Margin = new Padding(10, 0, 10, 10);
             btnDkCD.Name = "btnDkCD";
@@ -372,13 +372,13 @@
             // 
             label1.AutoSize = true;
             label1.Dock = DockStyle.Bottom;
-            label1.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Segoe UI", 9F);
             label1.ForeColor = SystemColors.ActiveBorder;
-            label1.Location = new Point(3, 16);
+            label1.Location = new Point(3, 10);
             label1.Name = "label1";
-            label1.Size = new Size(770, 34);
+            label1.Size = new Size(770, 40);
             label1.TabIndex = 1;
-            label1.Text = "2025 © LamChan Corp - All right reserved\r\nHotline: 113 - Adress: 125, Tran Phu, Ha Dong, Ha Noi - Email: lamchan@wida.dev\r\n";
+            label1.Text = "Bản quyền 2026 © thuộc LamChan Corp - All right reserved\r\nAdress: 125, Tran Phu, Ha Dong, Ha Noi - Email: lamchan@wida.dev\r\n";
             label1.TextAlign = ContentAlignment.BottomCenter;
             // 
             // tblMetrics

@@ -27,10 +27,6 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            tableLayoutPanel5 = new TableLayoutPanel();
-            btnLuu = new Button();
-            btnHuy = new Button();
-            dgv = new DataGridView();
             panel1 = new Panel();
             materialCard1 = new ReaLTaiizor.Controls.MaterialCard();
             tableLayoutPanel4 = new TableLayoutPanel();
@@ -43,60 +39,21 @@
             cbNguoiNop = new ComboBox();
             label7 = new Label();
             label8 = new Label();
-            tableLayoutPanel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
+            panel2 = new Panel();
+            dgv = new DataGridView();
+            tableLayoutPanel5 = new TableLayoutPanel();
+            btnLuu = new Button();
+            btnHuy = new Button();
+            panel3 = new Panel();
             panel1.SuspendLayout();
             materialCard1.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
+            tableLayoutPanel5.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
-            // 
-            // tableLayoutPanel5
-            // 
-            tableLayoutPanel5.ColumnCount = 2;
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.Controls.Add(btnLuu, 0, 0);
-            tableLayoutPanel5.Controls.Add(btnHuy, 1, 0);
-            tableLayoutPanel5.Font = new Font("Tahoma", 10.8F);
-            tableLayoutPanel5.Location = new Point(599, 437);
-            tableLayoutPanel5.Name = "tableLayoutPanel5";
-            tableLayoutPanel5.RowCount = 1;
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.Size = new Size(203, 36);
-            tableLayoutPanel5.TabIndex = 12;
-            // 
-            // btnLuu
-            // 
-            btnLuu.Dock = DockStyle.Fill;
-            btnLuu.Font = new Font("Segoe UI", 10.2F);
-            btnLuu.Location = new Point(3, 3);
-            btnLuu.Name = "btnLuu";
-            btnLuu.Size = new Size(95, 30);
-            btnLuu.TabIndex = 0;
-            btnLuu.Text = "Thêm";
-            btnLuu.UseVisualStyleBackColor = true;
-            // 
-            // btnHuy
-            // 
-            btnHuy.Dock = DockStyle.Fill;
-            btnHuy.Font = new Font("Segoe UI", 10.2F);
-            btnHuy.Location = new Point(104, 3);
-            btnHuy.Name = "btnHuy";
-            btnHuy.Size = new Size(96, 30);
-            btnHuy.TabIndex = 1;
-            btnHuy.Text = "Hủy";
-            btnHuy.UseVisualStyleBackColor = true;
-            // 
-            // dgv
-            // 
-            dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgv.Dock = DockStyle.Top;
-            dgv.Location = new Point(0, 133);
-            dgv.Name = "dgv";
-            dgv.RowHeadersWidth = 51;
-            dgv.Size = new Size(814, 274);
-            dgv.TabIndex = 14;
             // 
             // panel1
             // 
@@ -259,25 +216,94 @@
             label8.Text = "Sản phẩm:";
             label8.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // panel2
+            // 
+            panel2.Controls.Add(dgv);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(0, 133);
+            panel2.Name = "panel2";
+            panel2.Padding = new Padding(0, 0, 0, 20);
+            panel2.Size = new Size(814, 259);
+            panel2.TabIndex = 18;
+            panel2.Visible = false;
+            // 
+            // dgv
+            // 
+            dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgv.Dock = DockStyle.Fill;
+            dgv.Location = new Point(0, 0);
+            dgv.Name = "dgv";
+            dgv.RowHeadersWidth = 51;
+            dgv.Size = new Size(814, 239);
+            dgv.TabIndex = 15;
+            // 
+            // tableLayoutPanel5
+            // 
+            tableLayoutPanel5.ColumnCount = 2;
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.Controls.Add(btnLuu, 0, 0);
+            tableLayoutPanel5.Controls.Add(btnHuy, 1, 0);
+            tableLayoutPanel5.Font = new Font("Tahoma", 10.8F);
+            tableLayoutPanel5.Location = new Point(608, 3);
+            tableLayoutPanel5.Name = "tableLayoutPanel5";
+            tableLayoutPanel5.RowCount = 1;
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.Size = new Size(203, 36);
+            tableLayoutPanel5.TabIndex = 18;
+            // 
+            // btnLuu
+            // 
+            btnLuu.Dock = DockStyle.Fill;
+            btnLuu.Font = new Font("Segoe UI", 10.2F);
+            btnLuu.Location = new Point(3, 3);
+            btnLuu.Name = "btnLuu";
+            btnLuu.Size = new Size(95, 30);
+            btnLuu.TabIndex = 0;
+            btnLuu.Text = "Thêm";
+            btnLuu.UseVisualStyleBackColor = true;
+            // 
+            // btnHuy
+            // 
+            btnHuy.Dock = DockStyle.Fill;
+            btnHuy.Font = new Font("Segoe UI", 10.2F);
+            btnHuy.Location = new Point(104, 3);
+            btnHuy.Name = "btnHuy";
+            btnHuy.Size = new Size(96, 30);
+            btnHuy.TabIndex = 1;
+            btnHuy.Text = "Hủy";
+            btnHuy.UseVisualStyleBackColor = true;
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(tableLayoutPanel5);
+            panel3.Dock = DockStyle.Top;
+            panel3.Location = new Point(0, 392);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(814, 43);
+            panel3.TabIndex = 19;
+            // 
             // FrmNopDeTaiEdit
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(814, 485);
-            Controls.Add(dgv);
+            Controls.Add(panel3);
+            Controls.Add(panel2);
             Controls.Add(panel1);
-            Controls.Add(tableLayoutPanel5);
             Name = "FrmNopDeTaiEdit";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmNopDeTaiEdit";
-            tableLayoutPanel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgv).EndInit();
             panel1.ResumeLayout(false);
             materialCard1.ResumeLayout(false);
             tableLayoutPanel4.ResumeLayout(false);
             tableLayoutPanel4.PerformLayout();
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel3.PerformLayout();
+            panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgv).EndInit();
+            tableLayoutPanel5.ResumeLayout(false);
+            panel3.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -289,11 +315,7 @@
         private TableLayoutPanel tableLayoutPanel2;
         private Label label5;
         private Label label3;
-        private TableLayoutPanel tableLayoutPanel5;
-        private Button btnLuu;
-        private Button btnHuy;
         private Label label11;
-        private DataGridView dgv;
         private Panel panel1;
         private ReaLTaiizor.Controls.MaterialCard materialCard1;
         private TableLayoutPanel tableLayoutPanel4;
@@ -306,5 +328,11 @@
         private ComboBox cbNguoiNop;
         private Label label7;
         private Label label8;
+        private Panel panel2;
+        private DataGridView dgv;
+        private TableLayoutPanel tableLayoutPanel5;
+        private Button btnLuu;
+        private Button btnHuy;
+        private Panel panel3;
     }
 }

@@ -45,9 +45,9 @@
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.Controls.Add(btnXoa, 2, 0);
             tableLayoutPanel1.Controls.Add(btnSua, 1, 0);
             tableLayoutPanel1.Controls.Add(btnThem, 0, 0);
@@ -71,11 +71,11 @@
             btnXoa.Image = null;
             btnXoa.ImageAlign = ContentAlignment.MiddleLeft;
             btnXoa.InactiveColor = Color.FromArgb(59, 130, 246);
-            btnXoa.Location = new Point(533, 7);
+            btnXoa.Location = new Point(535, 7);
             btnXoa.Name = "btnXoa";
             btnXoa.PressedBorderColor = Color.FromArgb(37, 99, 235);
             btnXoa.PressedColor = Color.FromArgb(37, 99, 235);
-            btnXoa.Size = new Size(260, 34);
+            btnXoa.Size = new Size(258, 34);
             btnXoa.TabIndex = 12;
             btnXoa.Text = "Xóa";
             btnXoa.TextAlignment = StringAlignment.Center;
@@ -91,11 +91,11 @@
             btnSua.Image = null;
             btnSua.ImageAlign = ContentAlignment.MiddleLeft;
             btnSua.InactiveColor = Color.FromArgb(59, 130, 246);
-            btnSua.Location = new Point(270, 7);
+            btnSua.Location = new Point(271, 7);
             btnSua.Name = "btnSua";
             btnSua.PressedBorderColor = Color.FromArgb(37, 99, 235);
             btnSua.PressedColor = Color.FromArgb(37, 99, 235);
-            btnSua.Size = new Size(257, 34);
+            btnSua.Size = new Size(258, 34);
             btnSua.TabIndex = 11;
             btnSua.Text = "Sửa";
             btnSua.TextAlignment = StringAlignment.Center;
@@ -115,7 +115,7 @@
             btnThem.Name = "btnThem";
             btnThem.PressedBorderColor = Color.FromArgb(37, 99, 235);
             btnThem.PressedColor = Color.FromArgb(37, 99, 235);
-            btnThem.Size = new Size(257, 34);
+            btnThem.Size = new Size(258, 34);
             btnThem.TabIndex = 10;
             btnThem.Text = "Thêm";
             btnThem.TextAlignment = StringAlignment.Center;
